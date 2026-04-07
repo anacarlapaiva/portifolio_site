@@ -47,9 +47,16 @@ export function HeroSection() {
             Ver projetos
             <ArrowRight size={18} aria-hidden="true" />
           </ButtonLink>
-          <ButtonLink href="#sobre" variant="secondary" className="w-full sm:w-auto">
+          <ButtonLink
+            href="/ana-carla-paiva-curriculo.pdf"
+            variant="secondary"
+            className="w-full sm:w-auto"
+            target="_blank"
+            rel="noreferrer"
+            download="Ana-Carla-Paiva-Curriculo.pdf"
+          >
             <Download size={18} aria-hidden="true" />
-            Conhecer perfil
+            Baixar curriculo
           </ButtonLink>
           <div className="flex flex-wrap items-center gap-3 text-muted">
             <ButtonLink

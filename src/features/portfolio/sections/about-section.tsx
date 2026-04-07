@@ -17,7 +17,7 @@ export function AboutSection() {
     >
       <SectionHeading
         eyebrow="Sobre"
-        title="Muito prazer, eu transformo boas ideias em interfaces fortes e usaveis"
+        title="Muito prazer, eu transformo boas ideias em interfaces fortes e usáveis"
         titleClassName="max-w-3xl lg:max-w-4xl"
       />
       <div className="mt-8 grid min-w-0 gap-8 lg:grid-cols-[minmax(0,17rem)_minmax(0,1fr)] xl:grid-cols-[minmax(0,0.86fr)_minmax(0,1.14fr)]">
@@ -57,19 +57,19 @@ export function AboutSection() {
           </div>
         </aside>
 
-        <div className="@container min-w-0 space-y-8 text-base leading-8 text-muted sm:text-lg">
+        <div className="@container min-w-0 space-y-8 text-[0.96rem] leading-7 text-muted sm:text-lg sm:leading-8">
           <div className="space-y-5">
             <p>
-              Sou desenvolvedora front-end com bastante experiencia em interface e um
-              jeito de trabalhar muito conectado ao que o usuario percebe na ponta.
-              Gosto de construir experiencias que parecem simples de usar, mas por tras
-              tem criterio visual, componentes bem pensados e codigo organizado.
+              Sou desenvolvedora front-end com bastante experiência em interface e um
+              jeito de trabalhar muito conectado ao que o usuário percebe na ponta.
+              Gosto de construir experiências que parecem simples de usar, mas por trás
+              têm critério visual, componentes bem pensados e código organizado.
             </p>
             <p>
-              Minha trajetoria passa por React, React Native, UI UX design e produtos
-              digitais que exigem mais do que uma tela bonita. Tenho pos-graduacao em
-              desenvolvimento mobile, formacao em Engenharia de Software e tambem uma
-              base em Node, Nest e integracoes, o suficiente para dialogar com o
+              Minha trajetória passa por React, React Native, UI UX design e produtos
+              digitais que exigem mais do que uma tela bonita. Tenho pós-graduação em
+              desenvolvimento mobile, formação em Engenharia de Software e também uma
+              base em Node, Nest e integrações, o suficiente para dialogar com o
               ecossistema inteiro do produto.
             </p>
           </div>
@@ -107,57 +107,57 @@ export function AboutSection() {
               ))}
             </div>
           </div>
+        </div>
+      </div>
 
-          <div className="space-y-4 border-t border-line/60 pt-8">
-            <h3 className="font-display text-sm font-semibold uppercase tracking-[0.24em] text-accent">
-              Repertorio e entrega
-            </h3>
-            <div className="flex flex-col gap-4 @min-[30rem]:flex-row @min-[30rem]:items-stretch">
-              <Card className="min-w-0 w-full @min-[30rem]:flex-1">
-                <CardContent className="px-5 py-5">
-                  <div className="flex gap-4">
-                    <div
-                      className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl border border-accent/20 bg-accent-soft text-accent"
-                      aria-hidden="true"
-                    >
-                      <GraduationCap size={20} />
-                    </div>
-                    <div className="min-w-0">
-                      <p className="font-display text-lg font-semibold text-foreground">
-                        Formacao e repertorio
-                      </p>
-                      <p className="mt-3 text-sm leading-7 text-muted">
-                        Minha base me ajuda a pensar experiencia, sistema, manutencao e
-                        produto junto. Nao vejo interface como acabamento: vejo como parte
-                        central da estrategia.
-                      </p>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-              <Card className="min-w-0 w-full @min-[30rem]:flex-1">
-                <CardContent className="px-5 py-5">
-                  <div className="flex gap-4">
-                    <div
-                      className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl border border-accent/20 bg-accent-soft text-accent"
-                      aria-hidden="true"
-                    >
-                      <Smartphone size={20} />
-                    </div>
-                    <div className="min-w-0">
-                      <p className="font-display text-lg font-semibold text-foreground">
-                        O que costumo entregar
-                      </p>
-                      <p className="mt-3 text-sm leading-7 text-muted">
-                        Landing pages premium, produtos web com boa hierarquia, apps e
-                        fluxos mobile com foco em clareza, usabilidade e polimento visual.
-                      </p>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-            </div>
-          </div>
+      <div className="mt-8 space-y-4 border-t border-line/60 pt-8">
+        <h3 className="font-display text-sm font-semibold uppercase tracking-[0.24em] text-accent">
+          Repertório e entrega
+        </h3>
+        <div className="grid gap-4 lg:grid-cols-2">
+          <Card className="min-w-0 h-full">
+            <CardContent className="px-5 py-5">
+              <div className="flex gap-4">
+                <div
+                  className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl border border-accent/20 bg-accent-soft text-accent"
+                  aria-hidden="true"
+                >
+                  <GraduationCap size={20} />
+                </div>
+                <div className="min-w-0">
+                  <p className="font-display text-lg font-semibold text-foreground">
+                    Formação e repertório
+                  </p>
+                  <p className="mt-3 text-sm leading-7 text-muted">
+                    Minha base me ajuda a pensar experiência, sistema, manutenção e
+                    produto junto. Não vejo interface como acabamento: vejo como parte
+                    central da estratégia.
+                  </p>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+          <Card className="min-w-0 h-full">
+            <CardContent className="px-5 py-5">
+              <div className="flex gap-4">
+                <div
+                  className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl border border-accent/20 bg-accent-soft text-accent"
+                  aria-hidden="true"
+                >
+                  <Smartphone size={20} />
+                </div>
+                <div className="min-w-0">
+                  <p className="font-display text-lg font-semibold text-foreground">
+                    O que costumo entregar
+                  </p>
+                  <p className="mt-3 text-sm leading-7 text-muted">
+                    Landing pages premium, produtos web com boa hierarquia, apps e
+                    fluxos mobile com foco em clareza, usabilidade e polimento visual.
+                  </p>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
         </div>
       </div>
     </MotionReveal>

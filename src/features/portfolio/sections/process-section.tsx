@@ -12,7 +12,7 @@ export function ProcessSection() {
     >
       <SectionHeading
         eyebrow="Como eu trabalho"
-        title="Uma forma de construir que junta estetica, produto e implementacao"
+        title="Uma forma de construir que junta estética, produto e implementação"
       />
       <div className="mt-8 grid gap-4">
         {process.map(({ title, description, icon: Icon }, index) => (
@@ -24,7 +24,7 @@ export function ProcessSection() {
                 </div>
                 <div>
                   <h3 className="font-display text-xl font-semibold text-foreground">{title}</h3>
-                  <p className="mt-2 text-sm leading-7 text-muted">{description}</p>
+                  <p className="mt-2 text-sm leading-7 text-muted sm:text-[0.96rem]">{description}</p>
                 </div>
               </CardContent>
             </Card>

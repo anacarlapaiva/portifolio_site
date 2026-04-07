@@ -17,10 +17,10 @@ export function ContactSection() {
       <SectionHeading eyebrow="Contato" title="Se a ideia for boa, eu quero construir junto" />
       <div className="mt-8 grid gap-6 lg:grid-cols-[1fr_0.9fr]">
         <div className="space-y-4">
-          <p className="max-w-xl text-base leading-8 text-muted">
-            Disponivel para freelas, novos produtos, landing pages premium e times
-            que precisam elevar a experiencia do front-end sem perder consistencia
-            tecnica.
+          <p className="max-w-xl text-[0.96rem] leading-7 text-muted sm:text-base sm:leading-8">
+            Disponível para freelas, novos produtos, landing pages premium e times
+            que precisam elevar a experiência do front-end sem perder consistência
+            técnica.
           </p>
           <ButtonLink href="mailto:acfpaiva99@gmail.com" className="w-full sm:w-auto">
             Vamos conversar

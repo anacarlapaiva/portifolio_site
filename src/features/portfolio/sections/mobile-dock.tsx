@@ -1,22 +1,22 @@
 "use client";
 
-import { Briefcase, House, Mail, Sparkles } from "lucide-react";
+import { Briefcase, CircleHelp, House, Mail, Sparkles } from "lucide-react";
 
 import { navItems } from "@/features/portfolio/data";
 import { useActiveSection } from "@/shared/hooks/use-active-section";
 import { cn } from "@/lib/utils";
 
-const dockIcons = [House, Sparkles, Briefcase, Mail];
+const dockIcons = [House, Sparkles, Briefcase, CircleHelp, Mail];
 
 export function MobileDock() {
-  const activeSection = useActiveSection(["inicio", "skills", "projetos", "contato"]);
+  const activeSection = useActiveSection(["inicio", "skills", "projetos", "faq", "contato"]);
 
   return (
     <nav
       aria-label="Navegacao rapida mobile"
       className="fixed inset-x-4 bottom-4 z-40 md:hidden"
     >
-      <div className="grid grid-cols-4 rounded-full border border-line bg-card-strong p-2 shadow-[var(--shadow)] backdrop-blur">
+      <div className="grid grid-cols-5 rounded-full border border-line bg-card-strong p-2 shadow-[var(--shadow)] backdrop-blur">
         {navItems.map((item, index) => {
           const Icon = dockIcons[index];
           const isActive = activeSection === item.href.replace("#", "");

@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { ArrowUpRight } from "lucide-react";
 
 import { ButtonLink } from "@/components/ui/button";
@@ -14,24 +15,65 @@ export function ProjectsSection() {
       className="scroll-mt-28 rounded-[2rem] border border-line bg-card px-5 py-8 shadow-[var(--shadow)] backdrop-blur sm:px-8"
       delay={0.1}
     >
-      <SectionHeading eyebrow="Laboratorio" title="Projetos pensados para marca, produto e conversao" />
-      <div className="mt-8 grid gap-4">
+      <SectionHeading eyebrow="Laboratório" title="Projetos pensados para marca, produto e conversão" />
+      <div className="mt-8 grid gap-4 xl:grid-cols-2">
         {projects.map((project, index) => (
-          <MotionReveal
-            key={project.title}
-            delay={0.08 * index}
-          >
+          <MotionReveal key={project.title} delay={0.08 * index}>
             <Card className="overflow-hidden p-0">
-              <div
-                className={`h-36 border-b border-line ${
-                  index === 0
-                    ? "bg-[radial-gradient(circle_at_top_left,rgba(255,122,89,0.20),transparent_45%),linear-gradient(135deg,#33191c,#2f1b1f)]"
-                    : index === 1
-                      ? "bg-[radial-gradient(circle_at_top,rgba(255,177,109,0.20),transparent_35%),linear-gradient(135deg,#3a1f24,#221215)]"
-                      : "bg-[radial-gradient(circle_at_top_right,rgba(251,191,36,0.16),transparent_35%),linear-gradient(135deg,#2d1519,#1a0d0f)]"
-                }`}
-              >
-                <div className="flex h-full items-end p-5">
+              <div className="relative h-40 overflow-hidden border-b border-line sm:h-44">
+                {project.category === "website" ? (
+                  <>
+                    <div
+                      className="absolute inset-0 scale-110 bg-cover bg-center opacity-30 blur-2xl"
+                      style={{ backgroundImage: `url(${project.imageSrc})` }}
+                      aria-hidden="true"
+                    />
+                    <div className="absolute inset-0">
+                      <Image
+                        src={project.imageSrc}
+                        alt={project.imageAlt}
+                        fill
+                        sizes="(min-width: 1280px) 40vw, 100vw"
+                        className="object-cover object-top"
+                      />
+                    </div>
+                    <div
+                      className="absolute inset-0 bg-[linear-gradient(180deg,rgba(28,14,17,0.16),rgba(28,14,17,0.78)),radial-gradient(circle_at_top_left,rgba(255,122,89,0.16),transparent_42%)]"
+                      aria-hidden="true"
+                    />
+                  </>
+                ) : (
+                  <>
+                    <div
+                      className={`absolute inset-0 ${
+                        index % 2 === 0
+                          ? "bg-[radial-gradient(circle_at_top_left,rgba(255,122,89,0.24),transparent_42%),linear-gradient(135deg,#33191c,#241215)]"
+                          : "bg-[radial-gradient(circle_at_top_right,rgba(255,177,109,0.24),transparent_38%),linear-gradient(135deg,#2f181b,#201012)]"
+                      }`}
+                      aria-hidden="true"
+                    />
+                    <div
+                      className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.10),transparent_55%)] blur-2xl"
+                      aria-hidden="true"
+                    />
+                    <div className="absolute inset-x-6 bottom-0 top-4">
+                      <Image
+                        src={project.imageSrc}
+                        alt={project.imageAlt}
+                        fill
+                        unoptimized
+                        sizes="(min-width: 1280px) 40vw, 100vw"
+                        className="object-contain opacity-95 drop-shadow-[0_18px_35px_rgba(0,0,0,0.35)]"
+                      />
+                    </div>
+                    <div
+                      className="absolute inset-0 bg-[linear-gradient(180deg,rgba(28,14,17,0.08),rgba(28,14,17,0.72))]"
+                      aria-hidden="true"
+                    />
+                  </>
+                )}
+
+                <div className="relative flex h-full items-end p-5">
                   <div className="rounded-2xl border border-line bg-inner-card px-3 py-2 text-xs uppercase tracking-[0.3em] text-foreground">
                     case {index + 1}
                   </div>
@@ -40,10 +82,10 @@ export function ProjectsSection() {
               <CardContent className="space-y-4">
                 <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
                   <div>
-                    <h3 className="font-display text-xl font-semibold text-foreground">
+                    <h3 className="font-display text-lg font-semibold text-foreground sm:text-xl">
                       {project.title}
                     </h3>
-                    <p className="mt-3 text-sm leading-7 text-muted">
+                    <p className="mt-3 text-sm leading-7 text-muted sm:text-[0.96rem]">
                       {project.summary}
                     </p>
                   </div>

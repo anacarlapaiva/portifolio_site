@@ -14,7 +14,7 @@ export function SectionHeading({ eyebrow, title, titleClassName }: SectionHeadin
       </p>
       <h2
         className={cn(
-          "max-w-xl font-display text-3xl leading-tight font-semibold text-foreground",
+          "max-w-xl font-display text-[1.75rem] leading-tight font-semibold text-foreground sm:text-3xl",
           titleClassName,
         )}
       >

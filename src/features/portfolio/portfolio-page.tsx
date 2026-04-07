@@ -1,5 +1,6 @@
 import { AboutSection } from "@/features/portfolio/sections/about-section";
 import { ContactSection } from "@/features/portfolio/sections/contact-section";
+import { FaqSection } from "@/features/portfolio/sections/faq-section";
 import { HeroSection } from "@/features/portfolio/sections/hero-section";
 import { MobileDock } from "@/features/portfolio/sections/mobile-dock";
 import { ProcessSection } from "@/features/portfolio/sections/process-section";
@@ -26,6 +27,7 @@ export function PortfolioPage() {
             <SkillsSection />
             <ProcessSection />
             <ProjectsSection />
+            <FaqSection />
             <ContactSection />
           </div>
         </div>

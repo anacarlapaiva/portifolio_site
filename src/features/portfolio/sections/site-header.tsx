@@ -11,7 +11,7 @@ import { cn } from "@/lib/utils";
 
 export function SiteHeader() {
   const [isOpen, setIsOpen] = useState(false);
-  const activeSection = useActiveSection(["sobre", "skills", "projetos", "contato"]);
+  const activeSection = useActiveSection(["sobre", "skills", "projetos", "faq", "contato"]);
 
   return (
     <header className="sticky top-2 z-30 mb-6 rounded-[2rem] border border-line bg-card px-5 py-4 shadow-[var(--shadow)] backdrop-blur sm:top-4 md:px-8" role="banner">

@@ -9,7 +9,7 @@ export function HeroSection() {
   return (
     <section
       id="inicio"
-      aria-label="Apresentacao"
+      aria-label="Apresentação"
       className="mb-6 scroll-mt-28 grid gap-6 rounded-[2rem] border border-line bg-card px-5 py-8 shadow-[var(--shadow)] backdrop-blur sm:px-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-center lg:px-10 lg:py-12"
     >
       <MotionReveal className="space-y-8">
@@ -18,13 +18,13 @@ export function HeroSection() {
             Desenvolvedora Full Stack
           </p>
           <div className="space-y-4">
-            <h1 className="max-w-2xl font-display text-4xl leading-tight font-semibold text-foreground sm:text-5xl lg:text-6xl">
+            <h1 className="max-w-2xl font-display text-[2.25rem] leading-[1.02] font-semibold text-foreground sm:text-5xl lg:text-6xl">
               Front-end, mobile e interface com acabamento de quem vive produto de verdade.
             </h1>
-            <p className="max-w-xl text-base leading-8 text-muted sm:text-lg">
-              Sou desenvolvedora front-end com forte experiencia em interface, React
+            <p className="max-w-xl text-[0.96rem] leading-7 text-muted sm:text-lg sm:leading-8">
+              Sou desenvolvedora front-end com forte experiência em interface, React
               Native, UI UX design e produtos digitais que precisam unir clareza,
-              consistencia visual e implementacao bem feita.
+              consistência visual e implementação bem feita.
             </p>
           </div>
         </div>
@@ -56,7 +56,7 @@ export function HeroSection() {
             download="Ana-Carla-Paiva-Curriculo.pdf"
           >
             <Download size={18} aria-hidden="true" />
-            Baixar curriculo
+            Baixar currículo
           </ButtonLink>
           <div className="flex flex-wrap items-center gap-3 text-muted">
             <ButtonLink
@@ -97,10 +97,10 @@ export function HeroSection() {
           <div className="flex items-center justify-between border-b border-line pb-4">
             <div>
               <p className="font-display text-sm uppercase tracking-[0.25em] text-accent">
-                Laboratorio criativo
+                Laboratório criativo
               </p>
               <p className="mt-2 text-sm text-muted">
-                Interface, mobile e experiencias que equilibram forma e funcao
+                Interface, mobile e experiências que equilibram forma e função
               </p>
             </div>
             <div className="flex gap-2" aria-hidden="true">
@@ -115,7 +115,7 @@ export function HeroSection() {
               <div className="flex items-center justify-between">
                 <div>
                   <p className="text-sm text-muted">Especialidade</p>
-                  <p className="mt-2 font-display text-2xl font-semibold text-foreground">
+                  <p className="mt-2 font-display text-xl font-semibold text-foreground sm:text-2xl">
                     React, React Native e UI orientada a produto
                   </p>
                 </div>
@@ -143,20 +143,20 @@ export function HeroSection() {
 
             <div className="rounded-[1.5rem] border border-line bg-inner-card-subtle p-4">
               <div className="flex items-center justify-between">
-                <p className="font-display text-lg text-foreground">O que voce encontra aqui</p>
+                <p className="font-display text-base text-foreground sm:text-lg">O que você encontra aqui</p>
                 <p className="text-xs uppercase tracking-[0.3em] text-muted">
                   perfil profissional
                 </p>
               </div>
               <div className="mt-4 grid gap-3 text-sm text-muted sm:grid-cols-3">
                 <div className="rounded-2xl border border-line bg-inner-card-subtle px-3 py-3">
-                  Experiencia real em interface
+                  Experiência real em interface
                 </div>
                 <div className="rounded-2xl border border-line bg-inner-card-subtle px-3 py-3">
-                  Visao mobile e produto
+                  Visão mobile e produto
                 </div>
                 <div className="rounded-2xl border border-line bg-inner-card-subtle px-3 py-3">
-                  Design e codigo trabalhando juntos
+                  Design e código trabalhando juntos
                 </div>
               </div>
             </div>

@@ -53,6 +53,8 @@ export function ProjectsSection() {
                     size="icon"
                     aria-label={`Ver ${project.title}`}
                     className="self-start"
+                    target={project.href.startsWith("http") ? "_blank" : undefined}
+                    rel={project.href.startsWith("http") ? "noreferrer" : undefined}
                   >
                     <ArrowUpRight size={18} />
                   </ButtonLink>

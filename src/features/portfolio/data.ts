@@ -154,24 +154,31 @@ export const process: ProcessItem[] = [
 
 export const projects: ProjectItem[] = [
   {
-    title: "Produtos com interface forte",
+    title: "Solus",
     summary:
-      "Landing pages, paineis e jornadas que equilibram clareza visual, performance e identidade.",
-    stack: ["React", "Next.js", "UX"],
+      "Participacao em produto web com foco em estrutura de interface, usabilidade e entrega consistente para operacao real.",
+    stack: ["Front-end", "Web", "UI"],
+    href: "https://novo.solus.inf.br/home",
+  },
+  {
+    title: "Centro Cardio Londrina",
+    summary:
+      "Projeto institucional com foco em experiencia clara, navegacao objetiva e apresentacao profissional da marca.",
+    stack: ["Website", "Interface", "Experiencia"],
+    href: "https://centrocardiolondrina.com.br/",
+  },
+  {
+    title: "Clube The Best",
+    summary:
+      "Aplicativo mobile desenvolvido em React Native com styled-components, voltado para experiencia fluida, recorrencia e relacionamento com o usuario.",
+    stack: ["React Native", "styled-components", "Mobile"],
     href: "#contato",
   },
   {
-    title: "Mobile com foco em experiencia",
+    title: "The Best Portal",
     summary:
-      "Interfaces mobile-first e experiencias em React Native pensadas para toque, contexto e fluidez.",
-    stack: ["React Native", "Mobile UX", "Design"],
-    href: "#contato",
-  },
-  {
-    title: "Times que precisam elevar o front",
-    summary:
-      "Apoio em arquitetura, componentizacao, refinamento de interface e evolucao de produtos digitais.",
-    stack: ["UI Systems", "Front-end", "Acessibilidade"],
+      "App de trabalho com foco em jornada mobile, organizacao de fluxos e interface consistente em React Native com styled-components.",
+    stack: ["React Native", "styled-components", "App"],
     href: "#contato",
   },
 ];
@@ -179,20 +186,20 @@ export const projects: ProjectItem[] = [
 export const contactItems: ContactItem[] = [
   {
     label: "Email",
-    value: "anacarla.dev@portfolio.com",
-    href: "mailto:anacarla.dev@portfolio.com",
+    value: "acfpaiva99@gmail.com",
+    href: "mailto:acfpaiva99@gmail.com",
     icon: Mail,
   },
   {
     label: "LinkedIn",
-    value: "linkedin.com/in/anacarla",
-    href: "https://linkedin.com/in/anacarla",
+    value: "linkedin.com/in/anacarlapaiva",
+    href: "https://www.linkedin.com/in/anacarlapaiva",
     icon: BriefcaseBusiness,
   },
   {
     label: "GitHub",
-    value: "github.com/anacarla",
-    href: "https://github.com/anacarla",
+    value: "github.com/anacarlapaiva",
+    href: "https://github.com/anacarlapaiva",
     icon: Globe,
   },
 ];

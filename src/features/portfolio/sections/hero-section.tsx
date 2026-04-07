@@ -60,7 +60,7 @@ export function HeroSection() {
           </ButtonLink>
           <div className="flex flex-wrap items-center gap-3 text-muted">
             <ButtonLink
-              href="mailto:anacarla.dev@portfolio.com"
+              href="mailto:acfpaiva99@gmail.com"
               variant="ghost"
               size="icon"
               aria-label="Enviar email"
@@ -68,7 +68,7 @@ export function HeroSection() {
               <Mail size={18} />
             </ButtonLink>
             <ButtonLink
-              href="https://github.com/anacarla"
+              href="https://github.com/anacarlapaiva"
               variant="ghost"
               size="icon"
               aria-label="GitHub"
@@ -78,7 +78,7 @@ export function HeroSection() {
               <GitFork size={18} />
             </ButtonLink>
             <ButtonLink
-              href="https://linkedin.com/in/anacarla"
+              href="https://www.linkedin.com/in/anacarlapaiva"
               variant="ghost"
               size="icon"
               aria-label="LinkedIn"

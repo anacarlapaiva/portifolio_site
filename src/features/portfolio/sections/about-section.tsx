@@ -31,7 +31,7 @@ export function AboutSection() {
           </div>
           <div className="flex justify-center gap-3 lg:justify-start">
             <ButtonLink
-              href="mailto:anacarla.dev@portfolio.com"
+              href="mailto:acfpaiva99@gmail.com"
               variant="ghost"
               size="icon"
               aria-label="Email"
@@ -39,7 +39,7 @@ export function AboutSection() {
               <Mail size={18} />
             </ButtonLink>
             <ButtonLink
-              href="https://github.com/anacarla"
+              href="https://github.com/anacarlapaiva"
               variant="ghost"
               size="icon"
               aria-label="GitHub"
@@ -47,7 +47,7 @@ export function AboutSection() {
               <GitFork size={18} />
             </ButtonLink>
             <ButtonLink
-              href="https://linkedin.com/in/anacarla"
+              href="https://www.linkedin.com/in/anacarlapaiva"
               variant="ghost"
               size="icon"
               aria-label="LinkedIn"

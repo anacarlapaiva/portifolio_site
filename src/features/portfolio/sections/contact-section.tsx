@@ -22,7 +22,7 @@ export function ContactSection() {
             que precisam elevar a experiencia do front-end sem perder consistencia
             tecnica.
           </p>
-          <ButtonLink href="mailto:anacarla.dev@portfolio.com" className="w-full sm:w-auto">
+          <ButtonLink href="mailto:acfpaiva99@gmail.com" className="w-full sm:w-auto">
             Vamos conversar
             <ArrowRight size={18} />
           </ButtonLink>

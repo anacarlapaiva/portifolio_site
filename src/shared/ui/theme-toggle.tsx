@@ -4,8 +4,16 @@ import { MoonStar, SunMedium } from "lucide-react";
 import { useEffect, useState } from "react";
 
 import { Button } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
 
 type Theme = "dark" | "light";
+
+type ThemeToggleProps = {
+  ariaLabel: string;
+  enableLightLabel: string;
+  enableDarkLabel: string;
+  className?: string;
+};
 
 function getInitialTheme(): Theme {
   if (typeof window === "undefined") {
@@ -21,7 +29,12 @@ function getInitialTheme(): Theme {
   return window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark";
 }
 
-export function ThemeToggle() {
+export function ThemeToggle({
+  ariaLabel,
+  enableLightLabel,
+  enableDarkLabel,
+  className,
+}: ThemeToggleProps) {
   const [theme, setTheme] = useState<Theme>(getInitialTheme);
 
   useEffect(() => {
@@ -42,12 +55,13 @@ export function ThemeToggle() {
       variant="ghost"
       size="icon"
       onClick={toggleTheme}
-      aria-label="Alternar tema"
+      aria-label={ariaLabel}
       aria-pressed={theme === "light"}
-      title={theme === "dark" ? "Ativar modo claro" : "Ativar modo escuro"}
+      title={theme === "dark" ? enableLightLabel : enableDarkLabel}
+      className={cn(className)}
     >
       <span className="sr-only">
-        {theme === "dark" ? "Ativar modo claro" : "Ativar modo escuro"}
+        {theme === "dark" ? enableLightLabel : enableDarkLabel}
       </span>
       {theme === "dark" ? <SunMedium size={18} /> : <MoonStar size={18} />}
     </Button>

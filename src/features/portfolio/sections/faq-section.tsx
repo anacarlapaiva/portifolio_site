@@ -4,13 +4,15 @@ import { Minus, Plus } from "lucide-react";
 import { useState } from "react";
 
 import { Card } from "@/components/ui/card";
-import { faqItems } from "@/features/portfolio/data";
+import { usePortfolioI18n } from "@/features/portfolio/portfolio-i18n";
 import { cn } from "@/lib/utils";
 import { MotionReveal } from "@/shared/ui/motion-reveal";
 import { SectionHeading } from "@/shared/ui/section-heading";
 
 export function FaqSection() {
   const [openIndex, setOpenIndex] = useState(0);
+  const { content } = usePortfolioI18n();
+  const { faq } = content;
 
   return (
     <MotionReveal
@@ -20,13 +22,13 @@ export function FaqSection() {
       delay={0.14}
     >
       <SectionHeading
-        eyebrow="FAQ"
-        title="Dúvidas frequentes sobre minha atuação, stack e forma de construir"
+        eyebrow={faq.eyebrow}
+        title={faq.title}
         titleClassName="max-w-3xl"
       />
 
       <div className="mt-8 grid gap-4">
-        {faqItems.map((item, index) => {
+        {faq.items.map((item, index) => {
           const isOpen = openIndex === index;
 
           return (

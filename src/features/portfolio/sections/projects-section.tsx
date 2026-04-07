@@ -1,13 +1,18 @@
+"use client";
+
 import Image from "next/image";
 import { ArrowUpRight } from "lucide-react";
 
 import { ButtonLink } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { projects } from "@/features/portfolio/data";
+import { usePortfolioI18n } from "@/features/portfolio/portfolio-i18n";
 import { MotionReveal } from "@/shared/ui/motion-reveal";
 import { SectionHeading } from "@/shared/ui/section-heading";
 
 export function ProjectsSection() {
+  const { content } = usePortfolioI18n();
+  const { projects } = content;
+
   return (
     <MotionReveal
       as="section"
@@ -15,9 +20,9 @@ export function ProjectsSection() {
       className="scroll-mt-28 rounded-[2rem] border border-line bg-card px-5 py-8 shadow-[var(--shadow)] backdrop-blur sm:px-8"
       delay={0.1}
     >
-      <SectionHeading eyebrow="Laboratório" title="Projetos pensados para marca, produto e conversão" />
+      <SectionHeading eyebrow={projects.eyebrow} title={projects.title} />
       <div className="mt-8 grid gap-4 xl:grid-cols-2">
-        {projects.map((project, index) => (
+        {projects.items.map((project, index) => (
           <MotionReveal key={project.title} delay={0.08 * index}>
             <Card className="overflow-hidden p-0">
               <div className="relative h-40 overflow-hidden border-b border-line sm:h-44">
@@ -75,7 +80,7 @@ export function ProjectsSection() {
 
                 <div className="relative flex h-full items-end p-5">
                   <div className="rounded-2xl border border-line bg-inner-card px-3 py-2 text-xs uppercase tracking-[0.3em] text-foreground">
-                    case {index + 1}
+                    {projects.caseLabel} {index + 1}
                   </div>
                 </div>
               </div>
@@ -93,7 +98,7 @@ export function ProjectsSection() {
                     href={project.href}
                     variant="ghost"
                     size="icon"
-                    aria-label={`Ver ${project.title}`}
+                    aria-label={`${projects.viewProjectLabel}: ${project.title}`}
                     className="self-start"
                     target={project.href.startsWith("http") ? "_blank" : undefined}
                     rel={project.href.startsWith("http") ? "noreferrer" : undefined}

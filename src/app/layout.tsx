@@ -3,9 +3,9 @@ import "./globals.css";
 import { LenisProvider } from "@/shared/providers/lenis-provider";
 
 export const metadata: Metadata = {
-  title: "Ana Carla | Desenvolvedora Full Stack",
+  title: "Ana Carla",
   description:
-    "Portifolio de desenvolvedora com foco em produtos digitais, interfaces performaticas e experiencias modernas.",
+    "Portfólio multilíngue de Ana Carla, com foco em front-end, mobile e interfaces para produtos digitais.",
   icons: {
     icon: "/favicon.svg",
   },

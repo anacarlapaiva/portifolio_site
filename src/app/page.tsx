@@ -1,13 +1,12 @@
 import type { Metadata } from "next";
 
+import { defaultLocale, getPortfolioContent } from "@/features/portfolio/content";
 import { PortfolioPage } from "@/features/portfolio/portfolio-page";
 
-export const metadata: Metadata = {
-  title: "Ana Carla | Portfolio",
-  description:
-    "Landing page pessoal com foco em desenvolvimento full stack, interfaces premium e experiencias digitais modernas.",
-};
+const content = getPortfolioContent(defaultLocale);
+
+export const metadata: Metadata = content.metadata;
 
 export default function Home() {
-  return <PortfolioPage />;
+  return <PortfolioPage locale={defaultLocale} />;
 }

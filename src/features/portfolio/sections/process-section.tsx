@@ -1,9 +1,16 @@
+"use client";
+
+import { Rocket, ScanSearch, Workflow } from "lucide-react";
+
 import { Card, CardContent } from "@/components/ui/card";
-import { process } from "@/features/portfolio/data";
+import { usePortfolioI18n } from "@/features/portfolio/portfolio-i18n";
 import { MotionReveal } from "@/shared/ui/motion-reveal";
 import { SectionHeading } from "@/shared/ui/section-heading";
 
 export function ProcessSection() {
+  const { content } = usePortfolioI18n();
+  const { process } = content;
+
   return (
     <MotionReveal
       as="section"
@@ -11,25 +18,34 @@ export function ProcessSection() {
       delay={0.12}
     >
       <SectionHeading
-        eyebrow="Como eu trabalho"
-        title="Uma forma de construir que junta estética, produto e implementação"
+        eyebrow={process.eyebrow}
+        title={process.title}
       />
       <div className="mt-8 grid gap-4">
-        {process.map(({ title, description, icon: Icon }, index) => (
-          <MotionReveal key={title} delay={0.07 * index}>
-            <Card>
-              <CardContent className="flex flex-col gap-4 sm:flex-row sm:items-start">
-                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl border border-accent/20 bg-accent-soft text-accent" aria-hidden="true">
-                  <Icon size={20} />
-                </div>
-                <div>
-                  <h3 className="font-display text-xl font-semibold text-foreground">{title}</h3>
-                  <p className="mt-2 text-sm leading-7 text-muted sm:text-[0.96rem]">{description}</p>
-                </div>
-              </CardContent>
-            </Card>
-          </MotionReveal>
-        ))}
+        {process.items.map(({ title, description }, index) => {
+          const icons = [ScanSearch, Workflow, Rocket];
+          const Icon = icons[index];
+
+          if (!Icon) {
+            return null;
+          }
+
+          return (
+            <MotionReveal key={title} delay={0.07 * index}>
+              <Card>
+                <CardContent className="flex flex-col gap-4 sm:flex-row sm:items-start">
+                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl border border-accent/20 bg-accent-soft text-accent" aria-hidden="true">
+                    <Icon size={20} />
+                  </div>
+                  <div>
+                    <h3 className="font-display text-xl font-semibold text-foreground">{title}</h3>
+                    <p className="mt-2 text-sm leading-7 text-muted sm:text-[0.96rem]">{description}</p>
+                  </div>
+                </CardContent>
+              </Card>
+            </MotionReveal>
+          );
+        })}
       </div>
     </MotionReveal>
   );

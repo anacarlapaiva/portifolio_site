@@ -5,9 +5,11 @@ import { useState } from "react";
 
 type ProfilePhotoCardProps = {
   name: string;
+  alt: string;
+  fallbackRole: string;
 };
 
-export function ProfilePhotoCard({ name }: ProfilePhotoCardProps) {
+export function ProfilePhotoCard({ name, alt, fallbackRole }: ProfilePhotoCardProps) {
   const [hasError, setHasError] = useState(false);
 
   if (hasError) {
@@ -21,7 +23,7 @@ export function ProfilePhotoCard({ name }: ProfilePhotoCardProps) {
             <div className="text-center">
               <p className="font-display text-lg font-semibold text-foreground">{name}</p>
               <p className="mt-1 text-xs uppercase tracking-[0.25em] text-muted">
-                front-end &bull; mobile &bull; ui ux
+                {fallbackRole}
               </p>
             </div>
           </div>
@@ -36,7 +38,7 @@ export function ProfilePhotoCard({ name }: ProfilePhotoCardProps) {
       <div className="relative overflow-hidden rounded-[1.5rem] border border-line bg-surface/40">
         <Image
           src="/profile-photo.jpg"
-          alt={`Foto de perfil de ${name}`}
+          alt={alt}
           width={900}
           height={1125}
           className="aspect-[4/5] h-full w-full object-cover object-center object-[center_24%]"
@@ -48,7 +50,7 @@ export function ProfilePhotoCard({ name }: ProfilePhotoCardProps) {
       <div className="pointer-events-none absolute bottom-6 right-6 z-10 rounded-[1.25rem] border border-line bg-card-strong/90 px-4 py-3 backdrop-blur">
         <p className="font-display text-base font-semibold text-foreground">{name}</p>
         <p className="mt-1 text-xs uppercase tracking-[0.22em] text-muted">
-          front-end • mobile • ui ux
+          {fallbackRole}
         </p>
       </div>
     </div>

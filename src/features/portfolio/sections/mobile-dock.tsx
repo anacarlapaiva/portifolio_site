@@ -2,18 +2,20 @@
 
 import { Briefcase, CircleHelp, House, Mail, Sparkles } from "lucide-react";
 
-import { navItems } from "@/features/portfolio/data";
+import { usePortfolioI18n } from "@/features/portfolio/portfolio-i18n";
 import { useActiveSection } from "@/shared/hooks/use-active-section";
 import { cn } from "@/lib/utils";
 
 const dockIcons = [House, Sparkles, Briefcase, CircleHelp, Mail];
 
 export function MobileDock() {
+  const { content } = usePortfolioI18n();
+  const { navItems, mobileDock } = content;
   const activeSection = useActiveSection(["inicio", "skills", "projetos", "faq", "contato"]);
 
   return (
     <nav
-      aria-label="Navegacao rapida mobile"
+      aria-label={mobileDock.ariaLabel}
       className="fixed inset-x-4 bottom-4 z-40 md:hidden"
     >
       <div className="grid grid-cols-5 rounded-full border border-line bg-card-strong p-2 shadow-[var(--shadow)] backdrop-blur">

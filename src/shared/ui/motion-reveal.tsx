@@ -19,7 +19,7 @@ export function MotionReveal({
   children,
   className,
   delay = 0,
-  threshold = 0.2,
+  threshold = 0,
   id,
 }: MotionRevealProps) {
   if (as === "section") {

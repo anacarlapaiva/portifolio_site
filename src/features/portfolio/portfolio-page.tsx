@@ -20,9 +20,9 @@ export function PortfolioPage() {
       >
         <SiteHeader />
         <HeroSection />
-        <div className="grid gap-6 lg:grid-cols-[1.05fr_0.95fr]">
+        <div className="grid min-w-0 grid-cols-1 gap-6 2xl:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)]">
           <AboutSection />
-          <div className="grid gap-6">
+          <div className="grid min-w-0 gap-6">
             <SkillsSection />
             <ProcessSection />
             <ProjectsSection />

@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 
-export function useIntersectionReveal<T extends HTMLElement>(threshold = 0.2) {
+export function useIntersectionReveal<T extends HTMLElement>(threshold = 0) {
   const ref = useRef<T | null>(null);
   const [isVisible, setIsVisible] = useState(false);
 
@@ -22,7 +22,7 @@ export function useIntersectionReveal<T extends HTMLElement>(threshold = 0.2) {
       },
       {
         threshold,
-        rootMargin: "0px 0px -10% 0px",
+        rootMargin: "0px 0px 12% 0px",
       },
     );
 

@@ -18,7 +18,7 @@ export function MobileDock() {
       aria-label={mobileDock.ariaLabel}
       className="fixed inset-x-4 bottom-4 z-40 md:hidden"
     >
-      <div className="glass-panel-strong grid grid-cols-5 rounded-full border border-line p-2 shadow-[var(--shadow)]">
+      <div className="glass-panel-strong grid grid-cols-5 gap-1 rounded-[1.75rem] border border-white/25 p-2 [box-shadow:inset_0_1px_1px_rgba(255,255,255,0.5),0_12px_30px_rgba(2,22,35,0.30)]">
         {navItems.map((item, index) => {
           const Icon = dockIcons[index];
           const isActive = activeSection === item.href.replace("#", "");
@@ -28,15 +28,21 @@ export function MobileDock() {
               key={item.href}
               href={item.href}
               aria-current={isActive ? "page" : undefined}
-              className={cn(
-                "flex min-h-12 flex-col items-center justify-center rounded-full px-2 py-2 text-xs font-medium transition",
-                isActive
-                  ? "aero-gloss bg-[linear-gradient(180deg,color-mix(in_srgb,var(--accent)_72%,white),var(--accent))] text-white [box-shadow:inset_0_1px_0_rgba(255,255,255,0.6)]"
-                  : "text-muted hover:bg-accent-soft hover:text-foreground",
-              )}
+              className="group flex min-h-14 flex-col items-center justify-center gap-1 rounded-2xl px-1 py-1 text-[0.62rem] font-medium transition"
             >
-              <Icon size={18} aria-hidden="true" />
-              <span className="mt-1">{item.label}</span>
+              <span
+                className={cn(
+                  "grid h-9 w-9 place-items-center rounded-full transition duration-300",
+                  isActive
+                    ? "-translate-y-0.5 bg-[radial-gradient(circle_at_50%_18%,#d9f6ff,color-mix(in_srgb,var(--accent)_90%,#0a5d7e)_82%)] text-white [box-shadow:inset_0_1px_0_rgba(255,255,255,0.85),inset_0_-3px_5px_rgba(0,45,65,0.30),0_4px_8px_rgba(2,40,60,0.32)]"
+                    : "text-muted group-hover:bg-accent-soft group-hover:text-foreground",
+                )}
+              >
+                <Icon size={17} aria-hidden="true" />
+              </span>
+              <span className={cn("leading-none transition", isActive ? "font-semibold text-accent" : "text-muted")}>
+                {item.label}
+              </span>
             </a>
           );
         })}

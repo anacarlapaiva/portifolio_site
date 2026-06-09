@@ -15,7 +15,7 @@ export function HeroSection() {
     <section
       id="inicio"
       aria-label={hero.eyebrow}
-      className="scroll-mt-28 grid gap-6 rounded-[2rem] border border-line glass-panel px-5 py-8 shadow-[var(--shadow)] backdrop-blur sm:px-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-center lg:px-10 lg:py-12"
+      className="min-w-0 scroll-mt-28 grid grid-cols-1 gap-6 rounded-[2rem] border border-line glass-panel px-5 py-8 shadow-[var(--shadow)] backdrop-blur sm:px-8 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] lg:items-center lg:px-10 lg:py-12"
     >
       <MotionReveal className="space-y-8">
         <div className="space-y-4">

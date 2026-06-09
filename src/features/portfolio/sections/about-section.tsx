@@ -24,7 +24,7 @@ export function AboutSection() {
         title={about.title}
         titleClassName="max-w-3xl lg:max-w-4xl"
       />
-      <div className="mt-8 grid min-w-0 gap-8 lg:grid-cols-[minmax(0,19rem)_minmax(0,1fr)] lg:items-start">
+      <div className="mt-8 grid min-w-0 grid-cols-1 gap-8 lg:grid-cols-[minmax(0,19rem)_minmax(0,1fr)] lg:items-start">
         <aside className="min-w-0 space-y-5">
           <ProfilePhotoCard name="Ana Carla" alt={about.photoAlt} fallbackRole={about.fallbackRole} />
           <div className="text-center lg:text-left">

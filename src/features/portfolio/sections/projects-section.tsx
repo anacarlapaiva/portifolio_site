@@ -18,11 +18,11 @@ export function ProjectsSection() {
     <MotionReveal
       as="section"
       id="projetos"
-      className="scroll-mt-28 rounded-[2rem] border border-line glass-panel px-5 py-8 shadow-[var(--shadow)] backdrop-blur sm:px-8"
+      className="min-w-0 scroll-mt-28 rounded-[2rem] border border-line glass-panel px-5 py-8 shadow-[var(--shadow)] backdrop-blur sm:px-8"
       delay={0.1}
     >
       <SectionHeading eyebrow={projects.eyebrow} title={projects.title} />
-      <div className="mt-8 grid gap-5 md:grid-cols-2">
+      <div className="mt-8 grid grid-cols-1 gap-5 md:grid-cols-2">
         {projects.items.map((project, index) => (
           <MotionReveal key={project.title} delay={0.08 * index}>
             <Card className="group overflow-hidden p-0">

@@ -17,7 +17,7 @@ export function SiteHeader() {
   const activeSection = useActiveSection(["sobre", "skills", "projetos", "faq", "contato"]);
 
   return (
-    <header className="sticky top-2 z-30 mb-6 rounded-[2rem] border border-line bg-card px-5 py-4 shadow-[var(--shadow)] backdrop-blur sm:top-4 md:px-8" role="banner">
+    <header className="sticky top-2 z-30 rounded-[2rem] border border-line glass-panel px-5 py-4 shadow-[var(--shadow)] backdrop-blur sm:top-4 md:px-8" role="banner">
       <div className="flex flex-wrap items-start gap-3 md:flex-nowrap md:items-center md:justify-between">
         <a
           href="#inicio"

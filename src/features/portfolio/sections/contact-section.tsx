@@ -16,7 +16,7 @@ export function ContactSection() {
     <MotionReveal
       as="section"
       id="contato"
-      className="scroll-mt-28 rounded-[2rem] border border-line bg-card px-5 py-8 shadow-[var(--shadow)] backdrop-blur sm:px-8"
+      className="scroll-mt-28 rounded-[2rem] border border-line glass-panel px-5 py-8 shadow-[var(--shadow)] backdrop-blur sm:px-8"
       delay={0.15}
     >
       <SectionHeading eyebrow={contact.eyebrow} title={contact.title} />

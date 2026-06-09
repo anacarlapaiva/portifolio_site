@@ -18,7 +18,7 @@ export function FaqSection() {
     <MotionReveal
       as="section"
       id="faq"
-      className="scroll-mt-28 rounded-[2rem] border border-line bg-card px-5 py-8 shadow-[var(--shadow)] backdrop-blur sm:px-8"
+      className="scroll-mt-28 rounded-[2rem] border border-line glass-panel px-5 py-8 shadow-[var(--shadow)] backdrop-blur sm:px-8"
       delay={0.14}
     >
       <SectionHeading

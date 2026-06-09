@@ -32,7 +32,7 @@ export function LanguageSwitcher({
   return (
     <div
       className={cn(
-        "inline-flex items-center gap-1 rounded-full border border-line bg-[var(--card)] p-1 text-xs text-muted",
+        "glass-panel inline-flex items-center gap-1 rounded-full border border-line p-1 text-xs text-muted shadow-[var(--shadow-sm)]",
         className,
       )}
       aria-label={languageSwitcher.label}
@@ -52,7 +52,7 @@ export function LanguageSwitcher({
             className={cn(
               "inline-flex min-h-8 items-center justify-center rounded-full px-2.5 text-[0.78rem] font-semibold transition sm:min-h-9 sm:px-3 sm:text-xs",
               isActive
-                ? "bg-accent text-white"
+                ? "aero-gloss bg-[linear-gradient(180deg,color-mix(in_srgb,var(--accent)_72%,white),var(--accent))] text-white [box-shadow:inset_0_1px_0_rgba(255,255,255,0.6)]"
                 : "text-muted hover:bg-accent-soft hover:text-foreground",
             )}
             title={option.label}

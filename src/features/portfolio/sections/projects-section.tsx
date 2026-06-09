@@ -17,15 +17,15 @@ export function ProjectsSection() {
     <MotionReveal
       as="section"
       id="projetos"
-      className="scroll-mt-28 rounded-[2rem] border border-line bg-card px-5 py-8 shadow-[var(--shadow)] backdrop-blur sm:px-8"
+      className="scroll-mt-28 rounded-[2rem] border border-line glass-panel px-5 py-8 shadow-[var(--shadow)] backdrop-blur sm:px-8"
       delay={0.1}
     >
       <SectionHeading eyebrow={projects.eyebrow} title={projects.title} />
-      <div className="mt-8 grid gap-4 xl:grid-cols-2">
+      <div className="mt-8 grid gap-5 md:grid-cols-2">
         {projects.items.map((project, index) => (
           <MotionReveal key={project.title} delay={0.08 * index}>
-            <Card className="overflow-hidden p-0">
-              <div className="relative h-40 overflow-hidden border-b border-line sm:h-44">
+            <Card className="group overflow-hidden p-0">
+              <div className="aero-shine relative h-40 overflow-hidden border-b border-line sm:h-44">
                 {project.category === "website" ? (
                   <>
                     <div
@@ -43,17 +43,26 @@ export function ProjectsSection() {
                       />
                     </div>
                     <div
-                      className="absolute inset-0 bg-[linear-gradient(180deg,rgba(28,14,17,0.16),rgba(28,14,17,0.78)),radial-gradient(circle_at_top_left,rgba(255,122,89,0.16),transparent_42%)]"
+                      className="absolute inset-0 bg-[linear-gradient(180deg,rgba(6,40,58,0.05),rgba(6,40,58,0.55)),radial-gradient(circle_at_top_left,rgba(120,230,255,0.20),transparent_44%)]"
                       aria-hidden="true"
                     />
+                    <div className="pointer-events-none absolute inset-x-0 top-0 h-1/2 bg-[linear-gradient(180deg,rgba(255,255,255,0.28),transparent)]" aria-hidden="true" />
+                    <div className="glass-panel-strong absolute inset-x-0 top-0 z-[1] flex items-center gap-2 border-b border-white/25 px-4 py-2" aria-hidden="true">
+                      <span className="h-2.5 w-2.5 rounded-full bg-rose-400 [box-shadow:inset_0_1px_0_rgba(255,255,255,0.8)]" />
+                      <span className="h-2.5 w-2.5 rounded-full bg-amber-300 [box-shadow:inset_0_1px_0_rgba(255,255,255,0.8)]" />
+                      <span className="h-2.5 w-2.5 rounded-full bg-emerald-400 [box-shadow:inset_0_1px_0_rgba(255,255,255,0.8)]" />
+                      <span className="ml-1 truncate rounded-full border border-white/30 bg-white/15 px-2.5 py-0.5 text-[0.62rem] font-medium tracking-wide text-foreground">
+                        {project.href.replace(/^https?:\/\//, "").replace(/\/.*$/, "")}
+                      </span>
+                    </div>
                   </>
                 ) : (
                   <>
                     <div
                       className={`absolute inset-0 ${
                         index % 2 === 0
-                          ? "bg-[radial-gradient(circle_at_top_left,rgba(255,122,89,0.24),transparent_42%),linear-gradient(135deg,#33191c,#241215)]"
-                          : "bg-[radial-gradient(circle_at_top_right,rgba(255,177,109,0.24),transparent_38%),linear-gradient(135deg,#2f181b,#201012)]"
+                          ? "bg-[radial-gradient(circle_at_top_left,rgba(120,230,255,0.32),transparent_44%),linear-gradient(135deg,#0c4a66,#073246)]"
+                          : "bg-[radial-gradient(circle_at_top_right,rgba(95,230,194,0.32),transparent_42%),linear-gradient(135deg,#0a5258,#073b3f)]"
                       }`}
                       aria-hidden="true"
                     />
@@ -72,17 +81,12 @@ export function ProjectsSection() {
                       />
                     </div>
                     <div
-                      className="absolute inset-0 bg-[linear-gradient(180deg,rgba(28,14,17,0.08),rgba(28,14,17,0.72))]"
+                      className="absolute inset-0 bg-[linear-gradient(180deg,rgba(6,40,58,0.04),rgba(6,40,58,0.5))]"
                       aria-hidden="true"
                     />
                   </>
                 )}
 
-                <div className="relative flex h-full items-end p-5">
-                  <div className="rounded-2xl border border-line bg-inner-card px-3 py-2 text-xs uppercase tracking-[0.3em] text-foreground">
-                    {projects.caseLabel} {index + 1}
-                  </div>
-                </div>
               </div>
               <CardContent className="space-y-4">
                 <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">

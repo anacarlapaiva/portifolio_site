@@ -24,24 +24,22 @@ export function PortfolioPage({ locale }: PortfolioPageProps) {
         <a href="#conteudo" className="skip-link">
           {content.skipLink}
         </a>
-        <div className="absolute inset-x-0 top-0 -z-10 h-[32rem] bg-[radial-gradient(circle_at_top,rgba(255,122,89,0.10),transparent_50%)]" aria-hidden="true" />
+        <div className="absolute inset-x-0 top-0 -z-10 h-[32rem] bg-[radial-gradient(circle_at_top,rgba(120,230,255,0.16),transparent_55%),radial-gradient(circle_at_72%_8%,rgba(95,230,194,0.12),transparent_45%)]" aria-hidden="true" />
+        <div className="aero-bubble absolute -z-10 hidden h-40 w-40 opacity-60 blur-[1px] lg:left-[6%] lg:top-[16%] lg:block" aria-hidden="true" />
+        <div className="aero-bubble absolute -z-10 hidden h-24 w-24 opacity-50 blur-[1px] lg:right-[5%] lg:top-[44%] lg:block" aria-hidden="true" />
         <div
           id="conteudo"
-          className="relative z-10 mx-auto flex min-h-screen w-full max-w-7xl flex-col px-4 pb-24 pt-6 sm:px-6 md:pb-12 lg:px-8"
+          className="relative z-10 mx-auto flex min-h-screen w-full max-w-6xl flex-col gap-6 px-4 pb-24 pt-6 sm:px-6 md:pb-12 lg:px-8"
         >
           <SiteHeader />
           <HeroSection />
-          <div className="grid min-w-0 grid-cols-1 gap-6 2xl:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)]">
-            <AboutSection />
-            <div className="grid min-w-0 gap-6">
-              <SkillsSection />
-              <ProcessSection />
-              <ProjectsSection />
-              <FaqSection />
-              <ContactSection />
-            </div>
-          </div>
-          <footer role="contentinfo" className="mt-6 rounded-[2rem] border border-line bg-card px-5 py-6 shadow-[var(--shadow)] backdrop-blur sm:px-8">
+          <AboutSection />
+          <SkillsSection />
+          <ProcessSection />
+          <ProjectsSection />
+          <FaqSection />
+          <ContactSection />
+          <footer role="contentinfo" className="rounded-[2rem] border border-line glass-panel px-5 py-6 shadow-[var(--shadow)] backdrop-blur sm:px-8">
             <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
               <div>
                 <p className="font-display text-lg font-semibold text-foreground">

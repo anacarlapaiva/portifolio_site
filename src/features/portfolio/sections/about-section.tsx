@@ -1,12 +1,11 @@
 "use client";
 
-import { BadgeCheck, BriefcaseBusiness, GitFork, GraduationCap, Mail, Smartphone, Sparkles } from "lucide-react";
+import { BadgeCheck, BriefcaseBusiness, GitFork, Mail, Smartphone, Sparkles } from "lucide-react";
 
 import { ButtonLink } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { usePortfolioI18n } from "@/features/portfolio/portfolio-i18n";
 import { ProfilePhotoCard } from "@/features/portfolio/sections/profile-photo-card";
-import { cn } from "@/lib/utils";
 import { MotionReveal } from "@/shared/ui/motion-reveal";
 import { SectionHeading } from "@/shared/ui/section-heading";
 
@@ -18,14 +17,14 @@ export function AboutSection() {
     <MotionReveal
       as="section"
       id="sobre"
-      className="min-w-0 scroll-mt-28 rounded-[2rem] border border-line bg-card px-5 py-8 shadow-[var(--shadow)] backdrop-blur sm:px-8"
+      className="min-w-0 scroll-mt-28 rounded-[2rem] border border-line glass-panel px-5 py-8 shadow-[var(--shadow)] backdrop-blur sm:px-8"
     >
       <SectionHeading
         eyebrow={about.eyebrow}
         title={about.title}
         titleClassName="max-w-3xl lg:max-w-4xl"
       />
-      <div className="mt-8 grid min-w-0 gap-8 lg:grid-cols-[minmax(0,17rem)_minmax(0,1fr)] xl:grid-cols-[minmax(0,0.86fr)_minmax(0,1.14fr)]">
+      <div className="mt-8 grid min-w-0 gap-8 lg:grid-cols-[minmax(0,19rem)_minmax(0,1fr)] lg:items-start">
         <aside className="min-w-0 space-y-5">
           <ProfilePhotoCard name="Ana Carla" alt={about.photoAlt} fallbackRole={about.fallbackRole} />
           <div className="text-center lg:text-left">
@@ -62,18 +61,16 @@ export function AboutSection() {
           </div>
         </aside>
 
-        <div className="@container min-w-0 space-y-8 text-[0.96rem] leading-7 text-muted sm:text-lg sm:leading-8">
-          <div className="space-y-5">
-            {about.paragraphs.map((paragraph) => (
-              <p key={paragraph}>{paragraph}</p>
-            ))}
-          </div>
+        <div className="min-w-0 space-y-7">
+          <p className="max-w-prose text-base leading-8 text-muted sm:text-lg">
+            {about.paragraphs[0]}
+          </p>
 
-          <div className="space-y-4 border-t border-line/60 pt-8">
-            <h3 className="font-display text-sm font-semibold uppercase tracking-[0.24em] text-accent">
+          <div className="space-y-4 border-t border-line/60 pt-7">
+            <h3 className="font-display text-xs font-semibold uppercase tracking-[0.24em] text-accent">
               {about.credentialsTitle}
             </h3>
-            <div className="grid grid-cols-1 gap-4 @min-[30rem]:grid-cols-2 @min-[56rem]:grid-cols-3">
+            <div className="grid gap-3 sm:grid-cols-3">
               {[BadgeCheck, Smartphone, Sparkles].map((Icon, index) => {
                 const item = about.credentials[index];
 
@@ -82,27 +79,19 @@ export function AboutSection() {
                 }
 
                 return (
-                  <Card
-                    key={item.title}
-                    className={cn(
-                      "h-full min-w-0",
-                      about.credentials.length === 3 &&
-                        index === 2 &&
-                        "@min-[30rem]:col-span-2 @min-[56rem]:col-span-1",
-                    )}
-                  >
-                    <CardContent className="px-5 py-5">
-                      <div className="flex gap-4">
-                        <div
-                          className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl border border-accent/20 bg-accent-soft text-accent"
-                          aria-hidden="true"
-                        >
-                          <Icon size={20} />
-                        </div>
-                        <div className="min-w-0">
-                          <p className="font-display text-lg font-semibold text-foreground">{item.title}</p>
-                          <p className="mt-2 text-sm leading-7 text-muted">{item.description}</p>
-                        </div>
+                  <Card key={item.title} className="h-full min-w-0">
+                    <CardContent className="flex h-full flex-col gap-3 px-4 py-4">
+                      <div
+                        className="flex h-10 w-10 items-center justify-center rounded-xl border border-accent/20 bg-accent-soft text-accent"
+                        aria-hidden="true"
+                      >
+                        <Icon size={18} />
+                      </div>
+                      <div className="min-w-0">
+                        <p className="font-display text-base font-semibold leading-snug text-foreground">
+                          {item.title}
+                        </p>
+                        <p className="mt-1 text-sm leading-6 text-muted">{item.description}</p>
                       </div>
                     </CardContent>
                   </Card>
@@ -110,54 +99,6 @@ export function AboutSection() {
               })}
             </div>
           </div>
-        </div>
-      </div>
-
-      <div className="mt-8 space-y-4 border-t border-line/60 pt-8">
-        <h3 className="font-display text-sm font-semibold uppercase tracking-[0.24em] text-accent">
-          {about.repertoireTitle}
-        </h3>
-        <div className="grid gap-4 lg:grid-cols-2">
-          <Card className="min-w-0 h-full">
-            <CardContent className="px-5 py-5">
-              <div className="flex gap-4">
-                <div
-                  className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl border border-accent/20 bg-accent-soft text-accent"
-                  aria-hidden="true"
-                >
-                  <GraduationCap size={20} />
-                </div>
-                <div className="min-w-0">
-                  <p className="font-display text-lg font-semibold text-foreground">
-                    {about.formationTitle}
-                  </p>
-                  <p className="mt-3 text-sm leading-7 text-muted">
-                    {about.formationDescription}
-                  </p>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-          <Card className="min-w-0 h-full">
-            <CardContent className="px-5 py-5">
-              <div className="flex gap-4">
-                <div
-                  className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl border border-accent/20 bg-accent-soft text-accent"
-                  aria-hidden="true"
-                >
-                  <Smartphone size={20} />
-                </div>
-                <div className="min-w-0">
-                  <p className="font-display text-lg font-semibold text-foreground">
-                    {about.deliveryTitle}
-                  </p>
-                  <p className="mt-3 text-sm leading-7 text-muted">
-                    {about.deliveryDescription}
-                  </p>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
         </div>
       </div>
     </MotionReveal>

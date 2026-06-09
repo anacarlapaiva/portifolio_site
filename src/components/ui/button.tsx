@@ -9,11 +9,11 @@ const buttonVariants = cva(
     variants: {
       variant: {
         default:
-          "bg-accent px-6 py-3 text-white shadow-[0_14px_30px_rgba(255,122,89,0.22)] hover:-translate-y-0.5 hover:bg-highlight",
+          "aero-gloss aero-shine bg-[linear-gradient(180deg,color-mix(in_srgb,var(--accent)_72%,white),var(--accent))] px-6 py-3 text-white [box-shadow:inset_0_1px_0_rgba(255,255,255,0.6),0_8px_18px_rgba(24,182,230,0.28)] hover:-translate-y-0.5 hover:brightness-[1.05] hover:[box-shadow:inset_0_1px_0_rgba(255,255,255,0.7),0_12px_24px_rgba(24,182,230,0.36)]",
         secondary:
-          "border border-accent/35 bg-accent-soft px-6 py-3 text-accent hover:-translate-y-0.5 hover:border-accent hover:bg-accent/16",
+          "glass-panel border border-accent/40 px-6 py-3 text-accent shadow-[var(--shadow-sm)] hover:-translate-y-0.5 hover:border-accent hover:bg-accent-soft",
         ghost:
-          "border border-line bg-[var(--card)] px-4 py-3 text-foreground hover:-translate-y-0.5 hover:border-accent/35 hover:bg-accent-soft",
+          "glass-panel border border-line px-4 py-3 text-foreground shadow-[var(--shadow-sm)] hover:-translate-y-0.5 hover:border-accent/45 hover:text-accent",
       },
       size: {
         default: "",

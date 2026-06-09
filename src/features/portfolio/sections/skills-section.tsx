@@ -1,6 +1,6 @@
 "use client";
 
-import { Code2, Database, Layers3, MonitorSmartphone, PencilRuler, Smartphone, Sparkles, SwatchBook } from "lucide-react";
+import { Code2, Layers3, MonitorSmartphone, PencilRuler, Smartphone, Sparkles } from "lucide-react";
 
 import { Card, CardContent } from "@/components/ui/card";
 import { usePortfolioI18n } from "@/features/portfolio/portfolio-i18n";
@@ -15,13 +15,13 @@ export function SkillsSection() {
     <MotionReveal
       as="section"
       id="skills"
-      className="scroll-mt-28 rounded-[2rem] border border-line bg-card px-5 py-8 shadow-[var(--shadow)] backdrop-blur sm:px-8"
+      className="scroll-mt-28 rounded-[2rem] border border-line glass-panel px-5 py-8 shadow-[var(--shadow)] backdrop-blur sm:px-8"
       delay={0.05}
     >
       <SectionHeading eyebrow={skills.eyebrow} title={skills.title} />
-      <div className="mt-8 grid gap-4 sm:grid-cols-2">
+      <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {skills.items.map(({ name, description }, index) => {
-          const icons = [Code2, MonitorSmartphone, PencilRuler, Layers3, Sparkles, Database, Smartphone, SwatchBook];
+          const icons = [Code2, MonitorSmartphone, PencilRuler, Layers3, Sparkles, Smartphone];
           const Icon = icons[index];
 
           if (!Icon) {

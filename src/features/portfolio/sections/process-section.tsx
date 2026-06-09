@@ -14,14 +14,14 @@ export function ProcessSection() {
   return (
     <MotionReveal
       as="section"
-      className="rounded-[2rem] border border-line bg-card px-5 py-8 shadow-[var(--shadow)] backdrop-blur sm:px-8"
+      className="rounded-[2rem] border border-line glass-panel px-5 py-8 shadow-[var(--shadow)] backdrop-blur sm:px-8"
       delay={0.12}
     >
       <SectionHeading
         eyebrow={process.eyebrow}
         title={process.title}
       />
-      <div className="mt-8 grid gap-4">
+      <div className="mt-8 grid gap-4 md:grid-cols-3">
         {process.items.map(({ title, description }, index) => {
           const icons = [ScanSearch, Workflow, Rocket];
           const Icon = icons[index];
@@ -31,11 +31,14 @@ export function ProcessSection() {
           }
 
           return (
-            <MotionReveal key={title} delay={0.07 * index}>
-              <Card>
-                <CardContent className="flex flex-col gap-4 sm:flex-row sm:items-start">
-                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl border border-accent/20 bg-accent-soft text-accent" aria-hidden="true">
-                    <Icon size={20} />
+            <MotionReveal key={title} delay={0.07 * index} className="h-full">
+              <Card className="h-full">
+                <CardContent className="flex h-full flex-col gap-4">
+                  <div className="flex items-center gap-3">
+                    <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl border border-accent/20 bg-accent-soft text-accent" aria-hidden="true">
+                      <Icon size={20} />
+                    </div>
+                    <span className="font-display text-sm font-semibold text-accent">0{index + 1}</span>
                   </div>
                   <div>
                     <h3 className="font-display text-xl font-semibold text-foreground">{title}</h3>

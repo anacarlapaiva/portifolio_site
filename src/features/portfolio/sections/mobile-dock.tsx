@@ -18,7 +18,7 @@ export function MobileDock() {
       aria-label={mobileDock.ariaLabel}
       className="fixed inset-x-4 bottom-4 z-40 md:hidden"
     >
-      <div className="grid grid-cols-5 rounded-full border border-line bg-card-strong p-2 shadow-[var(--shadow)] backdrop-blur">
+      <div className="glass-panel-strong grid grid-cols-5 rounded-full border border-line p-2 shadow-[var(--shadow)]">
         {navItems.map((item, index) => {
           const Icon = dockIcons[index];
           const isActive = activeSection === item.href.replace("#", "");
@@ -31,7 +31,7 @@ export function MobileDock() {
               className={cn(
                 "flex min-h-12 flex-col items-center justify-center rounded-full px-2 py-2 text-xs font-medium transition",
                 isActive
-                  ? "bg-accent text-white"
+                  ? "aero-gloss bg-[linear-gradient(180deg,color-mix(in_srgb,var(--accent)_72%,white),var(--accent))] text-white [box-shadow:inset_0_1px_0_rgba(255,255,255,0.6)]"
                   : "text-muted hover:bg-accent-soft hover:text-foreground",
               )}
             >

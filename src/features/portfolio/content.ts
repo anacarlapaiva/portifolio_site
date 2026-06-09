@@ -74,10 +74,6 @@ export type PortfolioContent = {
     specialtyLabel: string;
     specialtyValue: string;
     specialtyBadge: string;
-    highlights: string[];
-    findHereTitle: string;
-    profileLabel: string;
-    profileHighlights: string[];
   };
   about: {
     eyebrow: string;
@@ -92,11 +88,6 @@ export type PortfolioContent = {
       title: string;
       description: string;
     }>;
-    repertoireTitle: string;
-    formationTitle: string;
-    formationDescription: string;
-    deliveryTitle: string;
-    deliveryDescription: string;
     photoAlt: string;
     fallbackRole: string;
   };
@@ -219,9 +210,9 @@ const portfolioContent: Record<Locale, PortfolioContent> = {
     ],
     hero: {
       eyebrow: "Desenvolvedora Full Stack",
-      title: "Front-end, mobile e interface com acabamento de quem vive produto de verdade.",
+      title: "Front-end, mobile e interface com acabamento de produto.",
       description:
-        "Sou desenvolvedora front-end com forte experiência em interface, React Native, UI UX design e produtos digitais que precisam unir clareza, consistência visual e implementação bem feita.",
+        "Interfaces com clareza, consistência visual e código bem feito — em React, React Native e UI UX.",
       primaryCta: "Ver projetos",
       secondaryCta: "Baixar currículo",
       resumeHref: "/ana-carla-paiva-curriculo.pdf",
@@ -230,162 +221,129 @@ const portfolioContent: Record<Locale, PortfolioContent> = {
       githubAria: "GitHub",
       linkedinAria: "LinkedIn",
       stats: [
-        { value: "Front-end", label: "especialidade principal com foco em interface e produto" },
-        { value: "Mobile", label: "pós-graduada em desenvolvimento mobile e vivência com React Native" },
-        { value: "UI + UX", label: "olhar de design aplicado ao código, da estrutura ao detalhe" },
+        { value: "Front-end", label: "foco em interface e produto" },
+        { value: "Mobile", label: "pós em mobile + React Native" },
+        { value: "UI + UX", label: "design aplicado ao código" },
       ],
       labEyebrow: "Laboratório criativo",
-      labDescription: "Interface, mobile e experiências que equilibram forma e função",
+      labDescription: "Interface e mobile com forma e função.",
       specialtyLabel: "Especialidade",
       specialtyValue: "React, React Native e UI orientada a produto",
       specialtyBadge: "interface first",
-      highlights: [
-        "Front-end com repertório forte em interface, produto e consistência visual.",
-        "React Native para experiências mobile mais fluidas, claras e escaláveis.",
-        "UX e UI como parte do desenvolvimento, não como etapa separada.",
-      ],
-      findHereTitle: "O que você encontra aqui",
-      profileLabel: "perfil profissional",
-      profileHighlights: [
-        "Experiência real em interface",
-        "Visão mobile e produto",
-        "Design e código trabalhando juntos",
-      ],
     },
     about: {
       eyebrow: "Sobre",
-      title: "Muito prazer, eu transformo boas ideias em interfaces fortes e usáveis",
+      title: "Ideias viram interfaces fortes e usáveis",
       role: "Front-end developer • React Native • UI UX",
       emailAria: "E-mail",
       githubAria: "GitHub",
       linkedinAria: "LinkedIn",
       paragraphs: [
-        "Sou desenvolvedora front-end com bastante experiência em interface e um jeito de trabalhar muito conectado ao que o usuário percebe na ponta. Gosto de construir experiências que parecem simples de usar, mas por trás têm critério visual, componentes bem pensados e código organizado.",
-        "Minha trajetória passa por React, React Native, UI UX design e produtos digitais que exigem mais do que uma tela bonita. Tenho pós-graduação em desenvolvimento mobile, formação em Engenharia de Software e também uma base em Node, Nest e integrações, o suficiente para dialogar com o ecossistema inteiro do produto.",
+        "Desenvolvedora front-end focada em interface e produto. Crio experiências simples de usar — com critério visual, componentes bem pensados e código organizado por trás.",
       ],
       credentialsTitle: "Credenciais",
       credentials: [
         {
           title: "Engenharia de Software",
-          description: "Base técnica sólida para pensar estrutura, escalabilidade e qualidade de entrega.",
+          description: "Estrutura, escalabilidade e qualidade.",
         },
         {
-          title: "Pós em Desenvolvimento Mobile",
-          description: "Especialização que fortaleceu a visão de produto mobile, performance e usabilidade.",
+          title: "Pós em Mobile",
+          description: "Produto mobile, performance e usabilidade.",
         },
         {
           title: "Perfil híbrido",
-          description: "Front-end, interface e UX trabalhando juntos desde o conceito até a implementação.",
+          description: "Front-end, interface e UX juntos.",
         },
       ],
-      repertoireTitle: "Repertório e entrega",
-      formationTitle: "Formação e repertório",
-      formationDescription:
-        "Minha base me ajuda a pensar experiência, sistema, manutenção e produto junto. Não vejo interface como acabamento: vejo como parte central da estratégia.",
-      deliveryTitle: "O que costumo entregar",
-      deliveryDescription:
-        "Landing pages premium, produtos web com boa hierarquia, apps e fluxos mobile com foco em clareza, usabilidade e polimento visual.",
       photoAlt: "Foto de perfil de Ana Carla",
       fallbackRole: "front-end • mobile • ui ux",
     },
     skills: {
       eyebrow: "Skills",
-      title: "Ferramentas e repertório para tirar ideias do papel",
+      title: "Ferramentas para tirar ideias do papel",
       items: [
         {
           name: "Front-end moderno",
-          description: "React, Next.js e componentização orientada a produto, performance e manutenção.",
+          description: "React, Next.js e componentes orientados a produto.",
         },
         {
           name: "React Native",
-          description: "Experiência com apps mobile e interfaces pensadas para uso real em diferentes dispositivos.",
+          description: "Apps mobile e interfaces para uso real.",
         },
         {
           name: "UI e UX Design",
-          description: "Hierarquia visual, jornada, interação e refinamento de interface com intenção.",
+          description: "Hierarquia, interação e refinamento com intenção.",
         },
         {
           name: "Design systems",
-          description: "Componentes reutilizáveis, tokens, consistência visual e escala para times e produtos.",
+          description: "Componentes, tokens e consistência em escala.",
         },
         {
           name: "Animação e UX",
-          description: "Microinterações com motion para comunicar estado sem exagero.",
-        },
-        {
-          name: "Back-end de apoio",
-          description: "Base em Node, Nest e APIs para integrar fluxos e conversar melhor com o produto inteiro.",
+          description: "Microinterações que comunicam estado sem exagero.",
         },
         {
           name: "Responsividade real",
-          description: "Layouts fluidos pensados primeiro para uso, não só para breakpoints.",
-        },
-        {
-          name: "Descoberta e refinamento",
-          description: "Prototipação, handoff, investigação e refinamento com times de produto e design.",
+          description: "Layouts fluidos pensados para uso, não breakpoints.",
         },
       ],
     },
     process: {
       eyebrow: "Como eu trabalho",
-      title: "Uma forma de construir que junta estética, produto e implementação",
+      title: "Como eu construo",
       items: [
         {
-          title: "Entendimento do problema",
-          description: "Traduzo contexto de negócio e objetivo do produto em estrutura de interface.",
+          title: "Entender o problema",
+          description: "Traduzo o objetivo do produto em estrutura de interface.",
         },
         {
           title: "Protótipo com intenção",
-          description: "Penso layout, componentes, estados e fluxo antes de acelerar a implementação.",
+          description: "Layout, componentes e estados antes de codar.",
         },
         {
           title: "Entrega com acabamento",
-          description: "Levo o detalhe a sério: acessibilidade, responsividade, consistência e polish visual.",
+          description: "Acessibilidade, responsividade e polish visual.",
         },
       ],
     },
     projects: {
       eyebrow: "Laboratório",
-      title: "Projetos pensados para marca, produto e conversão",
+      title: "Projetos para marca e produto",
       caseLabel: "Case",
       viewProjectLabel: "Ver projeto",
       items: [
         {
           title: "Solus",
-          summary:
-            "Participação em produto web com foco em estrutura de interface, usabilidade e entrega consistente para operação real.",
+          summary: "Produto web com foco em interface, usabilidade e entrega consistente.",
           stack: ["Front-end", "Web", "UI"],
           imageAlt: "Preview do site Solus",
           ...sharedProjects.solus,
         },
         {
           title: "Centro Cardio Londrina",
-          summary:
-            "Projeto institucional com foco em experiência clara, navegação objetiva e apresentação profissional da marca.",
+          summary: "Site institucional com navegação clara e marca profissional.",
           stack: ["Website", "Interface", "Experiência"],
           imageAlt: "Preview do site Centro Cardio Londrina",
           ...sharedProjects.centroCardio,
         },
         {
           title: "The Best Açaí",
-          summary:
-            "Site com foco em presença digital, clareza de navegação e apresentação forte da marca para o público final.",
+          summary: "Site de marca com presença digital forte e navegação clara.",
           stack: ["Website", "Marca", "Conversão"],
           imageAlt: "Preview do site The Best Açaí",
           ...sharedProjects.theBestAcai,
         },
         {
           title: "Clube The Best",
-          summary:
-            "Aplicativo mobile desenvolvido em React Native com styled-components, voltado para experiência fluida, recorrência e relacionamento com o usuário.",
+          summary: "App React Native focado em experiência fluida e recorrência.",
           stack: ["React Native", "styled-components", "Mobile"],
           imageAlt: "Ilustração de aplicativo mobile para Clube The Best",
           ...sharedProjects.clubeTheBest,
         },
         {
           title: "The Best Portal",
-          summary:
-            "App de trabalho com foco em jornada mobile, organização de fluxos e interface consistente em React Native com styled-components.",
+          summary: "App de trabalho em React Native com fluxos organizados.",
           stack: ["React Native", "styled-components", "App"],
           imageAlt: "Ilustração de aplicativo mobile para The Best Portal",
           ...sharedProjects.theBestPortal,
@@ -394,40 +352,35 @@ const portfolioContent: Record<Locale, PortfolioContent> = {
     },
     faq: {
       eyebrow: "FAQ",
-      title: "Dúvidas frequentes sobre minha atuação, stack e forma de construir",
+      title: "Perguntas frequentes",
       items: [
         {
-          question: "Você atua mais com front-end, mobile ou design?",
+          question: "Front-end, mobile ou design?",
           answer:
-            "Meu foco principal está no front-end, mas minha atuação é bem conectada com mobile e interface. Trabalho com React, Next.js, React Native e também trago repertório de UI e UX para tomar decisões mais completas no produto.",
+            "Foco em front-end, bem conectado a mobile e interface — React, Next.js, React Native, UI e UX.",
         },
         {
-          question: "Você desenvolve aplicativos em React Native?",
+          question: "Você desenvolve apps em React Native?",
           answer:
-            "Sim. Tenho experiência com apps mobile em React Native, incluindo projetos com styled-components, fluxos de uso recorrente e interfaces pensadas para performance, clareza e manutenção.",
+            "Sim. Apps mobile em React Native com foco em performance, clareza e manutenção.",
         },
         {
-          question: "Você também participa da parte visual e da experiência do usuário?",
+          question: "Que tipo de projeto você entrega?",
           answer:
-            "Sim. Minha atuação vai além da implementação. Costumo contribuir com estrutura visual, hierarquia, refinamento de interface, consistência de componentes e decisões que impactam diretamente a experiência de uso.",
+            "Landing pages premium, sites institucionais, produtos web e apps mobile.",
         },
         {
-          question: "Que tipo de projeto você costuma entregar?",
+          question: "Você atua em times e produtos existentes?",
           answer:
-            "Landing pages premium, sites institucionais, produtos web com interface mais refinada e aplicativos mobile. Gosto especialmente de projetos que precisam unir identidade visual forte, boa usabilidade e código bem organizado.",
-        },
-        {
-          question: "Você consegue atuar em times e produtos já existentes?",
-          answer:
-            "Consigo, sim. Posso entrar para evoluir interface, organizar componentes, melhorar consistência visual, dar suporte em arquitetura front-end e ajudar o time a elevar a qualidade do produto sem perder ritmo de entrega.",
+            "Sim. Evoluo interface, organizo componentes e elevo a qualidade do produto.",
         },
       ],
     },
     contact: {
       eyebrow: "Contato",
-      title: "Se a ideia for boa, eu quero construir junto",
+      title: "Vamos construir algo bom juntos",
       description:
-        "Disponível para freelas, novos produtos, landing pages premium e times que precisam elevar a experiência do front-end sem perder consistência técnica.",
+        "Disponível para freelas, novos produtos e times que querem elevar o front-end.",
       cta: "Vamos conversar",
       items: [
         { label: "Email", value: "acfpaiva99@gmail.com", href: "mailto:acfpaiva99@gmail.com" },
@@ -482,9 +435,9 @@ const portfolioContent: Record<Locale, PortfolioContent> = {
     ],
     hero: {
       eyebrow: "Full Stack Developer",
-      title: "Front-end, mobile, and interface work crafted by someone who truly understands product.",
+      title: "Front-end, mobile, and interface with real product polish.",
       description:
-        "I am a front-end developer with strong experience in interface design, React Native, UI UX design, and digital products that need to combine clarity, visual consistency, and solid implementation.",
+        "Interfaces with clarity, visual consistency, and solid code — in React, React Native, and UI UX.",
       primaryCta: "View projects",
       secondaryCta: "Download resume",
       resumeHref: "/ana-carla-paiva-resume-en.pdf",
@@ -493,124 +446,102 @@ const portfolioContent: Record<Locale, PortfolioContent> = {
       githubAria: "GitHub",
       linkedinAria: "LinkedIn",
       stats: [
-        { value: "Front-end", label: "main specialty focused on interface and product" },
-        { value: "Mobile", label: "postgraduate training in mobile development and hands-on React Native experience" },
-        { value: "UI + UX", label: "design-driven thinking applied from structure to detail" },
+        { value: "Front-end", label: "focus on interface and product" },
+        { value: "Mobile", label: "mobile postgrad + React Native" },
+        { value: "UI + UX", label: "design applied to code" },
       ],
       labEyebrow: "Creative lab",
-      labDescription: "Interface, mobile, and digital experiences that balance form and function",
+      labDescription: "Interface and mobile balancing form and function.",
       specialtyLabel: "Specialty",
       specialtyValue: "React, React Native, and product-oriented UI",
       specialtyBadge: "interface first",
-      highlights: [
-        "Strong front-end background in interface, product, and visual consistency.",
-        "React Native work focused on fluid, clear, and scalable mobile experiences.",
-        "UX and UI as part of development, not as a separate phase.",
-      ],
-      findHereTitle: "What you will find here",
-      profileLabel: "professional profile",
-      profileHighlights: [
-        "Real interface experience",
-        "Mobile and product perspective",
-        "Design and code working together",
-      ],
     },
     about: {
       eyebrow: "About",
-      title: "Nice to meet you, I turn good ideas into strong and usable interfaces",
+      title: "Ideas become strong, usable interfaces",
       role: "Front-end developer • React Native • UI UX",
       emailAria: "Email",
       githubAria: "GitHub",
       linkedinAria: "LinkedIn",
       paragraphs: [
-        "I am a front-end developer with strong experience in interface work and a way of building that stays closely connected to what users actually perceive. I like creating experiences that feel simple to use, while behind the scenes they rely on visual judgment, thoughtful components, and organized code.",
-        "My background includes React, React Native, UI UX design, and digital products that demand more than a beautiful screen. I hold a postgraduate degree in mobile development, a degree in Software Engineering, and I also have a solid base in Node, Nest, and integrations, which helps me communicate across the whole product ecosystem.",
+        "Front-end developer focused on interface and product. I build experiences that feel simple to use — backed by visual judgment, thoughtful components, and organized code.",
       ],
       credentialsTitle: "Credentials",
       credentials: [
         {
           title: "Software Engineering",
-          description: "A solid technical foundation to think about structure, scalability, and delivery quality.",
+          description: "Structure, scalability, and quality.",
         },
         {
-          title: "Postgraduate in Mobile Development",
-          description: "Specialization that strengthened my view of mobile product, performance, and usability.",
+          title: "Mobile postgraduate",
+          description: "Mobile product, performance, and usability.",
         },
         {
           title: "Hybrid profile",
-          description: "Front-end, interface, and UX working together from concept to implementation.",
+          description: "Front-end, interface, and UX together.",
         },
       ],
-      repertoireTitle: "Range and delivery",
-      formationTitle: "Background and range",
-      formationDescription:
-        "My background helps me think about experience, system, maintenance, and product together. I do not see interface as decoration; I see it as a central part of strategy.",
-      deliveryTitle: "What I usually deliver",
-      deliveryDescription:
-        "Premium landing pages, web products with strong hierarchy, apps, and mobile flows focused on clarity, usability, and visual polish.",
       photoAlt: "Profile photo of Ana Carla",
       fallbackRole: "front-end • mobile • ui ux",
     },
     skills: {
       eyebrow: "Skills",
-      title: "Tools and range to turn ideas into real products",
+      title: "Tools to turn ideas into products",
       items: [
-        { name: "Modern front-end", description: "React, Next.js, and product-oriented componentization focused on performance and maintenance." },
-        { name: "React Native", description: "Experience with mobile apps and interfaces designed for real-world use across devices." },
-        { name: "UI and UX Design", description: "Visual hierarchy, journeys, interaction, and interface refinement with intention." },
-        { name: "Design systems", description: "Reusable components, tokens, visual consistency, and scale for teams and products." },
-        { name: "Motion and UX", description: "Micro-interactions that communicate state without overdoing it." },
-        { name: "Supporting back-end", description: "A solid base in Node, Nest, and APIs to integrate flows and collaborate better across the product." },
-        { name: "True responsiveness", description: "Fluid layouts designed for real usage, not only for breakpoints." },
-        { name: "Discovery and refinement", description: "Prototyping, handoff, investigation, and refinement with product and design teams." },
+        { name: "Modern front-end", description: "React, Next.js, and product-driven components." },
+        { name: "React Native", description: "Mobile apps and interfaces for real use." },
+        { name: "UI and UX Design", description: "Hierarchy, interaction, and refinement with intent." },
+        { name: "Design systems", description: "Components, tokens, and consistency at scale." },
+        { name: "Motion and UX", description: "Micro-interactions that signal state without overdoing it." },
+        { name: "True responsiveness", description: "Fluid layouts built for use, not breakpoints." },
       ],
     },
     process: {
       eyebrow: "How I work",
-      title: "A way of building that brings together aesthetics, product, and implementation",
+      title: "How I build",
       items: [
-        { title: "Understanding the problem", description: "I translate business context and product goals into interface structure." },
-        { title: "Intentional prototyping", description: "I think through layout, components, states, and flow before accelerating implementation." },
-        { title: "Polished delivery", description: "I take detail seriously: accessibility, responsiveness, consistency, and visual polish." },
+        { title: "Understand the problem", description: "I turn the product goal into interface structure." },
+        { title: "Intentional prototyping", description: "Layout, components, and states before coding." },
+        { title: "Polished delivery", description: "Accessibility, responsiveness, and visual polish." },
       ],
     },
     projects: {
       eyebrow: "Lab",
-      title: "Projects designed for brand, product, and conversion",
+      title: "Projects for brand and product",
       caseLabel: "Case",
       viewProjectLabel: "View project",
       items: [
         {
           title: "Solus",
-          summary: "Participation in a web product focused on interface structure, usability, and consistent delivery for real operational use.",
+          summary: "Web product focused on interface, usability, and consistent delivery.",
           stack: ["Front-end", "Web", "UI"],
           imageAlt: "Preview of the Solus website",
           ...sharedProjects.solus,
         },
         {
           title: "Centro Cardio Londrina",
-          summary: "Institutional project focused on clear experience, objective navigation, and strong brand presentation.",
+          summary: "Institutional site with clear navigation and a professional brand.",
           stack: ["Website", "Interface", "Experience"],
           imageAlt: "Preview of the Centro Cardio Londrina website",
           ...sharedProjects.centroCardio,
         },
         {
           title: "The Best Acai",
-          summary: "Website focused on digital presence, navigation clarity, and strong brand presentation for the end customer.",
+          summary: "Brand site with strong digital presence and clear navigation.",
           stack: ["Website", "Brand", "Conversion"],
           imageAlt: "Preview of The Best Acai website",
           ...sharedProjects.theBestAcai,
         },
         {
           title: "Clube The Best",
-          summary: "Mobile app built with React Native and styled-components, focused on a fluid experience, recurrence, and user relationship.",
+          summary: "React Native app focused on a fluid, recurring experience.",
           stack: ["React Native", "styled-components", "Mobile"],
           imageAlt: "Mobile app illustration for Clube The Best",
           ...sharedProjects.clubeTheBest,
         },
         {
           title: "The Best Portal",
-          summary: "Work app focused on mobile journey, flow organization, and a consistent interface built with React Native and styled-components.",
+          summary: "Work app in React Native with organized flows.",
           stack: ["React Native", "styled-components", "App"],
           imageAlt: "Mobile app illustration for The Best Portal",
           ...sharedProjects.theBestPortal,
@@ -619,40 +550,35 @@ const portfolioContent: Record<Locale, PortfolioContent> = {
     },
     faq: {
       eyebrow: "FAQ",
-      title: "Frequently asked questions about my work, stack, and way of building",
+      title: "Frequently asked questions",
       items: [
         {
-          question: "Do you work more with front-end, mobile, or design?",
+          question: "Front-end, mobile, or design?",
           answer:
-            "My main focus is front-end, but my work is deeply connected to mobile and interface design. I work with React, Next.js, React Native, and I also bring UI and UX background to make better product decisions.",
+            "Front-end is my focus, closely tied to mobile and interface — React, Next.js, React Native, UI and UX.",
         },
         {
           question: "Do you build apps in React Native?",
           answer:
-            "Yes. I have experience building mobile apps in React Native, including projects with styled-components, recurring-use flows, and interfaces designed for performance, clarity, and maintenance.",
+            "Yes. Mobile apps in React Native focused on performance, clarity, and maintenance.",
         },
         {
-          question: "Do you also contribute to visual direction and user experience?",
+          question: "What kind of projects do you deliver?",
           answer:
-            "Yes. My role goes beyond implementation. I usually contribute to visual structure, hierarchy, interface refinement, component consistency, and decisions that directly affect the user experience.",
-        },
-        {
-          question: "What kind of projects do you usually deliver?",
-          answer:
-            "Premium landing pages, institutional websites, web products with more refined interfaces, and mobile apps. I especially enjoy projects that need strong visual identity, good usability, and well-structured code.",
+            "Premium landing pages, institutional sites, web products, and mobile apps.",
         },
         {
           question: "Can you join existing teams and products?",
           answer:
-            "Yes. I can join to evolve interfaces, organize components, improve visual consistency, support front-end architecture, and help a team raise product quality without losing delivery pace.",
+            "Yes. I evolve interfaces, organize components, and raise product quality.",
         },
       ],
     },
     contact: {
       eyebrow: "Contact",
-      title: "If the idea is strong, I want to build it with you",
+      title: "Let's build something great together",
       description:
-        "Available for freelance work, new products, premium landing pages, and teams that need to elevate the front-end experience without losing technical consistency.",
+        "Available for freelance work, new products, and teams that want to raise their front-end.",
       cta: "Let's talk",
       items: [
         { label: "Email", value: "acfpaiva99@gmail.com", href: "mailto:acfpaiva99@gmail.com" },
@@ -707,9 +633,9 @@ const portfolioContent: Record<Locale, PortfolioContent> = {
     ],
     hero: {
       eyebrow: "Desarrolladora Full Stack",
-      title: "Front-end, mobile e interfaz con el acabado de alguien que realmente entiende producto.",
+      title: "Front-end, mobile e interfaz con acabado de producto.",
       description:
-        "Soy desarrolladora front-end con fuerte experiencia en interfaz, React Native, UI UX design y productos digitales que necesitan unir claridad, consistencia visual e implementación bien hecha.",
+        "Interfaces con claridad, consistencia visual y código bien hecho — en React, React Native y UI UX.",
       primaryCta: "Ver proyectos",
       secondaryCta: "Descargar CV",
       resumeHref: "/ana-carla-paiva-resume-en.pdf",
@@ -718,124 +644,102 @@ const portfolioContent: Record<Locale, PortfolioContent> = {
       githubAria: "GitHub",
       linkedinAria: "LinkedIn",
       stats: [
-        { value: "Front-end", label: "especialidad principal con foco en interfaz y producto" },
-        { value: "Mobile", label: "posgrado en desarrollo mobile y experiencia práctica con React Native" },
-        { value: "UI + UX", label: "mirada de diseño aplicada al código, desde la estructura hasta el detalle" },
+        { value: "Front-end", label: "foco en interfaz y producto" },
+        { value: "Mobile", label: "posgrado mobile + React Native" },
+        { value: "UI + UX", label: "diseño aplicado al código" },
       ],
       labEyebrow: "Laboratorio creativo",
-      labDescription: "Interfaz, mobile y experiencias digitales que equilibran forma y función",
+      labDescription: "Interfaz y mobile con forma y función.",
       specialtyLabel: "Especialidad",
       specialtyValue: "React, React Native y UI orientada a producto",
       specialtyBadge: "interface first",
-      highlights: [
-        "Front-end con repertorio fuerte en interfaz, producto y consistencia visual.",
-        "React Native para experiencias mobile más fluidas, claras y escalables.",
-        "UX y UI como parte del desarrollo, no como una etapa separada.",
-      ],
-      findHereTitle: "Lo que encuentras aquí",
-      profileLabel: "perfil profesional",
-      profileHighlights: [
-        "Experiencia real en interfaz",
-        "Visión mobile y de producto",
-        "Diseño y código trabajando juntos",
-      ],
     },
     about: {
       eyebrow: "Sobre mí",
-      title: "Mucho gusto, transformo buenas ideas en interfaces fuertes y usables",
+      title: "Las ideas se vuelven interfaces fuertes y usables",
       role: "Front-end developer • React Native • UI UX",
       emailAria: "Correo",
       githubAria: "GitHub",
       linkedinAria: "LinkedIn",
       paragraphs: [
-        "Soy desarrolladora front-end con bastante experiencia en interfaz y una forma de trabajar muy conectada a lo que el usuario percibe al final. Me gusta construir experiencias que parecen simples de usar, pero que por detrás tienen criterio visual, componentes bien pensados y código organizado.",
-        "Mi trayectoria pasa por React, React Native, UI UX design y productos digitales que exigen más que una pantalla bonita. Tengo posgrado en desarrollo mobile, formación en Ingeniería de Software y también una base en Node, Nest e integraciones, suficiente para dialogar con todo el ecosistema del producto.",
+        "Desarrolladora front-end enfocada en interfaz y producto. Creo experiencias simples de usar — con criterio visual, componentes bien pensados y código organizado por detrás.",
       ],
       credentialsTitle: "Credenciales",
       credentials: [
         {
           title: "Ingeniería de Software",
-          description: "Base técnica sólida para pensar estructura, escalabilidad y calidad de entrega.",
+          description: "Estructura, escalabilidad y calidad.",
         },
         {
-          title: "Posgrado en Desarrollo Mobile",
-          description: "Especialización que fortaleció mi visión de producto mobile, performance y usabilidad.",
+          title: "Posgrado en Mobile",
+          description: "Producto mobile, performance y usabilidad.",
         },
         {
           title: "Perfil híbrido",
-          description: "Front-end, interfaz y UX trabajando juntos desde el concepto hasta la implementación.",
+          description: "Front-end, interfaz y UX juntos.",
         },
       ],
-      repertoireTitle: "Repertorio y entrega",
-      formationTitle: "Formación y repertorio",
-      formationDescription:
-        "Mi base me ayuda a pensar experiencia, sistema, mantenimiento y producto al mismo tiempo. No veo la interfaz como acabado; la veo como parte central de la estrategia.",
-      deliveryTitle: "Lo que suelo entregar",
-      deliveryDescription:
-        "Landing pages premium, productos web con buena jerarquía, apps y flujos mobile con foco en claridad, usabilidad y pulido visual.",
       photoAlt: "Foto de perfil de Ana Carla",
       fallbackRole: "front-end • mobile • ui ux",
     },
     skills: {
       eyebrow: "Skills",
-      title: "Herramientas y repertorio para convertir ideas en productos reales",
+      title: "Herramientas para convertir ideas en productos",
       items: [
-        { name: "Front-end moderno", description: "React, Next.js y componentización orientada a producto, performance y mantenimiento." },
-        { name: "React Native", description: "Experiencia con apps mobile e interfaces pensadas para uso real en diferentes dispositivos." },
-        { name: "UI y UX Design", description: "Jerarquía visual, recorridos, interacción y refinamiento de interfaz con intención." },
-        { name: "Design systems", description: "Componentes reutilizables, tokens, consistencia visual y escala para equipos y productos." },
-        { name: "Animación y UX", description: "Microinteracciones con motion para comunicar estado sin exagerar." },
-        { name: "Back-end de apoyo", description: "Base en Node, Nest y APIs para integrar flujos y conversar mejor con todo el producto." },
-        { name: "Responsive real", description: "Layouts fluidos pensados primero para uso real, no solo para breakpoints." },
-        { name: "Descubrimiento y refinamiento", description: "Prototipado, handoff, investigación y refinamiento junto a equipos de producto y diseño." },
+        { name: "Front-end moderno", description: "React, Next.js y componentes orientados a producto." },
+        { name: "React Native", description: "Apps mobile e interfaces para uso real." },
+        { name: "UI y UX Design", description: "Jerarquía, interacción y refinamiento con intención." },
+        { name: "Design systems", description: "Componentes, tokens y consistencia a escala." },
+        { name: "Animación y UX", description: "Microinteracciones que comunican estado sin exagerar." },
+        { name: "Responsive real", description: "Layouts fluidos pensados para uso, no breakpoints." },
       ],
     },
     process: {
       eyebrow: "Cómo trabajo",
-      title: "Una forma de construir que une estética, producto e implementación",
+      title: "Cómo construyo",
       items: [
-        { title: "Entendimiento del problema", description: "Traduzco contexto de negocio y objetivo del producto en estructura de interfaz." },
-        { title: "Prototipo con intención", description: "Pienso layout, componentes, estados y flujo antes de acelerar la implementación." },
-        { title: "Entrega con acabado", description: "Tomo el detalle en serio: accesibilidad, responsividad, consistencia y polish visual." },
+        { title: "Entender el problema", description: "Traduzco el objetivo del producto en estructura de interfaz." },
+        { title: "Prototipo con intención", description: "Layout, componentes y estados antes de codear." },
+        { title: "Entrega con acabado", description: "Accesibilidad, responsividad y pulido visual." },
       ],
     },
     projects: {
       eyebrow: "Laboratorio",
-      title: "Proyectos pensados para marca, producto y conversión",
+      title: "Proyectos para marca y producto",
       caseLabel: "Caso",
       viewProjectLabel: "Ver proyecto",
       items: [
         {
           title: "Solus",
-          summary: "Participación en producto web con foco en estructura de interfaz, usabilidad y entrega consistente para operación real.",
+          summary: "Producto web con foco en interfaz, usabilidad y entrega consistente.",
           stack: ["Front-end", "Web", "UI"],
           imageAlt: "Preview del sitio Solus",
           ...sharedProjects.solus,
         },
         {
           title: "Centro Cardio Londrina",
-          summary: "Proyecto institucional con foco en experiencia clara, navegación objetiva y presentación profesional de la marca.",
+          summary: "Sitio institucional con navegación clara y marca profesional.",
           stack: ["Website", "Interfaz", "Experiencia"],
           imageAlt: "Preview del sitio Centro Cardio Londrina",
           ...sharedProjects.centroCardio,
         },
         {
           title: "The Best Açaí",
-          summary: "Sitio con foco en presencia digital, claridad de navegación y presentación fuerte de la marca para el público final.",
+          summary: "Sitio de marca con presencia digital fuerte y navegación clara.",
           stack: ["Website", "Marca", "Conversión"],
           imageAlt: "Preview del sitio The Best Açaí",
           ...sharedProjects.theBestAcai,
         },
         {
           title: "Clube The Best",
-          summary: "Aplicación mobile desarrollada en React Native con styled-components, enfocada en experiencia fluida, recurrencia y relación con el usuario.",
+          summary: "App React Native enfocada en experiencia fluida y recurrencia.",
           stack: ["React Native", "styled-components", "Mobile"],
           imageAlt: "Ilustración de app mobile para Clube The Best",
           ...sharedProjects.clubeTheBest,
         },
         {
           title: "The Best Portal",
-          summary: "App de trabajo con foco en jornada mobile, organización de flujos e interfaz consistente en React Native con styled-components.",
+          summary: "App de trabajo en React Native con flujos organizados.",
           stack: ["React Native", "styled-components", "App"],
           imageAlt: "Ilustración de app mobile para The Best Portal",
           ...sharedProjects.theBestPortal,
@@ -844,40 +748,35 @@ const portfolioContent: Record<Locale, PortfolioContent> = {
     },
     faq: {
       eyebrow: "FAQ",
-      title: "Preguntas frecuentes sobre mi trabajo, stack y forma de construir",
+      title: "Preguntas frecuentes",
       items: [
         {
-          question: "¿Trabajas más con front-end, mobile o diseño?",
+          question: "¿Front-end, mobile o diseño?",
           answer:
-            "Mi foco principal está en front-end, pero mi actuación está muy conectada con mobile e interfaz. Trabajo con React, Next.js, React Native y también aporto repertorio de UI y UX para tomar decisiones más completas de producto.",
+            "Mi foco es front-end, muy conectado a mobile e interfaz — React, Next.js, React Native, UI y UX.",
         },
         {
-          question: "¿Desarrollas aplicaciones en React Native?",
+          question: "¿Desarrollas apps en React Native?",
           answer:
-            "Sí. Tengo experiencia con apps mobile en React Native, incluyendo proyectos con styled-components, flujos de uso recurrente e interfaces pensadas para performance, claridad y mantenimiento.",
+            "Sí. Apps mobile en React Native con foco en performance, claridad y mantenimiento.",
         },
         {
-          question: "¿También participas en la parte visual y en la experiencia del usuario?",
+          question: "¿Qué tipo de proyectos entregas?",
           answer:
-            "Sí. Mi trabajo va más allá de la implementación. Suelo contribuir con estructura visual, jerarquía, refinamiento de interfaz, consistencia de componentes y decisiones que impactan directamente la experiencia de uso.",
+            "Landing pages premium, sitios institucionales, productos web y apps mobile.",
         },
         {
-          question: "¿Qué tipo de proyectos sueles entregar?",
+          question: "¿Trabajas en equipos y productos existentes?",
           answer:
-            "Landing pages premium, sitios institucionales, productos web con interfaces más refinadas y aplicaciones mobile. Me gustan especialmente los proyectos que necesitan identidad visual fuerte, buena usabilidad y código bien organizado.",
-        },
-        {
-          question: "¿Puedes actuar en equipos y productos ya existentes?",
-          answer:
-            "Sí. Puedo entrar para evolucionar interfaz, organizar componentes, mejorar consistencia visual, apoyar en arquitectura front-end y ayudar al equipo a elevar la calidad del producto sin perder ritmo de entrega.",
+            "Sí. Evoluciono interfaz, organizo componentes y elevo la calidad del producto.",
         },
       ],
     },
     contact: {
       eyebrow: "Contacto",
-      title: "Si la idea es buena, quiero construirla contigo",
+      title: "Construyamos algo bueno juntos",
       description:
-        "Disponible para freelas, nuevos productos, landing pages premium y equipos que necesitan elevar la experiencia de front-end sin perder consistencia técnica.",
+        "Disponible para freelance, nuevos productos y equipos que quieren elevar su front-end.",
       cta: "Hablemos",
       items: [
         { label: "Email", value: "acfpaiva99@gmail.com", href: "mailto:acfpaiva99@gmail.com" },

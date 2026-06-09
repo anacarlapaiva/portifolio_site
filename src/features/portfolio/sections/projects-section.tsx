@@ -8,6 +8,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { usePortfolioI18n } from "@/features/portfolio/portfolio-i18n";
 import { MotionReveal } from "@/shared/ui/motion-reveal";
 import { SectionHeading } from "@/shared/ui/section-heading";
+import { XpTitleBar } from "@/shared/ui/xp-window";
 
 export function ProjectsSection() {
   const { content } = usePortfolioI18n();
@@ -70,7 +71,7 @@ export function ProjectsSection() {
                       className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.10),transparent_55%)] blur-2xl"
                       aria-hidden="true"
                     />
-                    <div className="absolute inset-x-6 bottom-0 top-4">
+                    <div className="absolute inset-x-6 bottom-0 top-10">
                       <Image
                         src={project.imageSrc}
                         alt={project.imageAlt}
@@ -84,6 +85,9 @@ export function ProjectsSection() {
                       className="absolute inset-0 bg-[linear-gradient(180deg,rgba(6,40,58,0.04),rgba(6,40,58,0.5))]"
                       aria-hidden="true"
                     />
+                    <div className="absolute inset-x-0 top-0 z-[1]" aria-hidden="true">
+                      <XpTitleBar title={project.title} compact />
+                    </div>
                   </>
                 )}
 

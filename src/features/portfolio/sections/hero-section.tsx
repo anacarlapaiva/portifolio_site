@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowRight, BriefcaseBusiness, Download, GitFork, Mail, Sparkles } from "lucide-react";
+import { ArrowRight, BriefcaseBusiness, Download, GitFork, Mail } from "lucide-react";
 
 import { ButtonLink } from "@/components/ui/button";
 import { usePortfolioI18n } from "@/features/portfolio/portfolio-i18n";
@@ -86,7 +86,7 @@ export function HeroSection() {
       </MotionReveal>
 
       <MotionReveal delay={0.12}>
-        <XpWindow title={hero.labEyebrow} icon={<Sparkles size={12} />}>
+        <XpWindow title={hero.labEyebrow}>
           <p className="text-sm leading-6 text-muted">{hero.labDescription}</p>
 
           <div className="mt-4 rounded-2xl border border-accent/15 bg-inner-card p-4">

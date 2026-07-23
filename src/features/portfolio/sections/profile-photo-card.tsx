@@ -30,11 +30,11 @@ export function ProfilePhotoCard({ name, alt, fallbackRole }: ProfilePhotoCardPr
       ) : (
         <div className="relative overflow-hidden rounded-xl border border-line bg-surface/40">
           <Image
-            src="/profile-photo.jpg"
+            src="/profile-photo-v2.jpg"
             alt={alt}
             width={900}
             height={1125}
-            className="aspect-[4/5] h-full w-full object-cover object-[center_24%]"
+            className="aspect-[4/5] h-full w-full object-cover object-center"
             priority
             onError={() => setHasError(true)}
           />

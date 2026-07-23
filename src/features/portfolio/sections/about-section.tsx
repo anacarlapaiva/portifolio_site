@@ -27,113 +27,124 @@ export function AboutSection() {
     <MotionReveal
       as="section"
       id="sobre"
-      className="min-w-0 scroll-mt-24 space-y-4 rounded-[1.5rem] border border-white/25 glass-panel px-4 py-5 sm:scroll-mt-28 sm:space-y-6 sm:rounded-[2rem] sm:px-8 sm:py-7"
+      className="min-w-0 scroll-mt-24 overflow-hidden rounded-[1.5rem] border border-white/25 glass-panel p-4 sm:scroll-mt-28 sm:rounded-[2rem] sm:p-6 lg:p-8"
     >
-      <SectionHeading eyebrow={about.eyebrow} title={about.title} />
+      <div className="flex flex-col gap-4">
+        <SectionHeading eyebrow={about.eyebrow} title={about.title} />
 
-      <div className="grid min-w-0 grid-cols-1 items-center gap-4 sm:grid-cols-[11.5rem_minmax(0,1fr)] sm:gap-6 lg:grid-cols-[13rem_minmax(0,1fr)]">
-        <div className="mx-auto w-full max-w-[13rem] sm:mx-0 sm:max-w-none">
-          <ProfilePhotoCard name="Ana Carla" alt={about.photoAlt} fallbackRole={about.fallbackRole} />
-        </div>
-
-        <div className="flex min-w-0 flex-col justify-center gap-3 text-center sm:gap-4 sm:text-left">
-          <div className="flex flex-col items-center gap-3 sm:flex-row sm:flex-wrap sm:items-end sm:justify-between">
-            <div>
-              <h3 className="font-display text-xl font-semibold text-foreground">Ana Carla</h3>
-              <p className="mt-0.5 text-sm text-muted">{about.role}</p>
-            </div>
-            <div className="flex gap-2">
-              <ButtonLink
-                href="mailto:acfpaiva99@gmail.com"
-                variant="ghost"
-                size="icon"
-                aria-label={about.emailAria}
-              >
-                <Mail size={17} />
-              </ButtonLink>
-              <ButtonLink
-                href="https://github.com/anacarlapaiva"
-                variant="ghost"
-                size="icon"
-                aria-label={about.githubAria}
-              >
-                <GitFork size={17} />
-              </ButtonLink>
-              <ButtonLink
-                href="https://www.linkedin.com/in/anacarlapaiva"
-                variant="ghost"
-                size="icon"
-                aria-label={about.linkedinAria}
-              >
-                <BriefcaseBusiness size={17} />
-              </ButtonLink>
-            </div>
+        {/* Faixa única: foto compacta + texto. Sem coluna alta vs coluna vazia. */}
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-[13rem_minmax(0,1fr)] sm:items-start lg:grid-cols-[14rem_minmax(0,1fr)]">
+          <div className="mx-auto w-[12rem] sm:mx-0 sm:w-full">
+            <ProfilePhotoCard
+              name="Ana Carla"
+              alt={about.photoAlt}
+              fallbackRole={about.fallbackRole}
+            />
           </div>
 
-          <p className="text-sm leading-6 text-muted sm:text-base sm:leading-7">
-            {about.paragraphs[0]}
-          </p>
+          <div className="flex min-w-0 flex-col gap-3">
+            <div className="flex flex-wrap items-center justify-between gap-3">
+              <div>
+                <h3 className="font-display text-xl font-semibold text-foreground">Ana Carla</h3>
+                <p className="text-sm text-muted">{about.role}</p>
+              </div>
+              <div className="flex gap-2">
+                <ButtonLink
+                  href="mailto:acfpaiva99@gmail.com"
+                  variant="ghost"
+                  size="icon"
+                  aria-label={about.emailAria}
+                >
+                  <Mail size={17} />
+                </ButtonLink>
+                <ButtonLink
+                  href="https://github.com/anacarlapaiva"
+                  variant="ghost"
+                  size="icon"
+                  aria-label={about.githubAria}
+                >
+                  <GitFork size={17} />
+                </ButtonLink>
+                <ButtonLink
+                  href="https://www.linkedin.com/in/anacarlapaiva"
+                  variant="ghost"
+                  size="icon"
+                  aria-label={about.linkedinAria}
+                >
+                  <BriefcaseBusiness size={17} />
+                </ButtonLink>
+              </div>
+            </div>
+
+            <div className="flex flex-col gap-3 text-sm leading-6 text-muted sm:text-[0.95rem] sm:leading-7">
+              <p>{about.paragraphs[0]}</p>
+              {about.paragraphs[1] ? (
+                <p className="hidden sm:block">{about.paragraphs[1]}</p>
+              ) : null}
+            </div>
+          </div>
         </div>
-      </div>
 
-      <div className="space-y-2">
-        <h3 className="font-display text-[0.7rem] font-semibold uppercase tracking-[0.2em] text-accent sm:text-xs sm:tracking-[0.24em]">
-          {about.focusTitle}
-        </h3>
-        <ul className="grid grid-cols-1 gap-2 min-[480px]:grid-cols-3 sm:gap-2.5">
-          {focusIcons.map((Icon, index) => {
-            const item = about.focusAreas[index];
-            if (!item) return null;
+        {/* 3 + 3 no mesmo ritmo */}
+        <div className="flex flex-col gap-2">
+          <p className="font-display text-[0.7rem] font-semibold uppercase tracking-[0.2em] text-accent">
+            {about.focusTitle}
+          </p>
+          <div className="grid grid-cols-1 gap-2 sm:grid-cols-3">
+            {focusIcons.map((Icon, index) => {
+              const item = about.focusAreas[index];
+              if (!item) return null;
 
-            return (
-              <li
-                key={item.title}
-                className="flex items-start gap-3 rounded-2xl border border-line bg-inner-card px-3 py-2.5 sm:px-3.5 sm:py-3"
-              >
-                <span
-                  className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-xl border border-accent/20 bg-accent-soft text-accent"
-                  aria-hidden="true"
+              return (
+                <div
+                  key={item.title}
+                  className="flex items-start gap-3 rounded-xl border border-line bg-inner-card p-3"
                 >
-                  <Icon size={15} />
-                </span>
-                <div className="min-w-0">
-                  <p className="font-display text-sm font-semibold text-foreground">{item.title}</p>
-                  <p className="mt-0.5 text-xs leading-5 text-muted">{item.description}</p>
+                  <span
+                    className="flex h-8 w-8 shrink-0 items-center justify-center rounded-xl border border-accent/20 bg-accent-soft text-accent"
+                    aria-hidden="true"
+                  >
+                    <Icon size={15} />
+                  </span>
+                  <div className="min-w-0">
+                    <p className="font-display text-sm font-semibold text-foreground">{item.title}</p>
+                    <p className="mt-1 text-xs leading-5 text-muted">{item.description}</p>
+                  </div>
                 </div>
-              </li>
-            );
-          })}
-        </ul>
-      </div>
+              );
+            })}
+          </div>
+        </div>
 
-      <div className="space-y-2">
-        <h3 className="font-display text-[0.7rem] font-semibold uppercase tracking-[0.2em] text-accent sm:text-xs sm:tracking-[0.24em]">
-          {about.credentialsTitle}
-        </h3>
-        <ul className="grid grid-cols-1 gap-2 min-[480px]:grid-cols-3 sm:gap-2.5">
-          {credentialIcons.map((Icon, index) => {
-            const item = about.credentials[index];
-            if (!item) return null;
+        <div className="flex flex-col gap-2">
+          <p className="font-display text-[0.7rem] font-semibold uppercase tracking-[0.2em] text-accent">
+            {about.credentialsTitle}
+          </p>
+          <div className="grid grid-cols-1 gap-2 sm:grid-cols-3">
+            {credentialIcons.map((Icon, index) => {
+              const item = about.credentials[index];
+              if (!item) return null;
 
-            return (
-              <li
-                key={item.title}
-                className="flex items-start gap-3 rounded-2xl border border-line bg-inner-card-subtle px-3 py-2.5 sm:px-3.5 sm:py-3"
-              >
-                <span
-                  className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-xl border border-accent/20 bg-accent-soft text-accent"
-                  aria-hidden="true"
+              return (
+                <div
+                  key={item.title}
+                  className="flex items-start gap-3 rounded-xl border border-line bg-inner-card-subtle p-3"
                 >
-                  <Icon size={15} />
-                </span>
-                <div className="min-w-0">
-                  <p className="font-display text-sm font-semibold text-foreground">{item.title}</p>
-                  <p className="mt-0.5 text-xs leading-5 text-muted">{item.description}</p>
+                  <span
+                    className="flex h-8 w-8 shrink-0 items-center justify-center rounded-xl border border-accent/20 bg-accent-soft text-accent"
+                    aria-hidden="true"
+                  >
+                    <Icon size={15} />
+                  </span>
+                  <div className="min-w-0">
+                    <p className="font-display text-sm font-semibold text-foreground">{item.title}</p>
+                    <p className="mt-1 text-xs leading-5 text-muted">{item.description}</p>
+                  </div>
                 </div>
-              </li>
-            );
-          })}
-        </ul>
+              );
+            })}
+          </div>
+        </div>
       </div>
     </MotionReveal>
   );

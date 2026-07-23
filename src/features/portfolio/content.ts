@@ -75,6 +75,7 @@ export type PortfolioContent = {
     specialtyLabel: string;
     specialtyValue: string;
     specialtyBadge: string;
+    labStatus: string;
   };
   about: {
     eyebrow: string;
@@ -237,6 +238,7 @@ const portfolioContent: Record<Locale, PortfolioContent> = {
       specialtyLabel: "Especialidade",
       specialtyValue: "React, React Native, APIs e UI de produto",
       specialtyBadge: "full stack",
+      labStatus: "Disponível para novos projetos",
     },
     about: {
       eyebrow: "Sobre",
@@ -247,6 +249,7 @@ const portfolioContent: Record<Locale, PortfolioContent> = {
       linkedinAria: "LinkedIn",
       paragraphs: [
         "Desenvolvedora full stack com foco em interface e produto. Construo experiências no front e no mobile, e também estruturo o backend por trás.",
+        "Gosto de fechar o ciclo: da tela à API, com cuidado em usabilidade, performance e entrega. Trabalho em produtos reais, do protótipo ao que vai pro ar.",
       ],
       focusTitle: "Onde atuo",
       focusAreas: [
@@ -474,6 +477,7 @@ const portfolioContent: Record<Locale, PortfolioContent> = {
       specialtyLabel: "Specialty",
       specialtyValue: "React, React Native, APIs, and product UI",
       specialtyBadge: "full stack",
+      labStatus: "Open to new projects",
     },
     about: {
       eyebrow: "About",
@@ -484,6 +488,7 @@ const portfolioContent: Record<Locale, PortfolioContent> = {
       linkedinAria: "LinkedIn",
       paragraphs: [
         "Full stack developer focused on interface and product. I build front-end and mobile experiences, and also structure the backend behind them.",
+        "I like closing the loop: from UI to API, with care for usability, performance, and delivery. I work on real products, from prototype to production.",
       ],
       focusTitle: "Where I work",
       focusAreas: [
@@ -684,6 +689,7 @@ const portfolioContent: Record<Locale, PortfolioContent> = {
       specialtyLabel: "Especialidad",
       specialtyValue: "React, React Native, APIs y UI de producto",
       specialtyBadge: "full stack",
+      labStatus: "Disponible para nuevos proyectos",
     },
     about: {
       eyebrow: "Sobre mí",
@@ -694,6 +700,7 @@ const portfolioContent: Record<Locale, PortfolioContent> = {
       linkedinAria: "LinkedIn",
       paragraphs: [
         "Desarrolladora full stack con foco en interfaz y producto. Construyo experiencias en front y mobile, y también estructuro el backend detrás.",
+        "Me gusta cerrar el ciclo: de la pantalla a la API, con cuidado en usabilidad, performance y entrega. Trabajo en productos reales, del prototipo a producción.",
       ],
       focusTitle: "Dónde actúo",
       focusAreas: [

@@ -37,7 +37,7 @@ export function LanguageSwitcher({
       )}
       aria-label={languageSwitcher.label}
     >
-      <span className="flex h-8 w-8 items-center justify-center rounded-full text-foreground sm:h-9 sm:w-9" aria-hidden="true">
+      <span className="hidden h-8 w-8 items-center justify-center rounded-full text-foreground min-[380px]:flex sm:h-9 sm:w-9" aria-hidden="true">
         <Languages size={16} />
       </span>
       {languageSwitcher.options.map((option) => {

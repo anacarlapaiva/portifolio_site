@@ -14,14 +14,14 @@ export function ProcessSection() {
   return (
     <MotionReveal
       as="section"
-      className="min-w-0 rounded-[2rem] border border-line glass-panel px-5 py-8 shadow-[var(--shadow)] backdrop-blur sm:px-8"
+      className="min-w-0 rounded-[1.5rem] border border-white/25 glass-panel px-4 py-5 sm:rounded-[2rem] sm:px-8 sm:py-8"
       delay={0.12}
     >
       <SectionHeading
         eyebrow={process.eyebrow}
         title={process.title}
       />
-      <div className="mt-8 grid grid-cols-1 gap-4 md:grid-cols-3">
+      <div className="mt-5 grid grid-cols-1 gap-3 sm:mt-8 sm:gap-4 md:grid-cols-3">
         {process.items.map(({ title, description }, index) => {
           const icons = [ScanSearch, Workflow, Rocket];
           const Icon = icons[index];

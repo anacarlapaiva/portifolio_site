@@ -16,11 +16,11 @@ export function ContactSection() {
     <MotionReveal
       as="section"
       id="contato"
-      className="min-w-0 scroll-mt-28 rounded-[2rem] border border-line glass-panel px-5 py-8 shadow-[var(--shadow)] backdrop-blur sm:px-8"
+      className="min-w-0 scroll-mt-24 rounded-[1.5rem] border border-white/25 glass-panel px-4 py-5 sm:scroll-mt-28 sm:rounded-[2rem] sm:px-8 sm:py-8"
       delay={0.15}
     >
       <SectionHeading eyebrow={contact.eyebrow} title={contact.title} />
-      <div className="mt-8 grid grid-cols-1 gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,0.9fr)]">
+      <div className="mt-5 grid grid-cols-1 gap-5 sm:mt-8 sm:gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,0.9fr)]">
         <div className="space-y-4">
           <p className="max-w-xl text-[0.96rem] leading-7 text-muted sm:text-base sm:leading-8">
             {contact.description}

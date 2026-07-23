@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import { LenisProvider } from "@/shared/providers/lenis-provider";
 
@@ -9,6 +9,16 @@ export const metadata: Metadata = {
   icons: {
     icon: "/favicon.svg",
   },
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  viewportFit: "cover",
+  themeColor: [
+    { media: "(prefers-color-scheme: dark)", color: "#07314a" },
+    { media: "(prefers-color-scheme: light)", color: "#dff3ff" },
+  ],
 };
 
 export default function RootLayout({
@@ -39,7 +49,7 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className="min-h-full bg-background text-foreground antialiased">
+      <body className="min-h-full text-foreground antialiased">
         <LenisProvider>{children}</LenisProvider>
       </body>
     </html>

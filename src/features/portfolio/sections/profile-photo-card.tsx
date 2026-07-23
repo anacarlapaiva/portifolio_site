@@ -18,9 +18,9 @@ export function ProfilePhotoCard({ name, alt, fallbackRole }: ProfilePhotoCardPr
   return (
     <XpWindow title="ana-carla.jpg" icon={<ImageIcon size={12} />} bodyClassName="p-2">
       {hasError ? (
-        <div className="flex aspect-[4/5] flex-col items-center justify-center gap-4 rounded-xl border border-line bg-[linear-gradient(180deg,var(--card),var(--surface))] px-6">
-          <div className="flex h-24 w-24 items-center justify-center rounded-full border border-accent/20 bg-accent-soft">
-            <span className="font-display text-4xl font-semibold text-accent">AC</span>
+        <div className="flex aspect-square flex-col items-center justify-center gap-4 rounded-xl border border-line bg-[linear-gradient(180deg,var(--card),var(--surface))] px-6">
+          <div className="flex h-20 w-20 items-center justify-center rounded-full border border-accent/20 bg-accent-soft">
+            <span className="font-display text-3xl font-semibold text-accent">AC</span>
           </div>
           <div className="text-center">
             <p className="font-display text-lg font-semibold text-foreground">{name}</p>
@@ -33,8 +33,8 @@ export function ProfilePhotoCard({ name, alt, fallbackRole }: ProfilePhotoCardPr
             src="/profile-photo-v2.jpg"
             alt={alt}
             width={900}
-            height={1125}
-            className="aspect-[4/5] h-full w-full object-cover object-center"
+            height={900}
+            className="aspect-square h-full w-full object-cover object-center"
             priority
             onError={() => setHasError(true)}
           />

@@ -17,46 +17,52 @@ export function SiteHeader() {
   const activeSection = useActiveSection(["sobre", "skills", "projetos", "faq", "contato"]);
 
   return (
-    <header className="sticky top-2 z-30 rounded-[2rem] border border-line glass-panel px-5 py-4 shadow-[var(--shadow)] backdrop-blur sm:top-4 md:px-8" role="banner">
-      <div className="flex flex-wrap items-start gap-3 md:flex-nowrap md:items-center md:justify-between">
+    <header
+      className="sticky top-2 z-30 rounded-[1.5rem] border border-white/25 glass-panel px-3 py-3 sm:top-4 sm:rounded-[2rem] sm:px-5 sm:py-4 md:px-8"
+      role="banner"
+    >
+      <div className="flex items-center justify-between gap-2 sm:gap-3">
         <a
           href="#inicio"
-          className="min-w-0 flex-1 font-display text-base font-semibold tracking-wide text-foreground sm:text-lg md:flex-none"
+          className="min-w-0 shrink font-display text-sm font-semibold tracking-wide text-foreground sm:text-base md:text-lg"
         >
-          <span className="whitespace-nowrap">
-            <span className="text-accent" aria-hidden="true">&lt;/&gt;</span> {siteHeader.brandLabel}
+          <span className="inline-flex items-center gap-1.5 truncate">
+            <span className="text-accent" aria-hidden="true">
+              &lt;/&gt;
+            </span>
+            <span className="truncate">{siteHeader.brandLabel}</span>
           </span>
         </a>
-        <div className="flex w-full items-center justify-between gap-2 md:hidden">
+
+        <div className="flex shrink-0 items-center gap-1.5 sm:gap-2 md:hidden">
           <LanguageSwitcher
             currentLocale={locale}
             languageSwitcher={languageSwitcher}
-            className="min-w-0 flex-1 max-w-[13rem] bg-inner-card/90"
+            className="bg-inner-card/90"
           />
-          <div className="flex shrink-0 items-center gap-2">
-            <ThemeToggle
-              ariaLabel={themeToggle.ariaLabel}
-              enableLightLabel={themeToggle.enableLight}
-              enableDarkLabel={themeToggle.enableDark}
-              className="h-10 w-10 bg-inner-card/90"
-            />
-            <Button
-              type="button"
-              variant="ghost"
-              size="icon"
-              aria-expanded={isOpen}
-              aria-controls="mobile-navigation"
-              aria-label={isOpen ? siteHeader.closeMenu : siteHeader.openMenu}
-              onClick={() => setIsOpen((current) => !current)}
-              className="h-10 w-10 bg-inner-card/90"
-            >
-              {isOpen ? <X size={18} /> : <Menu size={18} />}
-            </Button>
-          </div>
+          <ThemeToggle
+            ariaLabel={themeToggle.ariaLabel}
+            enableLightLabel={themeToggle.enableLight}
+            enableDarkLabel={themeToggle.enableDark}
+            className="h-10 w-10 bg-inner-card/90"
+          />
+          <Button
+            type="button"
+            variant="ghost"
+            size="icon"
+            aria-expanded={isOpen}
+            aria-controls="mobile-navigation"
+            aria-label={isOpen ? siteHeader.closeMenu : siteHeader.openMenu}
+            onClick={() => setIsOpen((current) => !current)}
+            className="h-10 w-10 bg-inner-card/90"
+          >
+            {isOpen ? <X size={18} /> : <Menu size={18} />}
+          </Button>
         </div>
+
         <nav aria-label={siteHeader.navAriaLabel} className="hidden md:block">
-          <div className="flex items-center gap-6">
-            <ul className="flex items-center gap-3 text-sm text-foreground">
+          <div className="flex items-center gap-4 lg:gap-6">
+            <ul className="flex items-center gap-1 text-sm text-foreground lg:gap-3">
               {navItems.map((item) => {
                 const isActive = activeSection === item.href.replace("#", "");
 
@@ -66,7 +72,7 @@ export function SiteHeader() {
                       href={item.href}
                       aria-current={isActive ? "page" : undefined}
                       className={cn(
-                        "inline-flex min-h-11 items-center gap-2 rounded-full px-4 py-2 transition hover:text-accent",
+                        "inline-flex min-h-11 items-center gap-2 rounded-full px-3 py-2 transition hover:text-accent lg:px-4",
                         isActive && "bg-accent-soft text-accent",
                       )}
                     >
@@ -86,6 +92,7 @@ export function SiteHeader() {
           </div>
         </nav>
       </div>
+
       <div
         id="mobile-navigation"
         className={cn(
@@ -94,27 +101,26 @@ export function SiteHeader() {
         )}
       >
         <div className="min-h-0 overflow-hidden">
-          <div className="mt-1 grid gap-3 border-t border-line pt-4">
-            <nav aria-label={siteHeader.mobileNavAriaLabel}>
-              <ul className="grid gap-2 text-sm text-foreground">
-                {navItems.map((item) => (
-                  <li key={item.href}>
-                    <a
-                      href={item.href}
-                      onClick={() => setIsOpen(false)}
-                      className={cn(
-                        "inline-flex min-h-12 w-full items-center justify-between rounded-2xl border border-line bg-inner-card/90 px-4 py-3 transition hover:border-accent/30 hover:bg-accent-soft hover:text-accent",
-                        activeSection === item.href.replace("#", "") && "border-accent/30 bg-accent-soft text-accent",
-                      )}
-                    >
-                      <span>{item.label}</span>
-                      <span className="h-2 w-2 rounded-full bg-accent/80" aria-hidden="true" />
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </nav>
-          </div>
+          <nav aria-label={siteHeader.mobileNavAriaLabel} className="mt-3 border-t border-line pt-3">
+            <ul className="grid gap-1.5 text-sm text-foreground">
+              {navItems.map((item) => (
+                <li key={item.href}>
+                  <a
+                    href={item.href}
+                    onClick={() => setIsOpen(false)}
+                    className={cn(
+                      "inline-flex min-h-12 w-full items-center justify-between rounded-2xl border border-line bg-inner-card/90 px-4 py-3 transition active:scale-[0.99] hover:border-accent/30 hover:bg-accent-soft hover:text-accent",
+                      activeSection === item.href.replace("#", "") &&
+                        "border-accent/30 bg-accent-soft text-accent",
+                    )}
+                  >
+                    <span>{item.label}</span>
+                    <span className="h-2 w-2 rounded-full bg-accent/80" aria-hidden="true" />
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </nav>
         </div>
       </div>
     </header>

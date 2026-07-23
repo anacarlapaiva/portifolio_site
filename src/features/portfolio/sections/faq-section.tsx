@@ -18,7 +18,7 @@ export function FaqSection() {
     <MotionReveal
       as="section"
       id="faq"
-      className="min-w-0 scroll-mt-28 rounded-[2rem] border border-line glass-panel px-5 py-8 shadow-[var(--shadow)] backdrop-blur sm:px-8"
+      className="min-w-0 scroll-mt-24 rounded-[1.5rem] border border-white/25 glass-panel px-4 py-5 sm:scroll-mt-28 sm:rounded-[2rem] sm:px-8 sm:py-8"
       delay={0.14}
     >
       <SectionHeading
@@ -27,7 +27,7 @@ export function FaqSection() {
         titleClassName="max-w-3xl"
       />
 
-      <div className="mt-8 grid gap-4">
+      <div className="mt-5 grid gap-3 sm:mt-8 sm:gap-4">
         {faq.items.map((item, index) => {
           const isOpen = openIndex === index;
 
@@ -36,7 +36,7 @@ export function FaqSection() {
               <Card className="overflow-hidden px-0 py-0">
                 <button
                   type="button"
-                  className="flex w-full items-start justify-between gap-4 px-5 py-5 text-left sm:px-6"
+                  className="flex w-full items-start justify-between gap-3 px-4 py-4 text-left sm:gap-4 sm:px-6 sm:py-5"
                   aria-expanded={isOpen}
                   aria-controls={`faq-answer-${index}`}
                   onClick={() => setOpenIndex(isOpen ? -1 : index)}

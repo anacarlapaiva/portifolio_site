@@ -15,11 +15,11 @@ export function SkillsSection() {
     <MotionReveal
       as="section"
       id="skills"
-      className="min-w-0 scroll-mt-28 rounded-[2rem] border border-line glass-panel px-5 py-8 shadow-[var(--shadow)] backdrop-blur sm:px-8"
+      className="min-w-0 scroll-mt-24 rounded-[1.5rem] border border-white/25 glass-panel px-4 py-5 sm:scroll-mt-28 sm:rounded-[2rem] sm:px-8 sm:py-8"
       delay={0.05}
     >
       <SectionHeading eyebrow={skills.eyebrow} title={skills.title} />
-      <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="mt-5 grid grid-cols-1 gap-3 sm:mt-8 sm:grid-cols-2 sm:gap-4 lg:grid-cols-3">
         {skills.items.map(({ name, description }, index) => {
           const icons = [Code2, MonitorSmartphone, PencilRuler, Layers3, Sparkles, Smartphone];
           const Icon = icons[index];

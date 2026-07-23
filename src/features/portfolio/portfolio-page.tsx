@@ -20,20 +20,43 @@ export function PortfolioPage({ locale }: PortfolioPageProps) {
 
   return (
     <PortfolioI18nProvider locale={locale} content={content}>
-      <main className="relative isolate overflow-hidden">
+      <main className="relative">
         <a href="#conteudo" className="skip-link">
           {content.skipLink}
         </a>
-        <div className="absolute inset-x-0 top-0 -z-10 h-[32rem] bg-[radial-gradient(circle_at_top,rgba(120,230,255,0.16),transparent_55%),radial-gradient(circle_at_72%_8%,rgba(95,230,194,0.12),transparent_45%)]" aria-hidden="true" />
-        <div className="aero-bubble absolute -z-10 hidden h-40 w-40 opacity-60 blur-[1px] lg:left-[6%] lg:top-[16%] lg:block" aria-hidden="true" />
-        <div className="aero-bubble absolute -z-10 hidden h-24 w-24 opacity-50 blur-[1px] lg:right-[5%] lg:top-[44%] lg:block" aria-hidden="true" />
-        <div className="aero-bubble absolute -z-10 hidden h-14 w-14 opacity-50 blur-[0.5px] lg:left-[3%] lg:top-[30%] lg:block" aria-hidden="true" />
-        <div className="aero-bubble absolute -z-10 hidden h-28 w-28 opacity-40 blur-[1px] lg:right-[10%] lg:top-[66%] lg:block" aria-hidden="true" />
-        <div className="aero-bubble absolute -z-10 h-16 w-16 opacity-35 blur-[1px] right-[6%] top-[58%] sm:h-20 sm:w-20 lg:hidden" aria-hidden="true" />
-        <div className="aero-bubble absolute -z-10 h-12 w-12 opacity-30 blur-[1px] left-[4%] top-[82%] lg:left-[14%]" aria-hidden="true" />
+
+        {/* Céu contínuo full-viewport — sem corte horizontal */}
+        <div className="aero-sky" aria-hidden="true">
+          <div className="aero-sky__glow aero-sky__glow--a" />
+          <div className="aero-sky__glow aero-sky__glow--b" />
+          <div className="aero-sky__glow aero-sky__glow--c" />
+        </div>
+
+        {/* Bolhas glossy — só desktop, pra não poluir mobile */}
+        <div
+          className="aero-bubble pointer-events-none fixed z-[1] hidden h-44 w-44 opacity-55 blur-[0.5px] lg:block"
+          style={{ left: "4%", top: "22%" }}
+          aria-hidden="true"
+        />
+        <div
+          className="aero-bubble pointer-events-none fixed z-[1] hidden h-28 w-28 opacity-45 blur-[0.5px] lg:block"
+          style={{ right: "5%", top: "38%" }}
+          aria-hidden="true"
+        />
+        <div
+          className="aero-bubble pointer-events-none fixed z-[1] hidden h-16 w-16 opacity-40 lg:block"
+          style={{ left: "2%", top: "48%" }}
+          aria-hidden="true"
+        />
+        <div
+          className="aero-bubble pointer-events-none fixed z-[1] hidden h-32 w-32 opacity-35 blur-[0.5px] lg:block"
+          style={{ right: "10%", top: "68%" }}
+          aria-hidden="true"
+        />
+
         <div
           id="conteudo"
-          className="relative z-10 mx-auto flex min-h-screen w-full max-w-6xl flex-col gap-6 px-4 pb-24 pt-6 sm:px-6 md:pb-12 lg:px-8"
+          className="relative z-10 mx-auto flex min-h-screen w-full max-w-6xl flex-col gap-4 px-3 pb-[calc(5.5rem+env(safe-area-inset-bottom))] pt-4 sm:gap-5 sm:px-6 sm:pb-12 sm:pt-6 md:pb-12 lg:gap-6 lg:px-8"
         >
           <SiteHeader />
           <HeroSection />
@@ -43,10 +66,13 @@ export function PortfolioPage({ locale }: PortfolioPageProps) {
           <ProjectsSection />
           <FaqSection />
           <ContactSection />
-          <footer role="contentinfo" className="rounded-[2rem] border border-line glass-panel px-5 py-6 shadow-[var(--shadow)] backdrop-blur sm:px-8">
-            <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+          <footer
+            role="contentinfo"
+            className="rounded-[1.5rem] border border-white/25 glass-panel px-4 py-5 sm:rounded-[2rem] sm:px-8 sm:py-6"
+          >
+            <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between sm:gap-4">
               <div>
-                <p className="font-display text-lg font-semibold text-foreground">
+                <p className="font-display text-base font-semibold text-foreground sm:text-lg">
                   <span className="text-accent">&lt;/&gt;</span> Ana Carla
                 </p>
                 <p className="mt-1 text-sm text-muted">{content.footer.role}</p>

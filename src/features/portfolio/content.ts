@@ -48,6 +48,7 @@ export type PortfolioContent = {
   };
   mobileDock: {
     ariaLabel: string;
+    homeLabel: string;
   };
   skipLink: string;
   navItems: Array<{
@@ -83,6 +84,11 @@ export type PortfolioContent = {
     githubAria: string;
     linkedinAria: string;
     paragraphs: string[];
+    focusTitle: string;
+    focusAreas: Array<{
+      title: string;
+      description: string;
+    }>;
     credentialsTitle: string;
     credentials: Array<{
       title: string;
@@ -199,6 +205,7 @@ const portfolioContent: Record<Locale, PortfolioContent> = {
     },
     mobileDock: {
       ariaLabel: "Navegação rápida mobile",
+      homeLabel: "Início",
     },
     skipLink: "Pular para o conteúdo principal",
     navItems: [
@@ -210,9 +217,9 @@ const portfolioContent: Record<Locale, PortfolioContent> = {
     ],
     hero: {
       eyebrow: "Desenvolvedora Full Stack",
-      title: "Front-end, mobile e interface com acabamento de produto.",
+      title: "Front, back e mobile com acabamento.",
       description:
-        "Interfaces com clareza, consistência visual e código bem feito — em React, React Native e UI UX.",
+        "Atuo no front-end, no backend e no mobile. React, React Native, APIs e UI com olhar de produto.",
       primaryCta: "Ver projetos",
       secondaryCta: "Baixar currículo",
       resumeHref: "/ana-carla-paiva-curriculo.pdf",
@@ -221,25 +228,31 @@ const portfolioContent: Record<Locale, PortfolioContent> = {
       githubAria: "GitHub",
       linkedinAria: "LinkedIn",
       stats: [
-        { value: "Front-end", label: "foco em interface e produto" },
-        { value: "Mobile", label: "pós em mobile + React Native" },
-        { value: "UI + UX", label: "design aplicado ao código" },
+        { value: "Front-end", label: "React e Next.js" },
+        { value: "Backend", label: "APIs e integração" },
+        { value: "Mobile", label: "React Native" },
       ],
       labEyebrow: "Laboratório criativo",
-      labDescription: "Interface e mobile com forma e função.",
+      labDescription: "Do visual à API, com forma e função.",
       specialtyLabel: "Especialidade",
-      specialtyValue: "React, React Native e UI orientada a produto",
-      specialtyBadge: "interface first",
+      specialtyValue: "React, React Native, APIs e UI de produto",
+      specialtyBadge: "full stack",
     },
     about: {
       eyebrow: "Sobre",
-      title: "Ideias viram interfaces fortes e usáveis",
-      role: "Front-end developer • React Native • UI UX",
+      title: "Produto de ponta a ponta",
+      role: "Full Stack Developer",
       emailAria: "E-mail",
       githubAria: "GitHub",
       linkedinAria: "LinkedIn",
       paragraphs: [
-        "Desenvolvedora front-end focada em interface e produto. Crio experiências simples de usar — com critério visual, componentes bem pensados e código organizado por trás.",
+        "Desenvolvedora full stack com foco em interface e produto. Construo experiências no front e no mobile, e também estruturo o backend por trás.",
+      ],
+      focusTitle: "Onde atuo",
+      focusAreas: [
+        { title: "Front-end", description: "React, Next.js e interfaces de produto." },
+        { title: "Backend", description: "APIs, integração e lógica de negócio." },
+        { title: "Mobile", description: "Apps em React Native para uso real." },
       ],
       credentialsTitle: "Credenciais",
       credentials: [
@@ -252,12 +265,12 @@ const portfolioContent: Record<Locale, PortfolioContent> = {
           description: "Produto mobile, performance e usabilidade.",
         },
         {
-          title: "Perfil híbrido",
-          description: "Front-end, interface e UX juntos.",
+          title: "Full stack",
+          description: "Front-end, backend, mobile e UI.",
         },
       ],
       photoAlt: "Foto de perfil de Ana Carla",
-      fallbackRole: "front-end • mobile • ui ux",
+      fallbackRole: "full stack",
     },
     skills: {
       eyebrow: "Skills",
@@ -357,7 +370,12 @@ const portfolioContent: Record<Locale, PortfolioContent> = {
         {
           question: "Front-end, mobile ou design?",
           answer:
-            "Foco em front-end, bem conectado a mobile e interface — React, Next.js, React Native, UI e UX.",
+            "Foco em front-end, bem conectado a mobile e interface: React, Next.js, React Native, UI e UX.",
+        },
+        {
+          question: "Você também faz backend?",
+          answer:
+            "Sim. APIs, integração e a lógica por trás da interface, junto com front-end e mobile.",
         },
         {
           question: "Você desenvolve apps em React Native?",
@@ -389,7 +407,7 @@ const portfolioContent: Record<Locale, PortfolioContent> = {
       ],
     },
     footer: {
-      role: "Desenvolvedora front-end, interface e produto.",
+      role: "Desenvolvedora full stack, interface e produto.",
       builtWith: "Feito com Next.js, Tailwind e Motion",
     },
   },
@@ -424,6 +442,7 @@ const portfolioContent: Record<Locale, PortfolioContent> = {
     },
     mobileDock: {
       ariaLabel: "Quick mobile navigation",
+      homeLabel: "Home",
     },
     skipLink: "Skip to main content",
     navItems: [
@@ -435,9 +454,9 @@ const portfolioContent: Record<Locale, PortfolioContent> = {
     ],
     hero: {
       eyebrow: "Full Stack Developer",
-      title: "Front-end, mobile, and interface with real product polish.",
+      title: "Front, back, and mobile with polish.",
       description:
-        "Interfaces with clarity, visual consistency, and solid code — in React, React Native, and UI UX.",
+        "I work across front-end, backend, and mobile. React, React Native, APIs, and UI with a product mindset.",
       primaryCta: "View projects",
       secondaryCta: "Download resume",
       resumeHref: "/ana-carla-paiva-resume-en.pdf",
@@ -446,25 +465,31 @@ const portfolioContent: Record<Locale, PortfolioContent> = {
       githubAria: "GitHub",
       linkedinAria: "LinkedIn",
       stats: [
-        { value: "Front-end", label: "focus on interface and product" },
-        { value: "Mobile", label: "mobile postgrad + React Native" },
-        { value: "UI + UX", label: "design applied to code" },
+        { value: "Front-end", label: "React and Next.js" },
+        { value: "Backend", label: "APIs and integration" },
+        { value: "Mobile", label: "React Native" },
       ],
       labEyebrow: "Creative lab",
-      labDescription: "Interface and mobile balancing form and function.",
+      labDescription: "From UI to API, balancing form and function.",
       specialtyLabel: "Specialty",
-      specialtyValue: "React, React Native, and product-oriented UI",
-      specialtyBadge: "interface first",
+      specialtyValue: "React, React Native, APIs, and product UI",
+      specialtyBadge: "full stack",
     },
     about: {
       eyebrow: "About",
-      title: "Ideas become strong, usable interfaces",
-      role: "Front-end developer • React Native • UI UX",
+      title: "Product end to end",
+      role: "Full Stack Developer",
       emailAria: "Email",
       githubAria: "GitHub",
       linkedinAria: "LinkedIn",
       paragraphs: [
-        "Front-end developer focused on interface and product. I build experiences that feel simple to use — backed by visual judgment, thoughtful components, and organized code.",
+        "Full stack developer focused on interface and product. I build front-end and mobile experiences, and also structure the backend behind them.",
+      ],
+      focusTitle: "Where I work",
+      focusAreas: [
+        { title: "Front-end", description: "React, Next.js, and product interfaces." },
+        { title: "Backend", description: "APIs, integration, and business logic." },
+        { title: "Mobile", description: "React Native apps for real use." },
       ],
       credentialsTitle: "Credentials",
       credentials: [
@@ -477,12 +502,12 @@ const portfolioContent: Record<Locale, PortfolioContent> = {
           description: "Mobile product, performance, and usability.",
         },
         {
-          title: "Hybrid profile",
-          description: "Front-end, interface, and UX together.",
+          title: "Full stack",
+          description: "Front-end, backend, mobile, and UI.",
         },
       ],
       photoAlt: "Profile photo of Ana Carla",
-      fallbackRole: "front-end • mobile • ui ux",
+      fallbackRole: "full stack",
     },
     skills: {
       eyebrow: "Skills",
@@ -555,7 +580,12 @@ const portfolioContent: Record<Locale, PortfolioContent> = {
         {
           question: "Front-end, mobile, or design?",
           answer:
-            "Front-end is my focus, closely tied to mobile and interface — React, Next.js, React Native, UI and UX.",
+            "Front-end is my focus, closely tied to mobile and interface: React, Next.js, React Native, UI and UX.",
+        },
+        {
+          question: "Do you also work on backend?",
+          answer:
+            "Yes. APIs, integration, and the logic behind the interface, alongside front-end and mobile.",
         },
         {
           question: "Do you build apps in React Native?",
@@ -587,7 +617,7 @@ const portfolioContent: Record<Locale, PortfolioContent> = {
       ],
     },
     footer: {
-      role: "Front-end developer, interface, and product.",
+      role: "Full stack developer, interface, and product.",
       builtWith: "Built with Next.js, Tailwind, and Motion",
     },
   },
@@ -622,6 +652,7 @@ const portfolioContent: Record<Locale, PortfolioContent> = {
     },
     mobileDock: {
       ariaLabel: "Navegación rápida mobile",
+      homeLabel: "Inicio",
     },
     skipLink: "Saltar al contenido principal",
     navItems: [
@@ -633,9 +664,9 @@ const portfolioContent: Record<Locale, PortfolioContent> = {
     ],
     hero: {
       eyebrow: "Desarrolladora Full Stack",
-      title: "Front-end, mobile e interfaz con acabado de producto.",
+      title: "Front, back y mobile con acabado.",
       description:
-        "Interfaces con claridad, consistencia visual y código bien hecho — en React, React Native y UI UX.",
+        "Trabajo en front-end, backend y mobile. React, React Native, APIs y UI con mirada de producto.",
       primaryCta: "Ver proyectos",
       secondaryCta: "Descargar CV",
       resumeHref: "/ana-carla-paiva-resume-en.pdf",
@@ -644,25 +675,31 @@ const portfolioContent: Record<Locale, PortfolioContent> = {
       githubAria: "GitHub",
       linkedinAria: "LinkedIn",
       stats: [
-        { value: "Front-end", label: "foco en interfaz y producto" },
-        { value: "Mobile", label: "posgrado mobile + React Native" },
-        { value: "UI + UX", label: "diseño aplicado al código" },
+        { value: "Front-end", label: "React y Next.js" },
+        { value: "Backend", label: "APIs e integración" },
+        { value: "Mobile", label: "React Native" },
       ],
       labEyebrow: "Laboratorio creativo",
-      labDescription: "Interfaz y mobile con forma y función.",
+      labDescription: "De la UI a la API, con forma y función.",
       specialtyLabel: "Especialidad",
-      specialtyValue: "React, React Native y UI orientada a producto",
-      specialtyBadge: "interface first",
+      specialtyValue: "React, React Native, APIs y UI de producto",
+      specialtyBadge: "full stack",
     },
     about: {
       eyebrow: "Sobre mí",
-      title: "Las ideas se vuelven interfaces fuertes y usables",
-      role: "Front-end developer • React Native • UI UX",
+      title: "Producto de punta a punta",
+      role: "Full Stack Developer",
       emailAria: "Correo",
       githubAria: "GitHub",
       linkedinAria: "LinkedIn",
       paragraphs: [
-        "Desarrolladora front-end enfocada en interfaz y producto. Creo experiencias simples de usar — con criterio visual, componentes bien pensados y código organizado por detrás.",
+        "Desarrolladora full stack con foco en interfaz y producto. Construyo experiencias en front y mobile, y también estructuro el backend detrás.",
+      ],
+      focusTitle: "Dónde actúo",
+      focusAreas: [
+        { title: "Front-end", description: "React, Next.js e interfaces de producto." },
+        { title: "Backend", description: "APIs, integración y lógica de negocio." },
+        { title: "Mobile", description: "Apps en React Native para uso real." },
       ],
       credentialsTitle: "Credenciales",
       credentials: [
@@ -675,12 +712,12 @@ const portfolioContent: Record<Locale, PortfolioContent> = {
           description: "Producto mobile, performance y usabilidad.",
         },
         {
-          title: "Perfil híbrido",
-          description: "Front-end, interfaz y UX juntos.",
+          title: "Full stack",
+          description: "Front-end, backend, mobile y UI.",
         },
       ],
       photoAlt: "Foto de perfil de Ana Carla",
-      fallbackRole: "front-end • mobile • ui ux",
+      fallbackRole: "full stack",
     },
     skills: {
       eyebrow: "Skills",
@@ -753,7 +790,12 @@ const portfolioContent: Record<Locale, PortfolioContent> = {
         {
           question: "¿Front-end, mobile o diseño?",
           answer:
-            "Mi foco es front-end, muy conectado a mobile e interfaz — React, Next.js, React Native, UI y UX.",
+            "Mi foco es front-end, muy conectado a mobile e interfaz: React, Next.js, React Native, UI y UX.",
+        },
+        {
+          question: "¿También haces backend?",
+          answer:
+            "Sí. APIs, integración y la lógica detrás de la interfaz, junto con front-end y mobile.",
         },
         {
           question: "¿Desarrollas apps en React Native?",
@@ -785,7 +827,7 @@ const portfolioContent: Record<Locale, PortfolioContent> = {
       ],
     },
     footer: {
-      role: "Desarrolladora front-end, interfaz y producto.",
+      role: "Desarrolladora full stack, interfaz y producto.",
       builtWith: "Hecho con Next.js, Tailwind y Motion",
     },
   },

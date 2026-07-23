@@ -54,11 +54,12 @@ function MotionRevealSection({
   return (
     <motion.section
       ref={ref as RefObject<HTMLElement>}
-      initial={{ opacity: 0, y: 26 }}
-      animate={isVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 26 }}
-      transition={{ duration: 0.55, ease: "easeOut", delay }}
+      initial={{ opacity: 0, y: 20 }}
+      animate={isVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+      transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1], delay }}
       className={className}
       id={id}
+      style={{ willChange: isVisible ? "auto" : "opacity, transform" }}
     >
       {children}
     </motion.section>
@@ -77,11 +78,12 @@ function MotionRevealDiv({
   return (
     <motion.div
       ref={ref}
-      initial={{ opacity: 0, y: 26 }}
-      animate={isVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 26 }}
-      transition={{ duration: 0.55, ease: "easeOut", delay }}
+      initial={{ opacity: 0, y: 20 }}
+      animate={isVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+      transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1], delay }}
       className={className}
       id={id}
+      style={{ willChange: isVisible ? "auto" : "opacity, transform" }}
     >
       {children}
     </motion.div>

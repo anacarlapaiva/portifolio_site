@@ -1,11 +1,32 @@
 import type { Metadata, Viewport } from "next";
+import { Geist, Pixelify_Sans, Unbounded } from "next/font/google";
+
 import "./globals.css";
-import { LenisProvider } from "@/shared/providers/lenis-provider";
+
+const geist = Geist({
+  subsets: ["latin"],
+  variable: "--font-geist",
+  display: "swap",
+});
+
+const unbounded = Unbounded({
+  subsets: ["latin"],
+  weight: ["500", "600", "700"],
+  variable: "--font-unbounded",
+  display: "swap",
+});
+
+const pixelify = Pixelify_Sans({
+  subsets: ["latin"],
+  weight: ["400", "500", "600"],
+  variable: "--font-pixelify",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   title: "Ana Carla",
   description:
-    "Portfólio multilíngue de Ana Carla, com foco em front-end, mobile e interfaces para produtos digitais.",
+    "Portfólio multilíngue de Ana Carla, desenvolvedora full stack com foco em front-end, mobile e produto.",
   icons: {
     icon: "/favicon.svg",
   },
@@ -16,10 +37,12 @@ export const viewport: Viewport = {
   initialScale: 1,
   viewportFit: "cover",
   themeColor: [
-    { media: "(prefers-color-scheme: dark)", color: "#07314a" },
+    { media: "(prefers-color-scheme: dark)", color: "#070d1a" },
     { media: "(prefers-color-scheme: light)", color: "#dff3ff" },
   ],
 };
+
+const bootScript = `(function(){var d=document.documentElement;d.classList.add("js");window.__fxT=setTimeout(function(){d.classList.remove("js")},3000);try{var t=localStorage.getItem("theme");if(t!=="light"&&t!=="dark"){t=matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"}d.dataset.theme=t}catch(e){d.dataset.theme="light"}var m=location.pathname.match(/^\\/(en|es)(\\/|$)/);if(m)d.lang=m[1]})()`;
 
 export default function RootLayout({
   children,
@@ -27,31 +50,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="pt-BR" className="h-full scroll-smooth" suppressHydrationWarning>
+    <html
+      lang="pt-BR"
+      className={`${geist.variable} ${unbounded.variable} ${pixelify.variable}`}
+      suppressHydrationWarning
+    >
       <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&family=Space+Grotesk:wght@300..700&display=swap"
-          rel="stylesheet"
-        />
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              try {
-                const storedTheme = localStorage.getItem("theme");
-                const systemTheme = window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark";
-                document.documentElement.dataset.theme = storedTheme || systemTheme;
-              } catch (error) {
-                document.documentElement.dataset.theme = "dark";
-              }
-            `,
-          }}
-        />
+        <script dangerouslySetInnerHTML={{ __html: bootScript }} />
       </head>
-      <body className="min-h-full text-foreground antialiased">
-        <LenisProvider>{children}</LenisProvider>
-      </body>
+      <body>{children}</body>
     </html>
   );
 }

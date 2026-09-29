@@ -1,151 +1,89 @@
-"use client";
+import Image from "next/image";
 
-import {
-  BadgeCheck,
-  BriefcaseBusiness,
-  Code2,
-  GitFork,
-  Mail,
-  Server,
-  Smartphone,
-} from "lucide-react";
-
-import { ButtonLink } from "@/components/ui/button";
-import { usePortfolioI18n } from "@/features/portfolio/portfolio-i18n";
-import { ProfilePhotoCard } from "@/features/portfolio/sections/profile-photo-card";
-import { MotionReveal } from "@/shared/ui/motion-reveal";
+import { socialLinks, type PortfolioContent } from "@/features/portfolio/content";
+import { delay } from "@/lib/utils";
 import { SectionHeading } from "@/shared/ui/section-heading";
+import { WindowBar } from "@/shared/ui/window-bar";
 
-const focusIcons = [Code2, Server, Smartphone] as const;
-const credentialIcons = [BadgeCheck, Smartphone, Server] as const;
+type AboutSectionProps = {
+  about: PortfolioContent["about"];
+  newTabLabel: string;
+};
 
-export function AboutSection() {
-  const { content } = usePortfolioI18n();
-  const { about } = content;
+const profileLinks = socialLinks.filter((link) => link.label !== "Email");
 
+export function AboutSection({ about, newTabLabel }: AboutSectionProps) {
   return (
-    <MotionReveal
-      as="section"
+    <section
       id="sobre"
-      className="min-w-0 scroll-mt-24 overflow-hidden rounded-[1.5rem] border border-white/25 glass-panel p-4 sm:scroll-mt-28 sm:rounded-[2rem] sm:p-6 lg:p-8"
+      className="mx-auto max-w-[1180px] px-[clamp(20px,4vw,40px)] pt-[clamp(32px,5vw,60px)] pb-[clamp(64px,9vw,120px)]"
     >
-      <div className="flex flex-col gap-4">
-        <SectionHeading eyebrow={about.eyebrow} title={about.title} />
+      <SectionHeading number="02" eyebrow={about.eyebrow} title={about.title} />
 
-        {/* Faixa única: foto compacta + texto. Sem coluna alta vs coluna vazia. */}
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-[13rem_minmax(0,1fr)] sm:items-start lg:grid-cols-[14rem_minmax(0,1fr)]">
-          <div className="mx-auto w-[12rem] sm:mx-0 sm:w-full">
-            <ProfilePhotoCard
-              name="Ana Carla"
+      <div className="mt-[clamp(36px,5vw,56px)] grid grid-cols-[repeat(auto-fit,minmax(min(100%,330px),1fr))] items-start gap-[clamp(28px,4vw,56px)]">
+        <div
+          data-reveal=""
+          data-tilt=""
+          className="group overflow-hidden rounded-[18px] border border-line bg-surface shadow-[0_30px_60px_-40px_var(--glow)]"
+        >
+          <WindowBar title="ana-carla.jpg" size="sm" />
+          <div data-clip="" style={delay(150)} className="relative aspect-[4/4.4] overflow-hidden bg-sky">
+            <Image
+              src="/profile-photo-v2.jpg"
               alt={about.photoAlt}
-              fallbackRole={about.fallbackRole}
+              fill
+              sizes="(min-width: 1180px) 540px, (min-width: 760px) 46vw, 100vw"
+              className="parallax-img zoom-img object-cover [scale:1.12] group-hover:[scale:1.16]"
             />
+            <div className="shine pointer-events-none absolute inset-0" aria-hidden="true" />
           </div>
-
-          <div className="flex min-w-0 flex-col gap-3">
-            <div className="flex flex-wrap items-center justify-between gap-3">
-              <div>
-                <h3 className="font-display text-xl font-semibold text-foreground">Ana Carla</h3>
-                <p className="text-sm text-muted">{about.role}</p>
-              </div>
-              <div className="flex gap-2">
-                <ButtonLink
-                  href="mailto:acfpaiva99@gmail.com"
-                  variant="ghost"
-                  size="icon"
-                  aria-label={about.emailAria}
-                >
-                  <Mail size={17} />
-                </ButtonLink>
-                <ButtonLink
-                  href="https://github.com/anacarlapaiva"
-                  variant="ghost"
-                  size="icon"
-                  aria-label={about.githubAria}
-                >
-                  <GitFork size={17} />
-                </ButtonLink>
-                <ButtonLink
-                  href="https://www.linkedin.com/in/anacarlapaiva"
-                  variant="ghost"
-                  size="icon"
-                  aria-label={about.linkedinAria}
-                >
-                  <BriefcaseBusiness size={17} />
-                </ButtonLink>
-              </div>
+          <div className="flex flex-wrap items-center justify-between gap-3 px-4 py-3.5">
+            <div>
+              <p className="m-0 text-base font-semibold">{about.name}</p>
+              <p className="m-0 mt-0.5 text-[13px] text-muted">{about.role}</p>
             </div>
-
-            <div className="flex flex-col gap-3 text-sm leading-6 text-muted sm:text-[0.95rem] sm:leading-7">
-              <p>{about.paragraphs[0]}</p>
-              {about.paragraphs[1] ? (
-                <p className="hidden sm:block">{about.paragraphs[1]}</p>
-              ) : null}
+            <div className="flex gap-3 text-[13px] text-muted">
+              {profileLinks.map((link) => (
+                <a key={link.label} href={link.href} target="_blank" rel="noopener" className="py-1">
+                  {link.label}
+                  <span className="sr-only"> {newTabLabel}</span>
+                </a>
+              ))}
             </div>
           </div>
         </div>
 
-        {/* 3 + 3 no mesmo ritmo */}
-        <div className="flex flex-col gap-2">
-          <p className="font-display text-[0.7rem] font-semibold uppercase tracking-[0.2em] text-accent">
-            {about.focusTitle}
-          </p>
-          <div className="grid grid-cols-1 gap-2 sm:grid-cols-3">
-            {focusIcons.map((Icon, index) => {
-              const item = about.focusAreas[index];
-              if (!item) return null;
-
-              return (
-                <div
-                  key={item.title}
-                  className="flex items-start gap-3 rounded-xl border border-line bg-inner-card p-3"
-                >
-                  <span
-                    className="flex h-8 w-8 shrink-0 items-center justify-center rounded-xl border border-accent/20 bg-accent-soft text-accent"
-                    aria-hidden="true"
-                  >
-                    <Icon size={15} />
-                  </span>
-                  <div className="min-w-0">
-                    <p className="font-display text-sm font-semibold text-foreground">{item.title}</p>
-                    <p className="mt-1 text-xs leading-5 text-muted">{item.description}</p>
-                  </div>
-                </div>
-              );
-            })}
+        <div className="flex min-w-0 flex-col gap-10">
+          <div data-reveal="" className="flex flex-col gap-4 text-[clamp(17px,1.4vw,19px)] leading-[1.65] text-pretty">
+            <p className="m-0">{about.paragraphs[0]}</p>
+            <p className="m-0 text-muted">{about.paragraphs[1]}</p>
           </div>
-        </div>
-
-        <div className="flex flex-col gap-2">
-          <p className="font-display text-[0.7rem] font-semibold uppercase tracking-[0.2em] text-accent">
-            {about.credentialsTitle}
-          </p>
-          <div className="grid grid-cols-1 gap-2 sm:grid-cols-3">
-            {credentialIcons.map((Icon, index) => {
-              const item = about.credentials[index];
-              if (!item) return null;
-
-              return (
-                <div
-                  key={item.title}
-                  className="flex items-start gap-3 rounded-xl border border-line bg-inner-card-subtle p-3"
-                >
-                  <span
-                    className="flex h-8 w-8 shrink-0 items-center justify-center rounded-xl border border-accent/20 bg-accent-soft text-accent"
-                    aria-hidden="true"
-                  >
-                    <Icon size={15} />
-                  </span>
-                  <div className="min-w-0">
-                    <p className="font-display text-sm font-semibold text-foreground">{item.title}</p>
-                    <p className="mt-1 text-xs leading-5 text-muted">{item.description}</p>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
+          <DefinitionList title={about.focusTitle} items={about.focusAreas} />
+          <DefinitionList title={about.credentialsTitle} items={about.credentials} />
         </div>
       </div>
-    </MotionReveal>
+    </section>
+  );
+}
+
+function DefinitionList({ title, items }: { title: string; items: PortfolioContent["about"]["focusAreas"] }) {
+  return (
+    <div>
+      <h3 className="m-0 pb-2.5 font-pixel text-sm font-normal text-muted">{title}</h3>
+      <div data-line="" className="h-0.5 bg-line2" aria-hidden="true" />
+      <dl className="m-0">
+        {items.map((item, index) => (
+          <div
+            key={item.title}
+            data-reveal=""
+            style={delay(150 + index * 90)}
+            className="grid grid-cols-[minmax(110px,170px)_1fr] gap-4 border-b border-line py-3.5 text-[15px]"
+          >
+            <dt className="font-semibold">{item.title}</dt>
+            <dd className="m-0 text-muted">{item.description}</dd>
+          </div>
+        ))}
+      </dl>
+    </div>
   );
 }

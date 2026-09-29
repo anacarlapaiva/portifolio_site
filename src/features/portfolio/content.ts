@@ -8,14 +8,37 @@ export function hasLocale(value: string): value is Locale {
   return locales.includes(value as Locale);
 }
 
-export type LocalizedProjectItem = {
+export function getLocalePath(locale: Locale) {
+  return locale === defaultLocale ? "/" : `/${locale}`;
+}
+
+type TitledItem = {
   title: string;
-  summary: string;
-  stack: string[];
+  description: string;
+};
+
+export type StoreBadge = {
+  prefix: string;
+  label: string;
+  href?: string;
+  title?: string;
+};
+
+export type ProjectItem = {
+  title: string;
+  domain: string;
   href: string;
   imageSrc: string;
   imageAlt: string;
-  category: "website" | "app";
+  kind: "site" | "app";
+  summary: string;
+  tags: string[];
+  stores?: StoreBadge[];
+};
+
+export type CodeLine = {
+  key: string;
+  value: string | string[];
 };
 
 export type PortfolioContent = {
@@ -25,101 +48,85 @@ export type PortfolioContent = {
     title: string;
     description: string;
   };
+  skipLink: string;
+  newTabLabel: string;
   languageSwitcher: {
     label: string;
-    currentLabel: string;
-    options: Array<{
-      locale: Locale;
-      label: string;
-      shortLabel: string;
-    }>;
   };
   themeToggle: {
-    ariaLabel: string;
-    enableLight: string;
-    enableDark: string;
+    label: string;
   };
   siteHeader: {
-    brandLabel: string;
     navAriaLabel: string;
     mobileNavAriaLabel: string;
-    openMenu: string;
-    closeMenu: string;
+    menuLabel: string;
+    closeLabel: string;
+    openMenuAria: string;
+    closeMenuAria: string;
   };
-  mobileDock: {
-    ariaLabel: string;
-    homeLabel: string;
-  };
-  skipLink: string;
   navItems: Array<{
+    number: string;
     label: string;
     href: string;
   }>;
   hero: {
-    eyebrow: string;
+    badge: string;
     title: string;
+    titleHighlight: string;
     description: string;
     primaryCta: string;
     secondaryCta: string;
     resumeHref: string;
-    resumeDownloadName: string;
-    emailAria: string;
-    githubAria: string;
-    linkedinAria: string;
-    stats: Array<{
-      value: string;
-      label: string;
-    }>;
-    labEyebrow: string;
-    labDescription: string;
-    specialtyLabel: string;
-    specialtyValue: string;
-    specialtyBadge: string;
-    labStatus: string;
-  };
-  about: {
-    eyebrow: string;
-    title: string;
-    role: string;
-    emailAria: string;
-    githubAria: string;
-    linkedinAria: string;
-    paragraphs: string[];
-    focusTitle: string;
-    focusAreas: Array<{
-      title: string;
-      description: string;
-    }>;
-    credentialsTitle: string;
-    credentials: Array<{
-      title: string;
-      description: string;
-    }>;
-    photoAlt: string;
-    fallbackRole: string;
-  };
-  skills: {
-    eyebrow: string;
-    title: string;
-    items: Array<{
-      name: string;
-      description: string;
-    }>;
-  };
-  process: {
-    eyebrow: string;
-    title: string;
-    items: Array<{
-      title: string;
-      description: string;
-    }>;
+    status: string;
+    code: {
+      fileName: string;
+      objectName: string;
+      lines: CodeLine[];
+    };
+    ticker: string[];
+    tickerPause: string;
+    tickerPlay: string;
   };
   projects: {
     eyebrow: string;
     title: string;
-    caseLabel: string;
-    viewProjectLabel: string;
-    items: LocalizedProjectItem[];
+    description: string;
+    featured: {
+      fileName: string;
+      badge: string;
+      title: string;
+      description: string;
+      pickerLabel: string;
+      hint: string;
+      hintTouch: string;
+      stageAriaLabel: string;
+      flavors: string[];
+      tags: string[];
+      cta: string;
+    };
+    items: ProjectItem[];
+  };
+  about: {
+    eyebrow: string;
+    title: string;
+    photoAlt: string;
+    name: string;
+    role: string;
+    paragraphs: [string, string];
+    focusTitle: string;
+    focusAreas: TitledItem[];
+    credentialsTitle: string;
+    credentials: TitledItem[];
+  };
+  skills: {
+    eyebrow: string;
+    title: string;
+    items: TitledItem[];
+  };
+  process: {
+    eyebrow: string;
+    title: string;
+    items: TitledItem[];
   };
   faq: {
     eyebrow: string;
@@ -131,48 +138,107 @@ export type PortfolioContent = {
   };
   contact: {
     eyebrow: string;
+    fileName: string;
     title: string;
+    titleHighlight: string;
     description: string;
     cta: string;
-    items: Array<{
-      label: string;
-      value: string;
-      href: string;
-    }>;
+    form: {
+      nameLabel: string;
+      namePlaceholder: string;
+      subjectLabel: string;
+      subjectPlaceholder: string;
+      optional: string;
+      messageLabel: string;
+      messagePlaceholder: string;
+      submit: string;
+      hint: string;
+      defaultSubject: string;
+      greeting: string;
+      signature: string;
+      sent: string;
+      fallback: string;
+      gmail: string;
+      copy: string;
+      copied: string;
+    };
+  };
+  whatsapp: {
+    buttonLabel: string;
+    openAria: string;
+    fileName: string;
+    greeting: string;
+    message: string;
+    cta: string;
+    closeLabel: string;
   };
   footer: {
     role: string;
     builtWith: string;
+    homeLabel: string;
   };
+};
+
+export const contactEmail = "acfpaiva99@gmail.com";
+
+export const whatsappNumber = "5543999936376";
+export const whatsappDisplay = "(43) 99993-6376";
+
+export const socialLinks = [
+  { label: "Email", value: contactEmail, href: `mailto:${contactEmail}` },
+  { label: "LinkedIn", value: "linkedin.com/in/anacarlapaiva", href: "https://www.linkedin.com/in/anacarlapaiva" },
+  { label: "GitHub", value: "github.com/anacarlapaiva", href: "https://github.com/anacarlapaiva" },
+] as const;
+
+export const matchProteinHref: string | null = null;
+
+export const flavorMedia = [
+  { key: "chocolate", color: "#5b3a2a", stage: "#5a4234" },
+  { key: "amendoim", color: "#c98a45", stage: "#a8692d" },
+  { key: "morango", color: "#e2506a", stage: "#c45f6c" },
+] as const;
+
+const storeLinks = {
+  clubeAppStore: "https://apps.apple.com/br/app/clube-the-best/id6463561926",
+  clubePlay: "https://play.google.com/store/apps/details?id=com.amatech.thebestclubapp",
+  portalPlay: "https://play.google.com/store/apps/details?id=com.amatech.amatechfranchiseeapp",
 };
 
 const sharedProjects = {
   solus: {
+    title: "Solus",
+    domain: "novo.solus.inf.br",
     href: "https://novo.solus.inf.br/home",
-    imageSrc: "/project-previews/solus-site-v2.png",
-    category: "website" as const,
+    imageSrc: "/project-previews/solus-site-v2.jpg",
+    kind: "site",
   },
   centroCardio: {
+    title: "Centro Cardio Londrina",
+    domain: "centrocardiolondrina.com.br",
     href: "https://centrocardiolondrina.com.br/",
-    imageSrc: "/project-previews/centro-cardio-londrina-site-v2.png",
-    category: "website" as const,
+    imageSrc: "/project-previews/centro-cardio-londrina-site-v2.jpg",
+    kind: "site",
   },
   theBestAcai: {
+    title: "The Best Açaí",
+    domain: "thebestacai.com.br",
     href: "https://www.thebestacai.com.br/",
-    imageSrc: "/project-previews/the-best-acai-site-v2.png",
-    category: "website" as const,
+    imageSrc: "/project-previews/the-best-acai-site-v2.jpg",
+    kind: "site",
   },
   clubeTheBest: {
-    href: "#contato",
-    imageSrc: "/project-previews/mobile-app-vector.svg",
-    category: "app" as const,
+    title: "Clube The Best",
+    href: storeLinks.clubePlay,
+    imageSrc: "/project-previews/clube-the-best-app.jpg",
+    kind: "app",
   },
   theBestPortal: {
-    href: "#contato",
-    imageSrc: "/project-previews/mobile-app-vector.svg",
-    category: "app" as const,
+    title: "The Best Portal",
+    href: storeLinks.portalPlay,
+    imageSrc: "/project-previews/the-best-portal-app.jpg",
+    kind: "app",
   },
-};
+} as const;
 
 const portfolioContent: Record<Locale, PortfolioContent> = {
   pt: {
@@ -181,75 +247,129 @@ const portfolioContent: Record<Locale, PortfolioContent> = {
     metadata: {
       title: "Ana Carla | Desenvolvedora Full Stack",
       description:
-        "Portfólio de desenvolvedora com foco em front-end, React Native, interfaces premium e produtos digitais modernos.",
-    },
-    languageSwitcher: {
-      label: "Idioma",
-      currentLabel: "Português",
-      options: [
-        { locale: "pt", label: "Português", shortLabel: "PT" },
-        { locale: "en", label: "English", shortLabel: "EN" },
-        { locale: "es", label: "Español", shortLabel: "ES" },
-      ],
-    },
-    themeToggle: {
-      ariaLabel: "Alternar tema",
-      enableLight: "Ativar modo claro",
-      enableDark: "Ativar modo escuro",
-    },
-    siteHeader: {
-      brandLabel: "Ana Carla",
-      navAriaLabel: "Navegação principal",
-      mobileNavAriaLabel: "Navegação mobile",
-      openMenu: "Abrir menu",
-      closeMenu: "Fechar menu",
-    },
-    mobileDock: {
-      ariaLabel: "Navegação rápida mobile",
-      homeLabel: "Início",
+        "Portfólio de Ana Carla, desenvolvedora full stack: front-end, mobile e back-end com React, React Native e APIs.",
     },
     skipLink: "Pular para o conteúdo principal",
+    newTabLabel: "(abre em nova aba)",
+    languageSwitcher: { label: "Idioma" },
+    themeToggle: { label: "Alternar tema claro e escuro" },
+    siteHeader: {
+      navAriaLabel: "Navegação principal",
+      mobileNavAriaLabel: "Navegação mobile",
+      menuLabel: "Menu",
+      closeLabel: "Fechar",
+      openMenuAria: "Abrir menu",
+      closeMenuAria: "Fechar menu",
+    },
     navItems: [
-      { label: "Sobre", href: "#sobre" },
-      { label: "Skills", href: "#skills" },
-      { label: "Projetos", href: "#projetos" },
-      { label: "FAQ", href: "#faq" },
-      { label: "Contato", href: "#contato" },
+      { number: "01", label: "Projetos", href: "#projetos" },
+      { number: "02", label: "Sobre", href: "#sobre" },
+      { number: "03", label: "Skills", href: "#skills" },
+      { number: "05", label: "FAQ", href: "#faq" },
+      { number: "06", label: "Contato", href: "#contato" },
     ],
     hero: {
-      eyebrow: "Desenvolvedora Full Stack",
-      title: "Front, back e mobile com acabamento.",
+      badge: "Ana Carla · Desenvolvedora Full Stack",
+      title: "Código com olhar de",
+      titleHighlight: "designer.",
       description:
-        "Atuo no front-end, no backend e no mobile. React, React Native, APIs e UI com olhar de produto.",
+        "Desenvolvo front-end, mobile e back-end em React, React Native e APIs, com o mesmo cuidado em cada tela: do layout à animação.",
       primaryCta: "Ver projetos",
-      secondaryCta: "Baixar currículo",
+      secondaryCta: "Currículo em PDF",
       resumeHref: "/ana-carla-paiva-curriculo.pdf",
-      resumeDownloadName: "Ana-Carla-Paiva-Curriculo.pdf",
-      emailAria: "Enviar e-mail",
-      githubAria: "GitHub",
-      linkedinAria: "LinkedIn",
-      stats: [
-        { value: "Front-end", label: "React e Next.js" },
-        { value: "Backend", label: "APIs e integração" },
-        { value: "Mobile", label: "React Native" },
+      status: "Disponível para novos projetos",
+      code: {
+        fileName: "ana.tsx",
+        objectName: "ana",
+        lines: [
+          { key: "cargo", value: "Full Stack" },
+          { key: "front", value: ["React", "Next.js"] },
+          { key: "mobile", value: "React Native" },
+          { key: "back", value: ["APIs", "Integrações"] },
+          { key: "design", value: ["UI", "UX", "Motion"] },
+          { key: "foco", value: "acabamento" },
+        ],
+      },
+      ticker: ["React", "Next.js", "React Native", "APIs", "UI e UX", "Design systems", "Motion", "Responsividade"],
+      tickerPause: "Pausar faixa animada",
+      tickerPlay: "Retomar faixa animada",
+    },
+    projects: {
+      eyebrow: "Projetos",
+      title: "Trabalhos selecionados",
+      description: "Sites, produtos web e apps que desenhei e desenvolvi.",
+      featured: {
+        fileName: "match-protein.html",
+        badge: "Destaque",
+        title: "Match Protein",
+        description:
+          "Landing page da Match Protein, marca de sorvete proteico low carb para o público fitness. Tabela nutricional animada e explosões de sabor em câmera lenta: cada sabor muda a cena inteira.",
+        pickerLabel: "Escolha um sabor",
+        hint: "Clique para explodir o sabor",
+        hintTouch: "Toque para explodir o sabor",
+        stageAriaLabel: "Tocar a explosão de sabor",
+        flavors: ["Chocolate", "Amendoim", "Morango"],
+        tags: ["Landing page", "Motion", "UI"],
+        cta: "Abrir landing page",
+      },
+      items: [
+        {
+          ...sharedProjects.solus,
+          imageAlt: "Preview do site Solus",
+          summary: "Produto web com foco em interface, usabilidade e entrega consistente.",
+          tags: ["Front-end", "Web", "UI"],
+        },
+        {
+          ...sharedProjects.centroCardio,
+          imageAlt: "Preview do site Centro Cardio Londrina",
+          summary: "Site institucional com navegação clara e marca profissional.",
+          tags: ["Website", "Interface", "Experiência"],
+        },
+        {
+          ...sharedProjects.theBestAcai,
+          imageAlt: "Preview do site The Best Açaí",
+          summary: "Site de marca com presença digital forte e navegação clara.",
+          tags: ["Website", "Marca", "Conversão"],
+        },
+        {
+          ...sharedProjects.clubeTheBest,
+          domain: "app · iOS e Android",
+          imageAlt: "Tela inicial do app Clube The Best na Google Play",
+          summary:
+            "App de fidelidade dos clientes da The Best Açaí, com mais de 500 mil downloads. Reúne cadastro e perfil, cupons promocionais, notificações de ofertas e um programa de pontos ligado ao caixa das lojas.",
+          tags: ["React Native", "styled-components", "Fidelidade"],
+          stores: [
+            { prefix: "Baixar na", label: "App Store", href: storeLinks.clubeAppStore },
+            { prefix: "Disponível no", label: "Google Play", href: storeLinks.clubePlay },
+          ],
+        },
+        {
+          ...sharedProjects.theBestPortal,
+          domain: "app · franqueados",
+          imageAlt: "Tela inicial do app The Best Portal na Google Play",
+          summary:
+            "App de gestão exclusivo para franqueados da The Best Açaí. Mostra indicadores de desempenho por loja, faz e acompanha pedidos de produtos, e reúne relatórios financeiros e vendas.",
+          tags: ["React Native", "styled-components", "B2B"],
+          stores: [
+            { prefix: "Disponível no", label: "Google Play", href: storeLinks.portalPlay },
+            {
+              prefix: "iOS · enterprise",
+              label: "Distribuição privada",
+              title: "Distribuído internamente via Apple Developer Enterprise",
+            },
+          ],
+        },
       ],
-      labEyebrow: "Laboratório criativo",
-      labDescription: "Do visual à API, com forma e função.",
-      specialtyLabel: "Especialidade",
-      specialtyValue: "React, React Native, APIs e UI de produto",
-      specialtyBadge: "full stack",
-      labStatus: "Disponível para novos projetos",
     },
     about: {
       eyebrow: "Sobre",
       title: "Produto de ponta a ponta",
-      role: "Full Stack Developer",
-      emailAria: "E-mail",
-      githubAria: "GitHub",
-      linkedinAria: "LinkedIn",
+      photoAlt: "Foto de Ana Carla",
+      name: "Ana Carla Paiva",
+      role: "Desenvolvedora Full Stack",
       paragraphs: [
-        "Desenvolvedora full stack com foco em interface e produto. Construo experiências no front e no mobile, e também estruturo o backend por trás.",
-        "Gosto de fechar o ciclo: da tela à API, com cuidado em usabilidade, performance e entrega. Trabalho em produtos reais, do protótipo ao que vai pro ar.",
+        "Sou desenvolvedora full stack com foco em interface e produto. Construo experiências para web e mobile e também estruturo o backend que sustenta cada tela.",
+        "Gosto de fechar o ciclo: da tela à API, com cuidado em usabilidade, performance e acabamento. Trabalho em produtos reais, do protótipo ao que vai pro ar.",
       ],
       focusTitle: "Onde atuo",
       focusAreas: [
@@ -257,113 +377,31 @@ const portfolioContent: Record<Locale, PortfolioContent> = {
         { title: "Backend", description: "APIs, integração e lógica de negócio." },
         { title: "Mobile", description: "Apps em React Native para uso real." },
       ],
-      credentialsTitle: "Credenciais",
+      credentialsTitle: "Formação",
       credentials: [
-        {
-          title: "Engenharia de Software",
-          description: "Estrutura, escalabilidade e qualidade.",
-        },
-        {
-          title: "Pós em Mobile",
-          description: "Produto mobile, performance e usabilidade.",
-        },
-        {
-          title: "Full stack",
-          description: "Front-end, backend, mobile e UI.",
-        },
+        { title: "Engenharia de Software", description: "Estrutura, escalabilidade e qualidade." },
+        { title: "Pós em Mobile", description: "Produto mobile, performance e usabilidade." },
       ],
-      photoAlt: "Foto de perfil de Ana Carla",
-      fallbackRole: "full stack",
     },
     skills: {
       eyebrow: "Skills",
-      title: "Ferramentas para tirar ideias do papel",
+      title: "Do layout ao deploy",
       items: [
-        {
-          name: "Front-end moderno",
-          description: "React, Next.js e componentes orientados a produto.",
-        },
-        {
-          name: "React Native",
-          description: "Apps mobile e interfaces para uso real.",
-        },
-        {
-          name: "UI e UX Design",
-          description: "Hierarquia, interação e refinamento com intenção.",
-        },
-        {
-          name: "Design systems",
-          description: "Componentes, tokens e consistência em escala.",
-        },
-        {
-          name: "Animação e UX",
-          description: "Microinterações que comunicam estado sem exagero.",
-        },
-        {
-          name: "Responsividade real",
-          description: "Layouts fluidos pensados para uso, não breakpoints.",
-        },
+        { title: "Front-end moderno", description: "React, Next.js e componentes orientados a produto." },
+        { title: "React Native", description: "Apps mobile e interfaces para uso real." },
+        { title: "UI e UX Design", description: "Hierarquia, interação e refinamento com intenção." },
+        { title: "Design systems", description: "Componentes, tokens e consistência em escala." },
+        { title: "Animação e UX", description: "Microinterações que comunicam estado sem exagero." },
+        { title: "Responsividade real", description: "Layouts fluidos pensados para uso, não para breakpoints." },
       ],
     },
     process: {
-      eyebrow: "Como eu trabalho",
+      eyebrow: "Processo",
       title: "Como eu construo",
       items: [
-        {
-          title: "Entender o problema",
-          description: "Traduzo o objetivo do produto em estrutura de interface.",
-        },
-        {
-          title: "Protótipo com intenção",
-          description: "Layout, componentes e estados antes de codar.",
-        },
-        {
-          title: "Entrega com acabamento",
-          description: "Acessibilidade, responsividade e polish visual.",
-        },
-      ],
-    },
-    projects: {
-      eyebrow: "Laboratório",
-      title: "Projetos para marca e produto",
-      caseLabel: "Case",
-      viewProjectLabel: "Ver projeto",
-      items: [
-        {
-          title: "Solus",
-          summary: "Produto web com foco em interface, usabilidade e entrega consistente.",
-          stack: ["Front-end", "Web", "UI"],
-          imageAlt: "Preview do site Solus",
-          ...sharedProjects.solus,
-        },
-        {
-          title: "Centro Cardio Londrina",
-          summary: "Site institucional com navegação clara e marca profissional.",
-          stack: ["Website", "Interface", "Experiência"],
-          imageAlt: "Preview do site Centro Cardio Londrina",
-          ...sharedProjects.centroCardio,
-        },
-        {
-          title: "The Best Açaí",
-          summary: "Site de marca com presença digital forte e navegação clara.",
-          stack: ["Website", "Marca", "Conversão"],
-          imageAlt: "Preview do site The Best Açaí",
-          ...sharedProjects.theBestAcai,
-        },
-        {
-          title: "Clube The Best",
-          summary: "App React Native focado em experiência fluida e recorrência.",
-          stack: ["React Native", "styled-components", "Mobile"],
-          imageAlt: "Ilustração de aplicativo mobile para Clube The Best",
-          ...sharedProjects.clubeTheBest,
-        },
-        {
-          title: "The Best Portal",
-          summary: "App de trabalho em React Native com fluxos organizados.",
-          stack: ["React Native", "styled-components", "App"],
-          imageAlt: "Ilustração de aplicativo mobile para The Best Portal",
-          ...sharedProjects.theBestPortal,
-        },
+        { title: "Entender o problema", description: "Traduzo o objetivo do produto em estrutura de interface." },
+        { title: "Protótipo com intenção", description: "Layout, componentes e estados definidos antes do código." },
+        { title: "Entrega com acabamento", description: "Acessibilidade, responsividade e polimento visual." },
       ],
     },
     faq: {
@@ -372,46 +410,66 @@ const portfolioContent: Record<Locale, PortfolioContent> = {
       items: [
         {
           question: "Front-end, mobile ou design?",
-          answer:
-            "Foco em front-end, bem conectado a mobile e interface: React, Next.js, React Native, UI e UX.",
+          answer: "Os três, com foco em front-end: React, Next.js, React Native, UI e UX.",
         },
         {
           question: "Você também faz backend?",
-          answer:
-            "Sim. APIs, integração e a lógica por trás da interface, junto com front-end e mobile.",
+          answer: "Sim. APIs, integrações e a lógica de negócio por trás da interface.",
         },
         {
           question: "Você desenvolve apps em React Native?",
-          answer:
-            "Sim. Apps mobile em React Native com foco em performance, clareza e manutenção.",
+          answer: "Sim. Apps mobile com foco em performance, clareza e manutenção.",
         },
         {
           question: "Que tipo de projeto você entrega?",
-          answer:
-            "Landing pages premium, sites institucionais, produtos web e apps mobile.",
+          answer: "Landing pages, sites institucionais, produtos web e apps mobile.",
         },
         {
           question: "Você atua em times e produtos existentes?",
-          answer:
-            "Sim. Evoluo interface, organizo componentes e elevo a qualidade do produto.",
+          answer: "Sim. Evoluo interfaces, organizo componentes e elevo a qualidade do produto.",
         },
       ],
     },
     contact: {
       eyebrow: "Contato",
-      title: "Vamos construir algo bom juntos",
-      description:
-        "Disponível para freelas, novos produtos e times que querem elevar o front-end.",
-      cta: "Vamos conversar",
-      items: [
-        { label: "Email", value: "acfpaiva99@gmail.com", href: "mailto:acfpaiva99@gmail.com" },
-        { label: "LinkedIn", value: "linkedin.com/in/anacarlapaiva", href: "https://www.linkedin.com/in/anacarlapaiva" },
-        { label: "GitHub", value: "github.com/anacarlapaiva", href: "https://github.com/anacarlapaiva" },
-      ],
+      fileName: "contato.exe",
+      title: "Vamos construir algo",
+      titleHighlight: "bom juntos",
+      description: "Disponível para freelas, novos produtos e times que querem elevar o front-end.",
+      cta: "Enviar email",
+      form: {
+        nameLabel: "Seu nome",
+        namePlaceholder: "Como posso te chamar?",
+        subjectLabel: "Assunto",
+        subjectPlaceholder: "Freela, produto, vaga…",
+        optional: "opcional",
+        messageLabel: "Mensagem",
+        messagePlaceholder: "Conte um pouco sobre o projeto, o prazo e o que você precisa.",
+        submit: "Abrir no meu email",
+        hint: "Abre seu app de email com tudo preenchido. É só enviar.",
+        defaultSubject: "Contato pelo portfólio",
+        greeting: "Olá, Ana Carla!",
+        signature: "Enviado pelo portfólio",
+        sent: "Sua mensagem está pronta no app de email.",
+        fallback: "Não abriu nada?",
+        gmail: "Enviar pelo Gmail",
+        copy: "Copiar email",
+        copied: "Email copiado",
+      },
+    },
+    whatsapp: {
+      buttonLabel: "WhatsApp",
+      openAria: "Conversar com Ana Carla no WhatsApp",
+      fileName: "whatsapp.exe",
+      greeting: "Oi! Me conta sobre o seu projeto que eu te respondo por aqui.",
+      message: "Olá, Ana Carla! Vim pelo seu portfólio e quero conversar sobre um projeto.",
+      cta: "Abrir conversa",
+      closeLabel: "Fechar",
     },
     footer: {
       role: "Desenvolvedora full stack, interface e produto.",
-      builtWith: "Feito com Next.js, Tailwind e Motion",
+      builtWith: "Feito com Next.js e Tailwind",
+      homeLabel: "Início",
     },
   },
   en: {
@@ -420,75 +478,129 @@ const portfolioContent: Record<Locale, PortfolioContent> = {
     metadata: {
       title: "Ana Carla | Full Stack Developer",
       description:
-        "Developer portfolio focused on front-end, React Native, premium interfaces, and modern digital products.",
-    },
-    languageSwitcher: {
-      label: "Language",
-      currentLabel: "English",
-      options: [
-        { locale: "pt", label: "Português", shortLabel: "PT" },
-        { locale: "en", label: "English", shortLabel: "EN" },
-        { locale: "es", label: "Español", shortLabel: "ES" },
-      ],
-    },
-    themeToggle: {
-      ariaLabel: "Toggle theme",
-      enableLight: "Enable light mode",
-      enableDark: "Enable dark mode",
-    },
-    siteHeader: {
-      brandLabel: "Ana Carla",
-      navAriaLabel: "Main navigation",
-      mobileNavAriaLabel: "Mobile navigation",
-      openMenu: "Open menu",
-      closeMenu: "Close menu",
-    },
-    mobileDock: {
-      ariaLabel: "Quick mobile navigation",
-      homeLabel: "Home",
+        "Portfolio of Ana Carla, full stack developer: front-end, mobile, and back-end with React, React Native, and APIs.",
     },
     skipLink: "Skip to main content",
+    newTabLabel: "(opens in a new tab)",
+    languageSwitcher: { label: "Language" },
+    themeToggle: { label: "Toggle light and dark theme" },
+    siteHeader: {
+      navAriaLabel: "Main navigation",
+      mobileNavAriaLabel: "Mobile navigation",
+      menuLabel: "Menu",
+      closeLabel: "Close",
+      openMenuAria: "Open menu",
+      closeMenuAria: "Close menu",
+    },
     navItems: [
-      { label: "About", href: "#sobre" },
-      { label: "Skills", href: "#skills" },
-      { label: "Projects", href: "#projetos" },
-      { label: "FAQ", href: "#faq" },
-      { label: "Contact", href: "#contato" },
+      { number: "01", label: "Projects", href: "#projetos" },
+      { number: "02", label: "About", href: "#sobre" },
+      { number: "03", label: "Skills", href: "#skills" },
+      { number: "05", label: "FAQ", href: "#faq" },
+      { number: "06", label: "Contact", href: "#contato" },
     ],
     hero: {
-      eyebrow: "Full Stack Developer",
-      title: "Front, back, and mobile with polish.",
+      badge: "Ana Carla · Full Stack Developer",
+      title: "Code with a",
+      titleHighlight: "designer's eye.",
       description:
-        "I work across front-end, backend, and mobile. React, React Native, APIs, and UI with a product mindset.",
+        "I build front-end, mobile, and back-end with React, React Native, and APIs, with the same care on every screen: from layout to animation.",
       primaryCta: "View projects",
-      secondaryCta: "Download resume",
+      secondaryCta: "Resume (PDF)",
       resumeHref: "/ana-carla-paiva-resume-en.pdf",
-      resumeDownloadName: "Ana-Carla-Paiva-Resume.pdf",
-      emailAria: "Send email",
-      githubAria: "GitHub",
-      linkedinAria: "LinkedIn",
-      stats: [
-        { value: "Front-end", label: "React and Next.js" },
-        { value: "Backend", label: "APIs and integration" },
-        { value: "Mobile", label: "React Native" },
+      status: "Open to new projects",
+      code: {
+        fileName: "ana.tsx",
+        objectName: "ana",
+        lines: [
+          { key: "role", value: "Full Stack" },
+          { key: "front", value: ["React", "Next.js"] },
+          { key: "mobile", value: "React Native" },
+          { key: "back", value: ["APIs", "Integrations"] },
+          { key: "design", value: ["UI", "UX", "Motion"] },
+          { key: "focus", value: "polish" },
+        ],
+      },
+      ticker: ["React", "Next.js", "React Native", "APIs", "UI & UX", "Design systems", "Motion", "Responsive design"],
+      tickerPause: "Pause scrolling banner",
+      tickerPlay: "Resume scrolling banner",
+    },
+    projects: {
+      eyebrow: "Projects",
+      title: "Selected work",
+      description: "Websites, web products, and apps I designed and built.",
+      featured: {
+        fileName: "match-protein.html",
+        badge: "Featured",
+        title: "Match Protein",
+        description:
+          "Landing page for Match Protein, a low-carb protein ice cream brand for the fitness crowd. An animated nutrition label and slow-motion flavor bursts: each flavor changes the whole scene.",
+        pickerLabel: "Pick a flavor",
+        hint: "Click to burst the flavor",
+        hintTouch: "Tap to burst the flavor",
+        stageAriaLabel: "Play the flavor burst",
+        flavors: ["Chocolate", "Peanut", "Strawberry"],
+        tags: ["Landing page", "Motion", "UI"],
+        cta: "Open landing page",
+      },
+      items: [
+        {
+          ...sharedProjects.solus,
+          imageAlt: "Preview of the Solus website",
+          summary: "Web product focused on interface, usability, and consistent delivery.",
+          tags: ["Front-end", "Web", "UI"],
+        },
+        {
+          ...sharedProjects.centroCardio,
+          imageAlt: "Preview of the Centro Cardio Londrina website",
+          summary: "Institutional site with clear navigation and a professional brand.",
+          tags: ["Website", "Interface", "Experience"],
+        },
+        {
+          ...sharedProjects.theBestAcai,
+          imageAlt: "Preview of The Best Açaí website",
+          summary: "Brand site with a strong digital presence and clear navigation.",
+          tags: ["Website", "Brand", "Conversion"],
+        },
+        {
+          ...sharedProjects.clubeTheBest,
+          domain: "app · iOS & Android",
+          imageAlt: "Home screen of the Clube The Best app on Google Play",
+          summary:
+            "Loyalty app for The Best Açaí customers, with over 500k downloads. It brings together sign-up and profile, promo coupons, offer notifications, and a points program linked to the stores' checkout.",
+          tags: ["React Native", "styled-components", "Loyalty"],
+          stores: [
+            { prefix: "Download on the", label: "App Store", href: storeLinks.clubeAppStore },
+            { prefix: "Get it on", label: "Google Play", href: storeLinks.clubePlay },
+          ],
+        },
+        {
+          ...sharedProjects.theBestPortal,
+          domain: "app · franchisees",
+          imageAlt: "Home screen of The Best Portal app on Google Play",
+          summary:
+            "Management app exclusive to The Best Açaí franchisees. It shows per-store performance metrics, places and tracks product orders, and gathers financial and sales reports.",
+          tags: ["React Native", "styled-components", "B2B"],
+          stores: [
+            { prefix: "Get it on", label: "Google Play", href: storeLinks.portalPlay },
+            {
+              prefix: "iOS · enterprise",
+              label: "Private distribution",
+              title: "Distributed internally via Apple Developer Enterprise",
+            },
+          ],
+        },
       ],
-      labEyebrow: "Creative lab",
-      labDescription: "From UI to API, balancing form and function.",
-      specialtyLabel: "Specialty",
-      specialtyValue: "React, React Native, APIs, and product UI",
-      specialtyBadge: "full stack",
-      labStatus: "Open to new projects",
     },
     about: {
       eyebrow: "About",
       title: "Product end to end",
+      photoAlt: "Photo of Ana Carla",
+      name: "Ana Carla Paiva",
       role: "Full Stack Developer",
-      emailAria: "Email",
-      githubAria: "GitHub",
-      linkedinAria: "LinkedIn",
       paragraphs: [
-        "Full stack developer focused on interface and product. I build front-end and mobile experiences, and also structure the backend behind them.",
-        "I like closing the loop: from UI to API, with care for usability, performance, and delivery. I work on real products, from prototype to production.",
+        "I'm a full stack developer focused on interface and product. I build web and mobile experiences and also structure the backend that supports every screen.",
+        "I like closing the loop: from screen to API, with care for usability, performance, and finish. I work on real products, from prototype to production.",
       ],
       focusTitle: "Where I work",
       focusAreas: [
@@ -496,86 +608,31 @@ const portfolioContent: Record<Locale, PortfolioContent> = {
         { title: "Backend", description: "APIs, integration, and business logic." },
         { title: "Mobile", description: "React Native apps for real use." },
       ],
-      credentialsTitle: "Credentials",
+      credentialsTitle: "Education",
       credentials: [
-        {
-          title: "Software Engineering",
-          description: "Structure, scalability, and quality.",
-        },
-        {
-          title: "Mobile postgraduate",
-          description: "Mobile product, performance, and usability.",
-        },
-        {
-          title: "Full stack",
-          description: "Front-end, backend, mobile, and UI.",
-        },
+        { title: "Software Engineering", description: "Structure, scalability, and quality." },
+        { title: "Mobile postgraduate", description: "Mobile product, performance, and usability." },
       ],
-      photoAlt: "Profile photo of Ana Carla",
-      fallbackRole: "full stack",
     },
     skills: {
       eyebrow: "Skills",
-      title: "Tools to turn ideas into products",
+      title: "From layout to deploy",
       items: [
-        { name: "Modern front-end", description: "React, Next.js, and product-driven components." },
-        { name: "React Native", description: "Mobile apps and interfaces for real use." },
-        { name: "UI and UX Design", description: "Hierarchy, interaction, and refinement with intent." },
-        { name: "Design systems", description: "Components, tokens, and consistency at scale." },
-        { name: "Motion and UX", description: "Micro-interactions that signal state without overdoing it." },
-        { name: "True responsiveness", description: "Fluid layouts built for use, not breakpoints." },
+        { title: "Modern front-end", description: "React, Next.js, and product-driven components." },
+        { title: "React Native", description: "Mobile apps and interfaces for real use." },
+        { title: "UI and UX Design", description: "Hierarchy, interaction, and refinement with intent." },
+        { title: "Design systems", description: "Components, tokens, and consistency at scale." },
+        { title: "Motion and UX", description: "Micro-interactions that signal state without overdoing it." },
+        { title: "True responsiveness", description: "Fluid layouts built for use, not for breakpoints." },
       ],
     },
     process: {
-      eyebrow: "How I work",
+      eyebrow: "Process",
       title: "How I build",
       items: [
         { title: "Understand the problem", description: "I turn the product goal into interface structure." },
-        { title: "Intentional prototyping", description: "Layout, components, and states before coding." },
+        { title: "Intentional prototyping", description: "Layout, components, and states defined before code." },
         { title: "Polished delivery", description: "Accessibility, responsiveness, and visual polish." },
-      ],
-    },
-    projects: {
-      eyebrow: "Lab",
-      title: "Projects for brand and product",
-      caseLabel: "Case",
-      viewProjectLabel: "View project",
-      items: [
-        {
-          title: "Solus",
-          summary: "Web product focused on interface, usability, and consistent delivery.",
-          stack: ["Front-end", "Web", "UI"],
-          imageAlt: "Preview of the Solus website",
-          ...sharedProjects.solus,
-        },
-        {
-          title: "Centro Cardio Londrina",
-          summary: "Institutional site with clear navigation and a professional brand.",
-          stack: ["Website", "Interface", "Experience"],
-          imageAlt: "Preview of the Centro Cardio Londrina website",
-          ...sharedProjects.centroCardio,
-        },
-        {
-          title: "The Best Acai",
-          summary: "Brand site with strong digital presence and clear navigation.",
-          stack: ["Website", "Brand", "Conversion"],
-          imageAlt: "Preview of The Best Acai website",
-          ...sharedProjects.theBestAcai,
-        },
-        {
-          title: "Clube The Best",
-          summary: "React Native app focused on a fluid, recurring experience.",
-          stack: ["React Native", "styled-components", "Mobile"],
-          imageAlt: "Mobile app illustration for Clube The Best",
-          ...sharedProjects.clubeTheBest,
-        },
-        {
-          title: "The Best Portal",
-          summary: "Work app in React Native with organized flows.",
-          stack: ["React Native", "styled-components", "App"],
-          imageAlt: "Mobile app illustration for The Best Portal",
-          ...sharedProjects.theBestPortal,
-        },
       ],
     },
     faq: {
@@ -584,46 +641,66 @@ const portfolioContent: Record<Locale, PortfolioContent> = {
       items: [
         {
           question: "Front-end, mobile, or design?",
-          answer:
-            "Front-end is my focus, closely tied to mobile and interface: React, Next.js, React Native, UI and UX.",
+          answer: "All three, with a focus on front-end: React, Next.js, React Native, UI and UX.",
         },
         {
           question: "Do you also work on backend?",
-          answer:
-            "Yes. APIs, integration, and the logic behind the interface, alongside front-end and mobile.",
+          answer: "Yes. APIs, integrations, and the business logic behind the interface.",
         },
         {
           question: "Do you build apps in React Native?",
-          answer:
-            "Yes. Mobile apps in React Native focused on performance, clarity, and maintenance.",
+          answer: "Yes. Mobile apps focused on performance, clarity, and maintainability.",
         },
         {
           question: "What kind of projects do you deliver?",
-          answer:
-            "Premium landing pages, institutional sites, web products, and mobile apps.",
+          answer: "Landing pages, institutional sites, web products, and mobile apps.",
         },
         {
           question: "Can you join existing teams and products?",
-          answer:
-            "Yes. I evolve interfaces, organize components, and raise product quality.",
+          answer: "Yes. I evolve interfaces, organize components, and raise product quality.",
         },
       ],
     },
     contact: {
       eyebrow: "Contact",
-      title: "Let's build something great together",
-      description:
-        "Available for freelance work, new products, and teams that want to raise their front-end.",
-      cta: "Let's talk",
-      items: [
-        { label: "Email", value: "acfpaiva99@gmail.com", href: "mailto:acfpaiva99@gmail.com" },
-        { label: "LinkedIn", value: "linkedin.com/in/anacarlapaiva", href: "https://www.linkedin.com/in/anacarlapaiva" },
-        { label: "GitHub", value: "github.com/anacarlapaiva", href: "https://github.com/anacarlapaiva" },
-      ],
+      fileName: "contact.exe",
+      title: "Let's build something",
+      titleHighlight: "great together",
+      description: "Available for freelance work, new products, and teams that want to raise their front-end.",
+      cta: "Send email",
+      form: {
+        nameLabel: "Your name",
+        namePlaceholder: "What should I call you?",
+        subjectLabel: "Subject",
+        subjectPlaceholder: "Freelance, product, role…",
+        optional: "optional",
+        messageLabel: "Message",
+        messagePlaceholder: "Tell me a bit about the project, the timeline, and what you need.",
+        submit: "Open in my email",
+        hint: "Opens your email app with everything filled in. Just hit send.",
+        defaultSubject: "Contact from portfolio",
+        greeting: "Hi Ana Carla,",
+        signature: "Sent from the portfolio",
+        sent: "Your message is ready in your email app.",
+        fallback: "Nothing opened?",
+        gmail: "Send with Gmail",
+        copy: "Copy email",
+        copied: "Email copied",
+      },
+    },
+    whatsapp: {
+      buttonLabel: "WhatsApp",
+      openAria: "Chat with Ana Carla on WhatsApp",
+      fileName: "whatsapp.exe",
+      greeting: "Hi! Tell me about your project and I'll get back to you here.",
+      message: "Hi Ana Carla! I found your portfolio and would like to talk about a project.",
+      cta: "Start chat",
+      closeLabel: "Close",
     },
     footer: {
       role: "Full stack developer, interface, and product.",
-      builtWith: "Built with Next.js, Tailwind, and Motion",
+      builtWith: "Built with Next.js and Tailwind",
+      homeLabel: "Home",
     },
   },
   es: {
@@ -632,75 +709,129 @@ const portfolioContent: Record<Locale, PortfolioContent> = {
     metadata: {
       title: "Ana Carla | Desarrolladora Full Stack",
       description:
-        "Portafolio de desarrolladora enfocado en front-end, React Native, interfaces premium y productos digitales modernos.",
-    },
-    languageSwitcher: {
-      label: "Idioma",
-      currentLabel: "Español",
-      options: [
-        { locale: "pt", label: "Português", shortLabel: "PT" },
-        { locale: "en", label: "English", shortLabel: "EN" },
-        { locale: "es", label: "Español", shortLabel: "ES" },
-      ],
-    },
-    themeToggle: {
-      ariaLabel: "Cambiar tema",
-      enableLight: "Activar modo claro",
-      enableDark: "Activar modo oscuro",
-    },
-    siteHeader: {
-      brandLabel: "Ana Carla",
-      navAriaLabel: "Navegación principal",
-      mobileNavAriaLabel: "Navegación mobile",
-      openMenu: "Abrir menú",
-      closeMenu: "Cerrar menú",
-    },
-    mobileDock: {
-      ariaLabel: "Navegación rápida mobile",
-      homeLabel: "Inicio",
+        "Portafolio de Ana Carla, desarrolladora full stack: front-end, mobile y back-end con React, React Native y APIs.",
     },
     skipLink: "Saltar al contenido principal",
+    newTabLabel: "(abre en una pestaña nueva)",
+    languageSwitcher: { label: "Idioma" },
+    themeToggle: { label: "Cambiar tema claro y oscuro" },
+    siteHeader: {
+      navAriaLabel: "Navegación principal",
+      mobileNavAriaLabel: "Navegación mobile",
+      menuLabel: "Menú",
+      closeLabel: "Cerrar",
+      openMenuAria: "Abrir menú",
+      closeMenuAria: "Cerrar menú",
+    },
     navItems: [
-      { label: "Sobre mí", href: "#sobre" },
-      { label: "Skills", href: "#skills" },
-      { label: "Proyectos", href: "#projetos" },
-      { label: "FAQ", href: "#faq" },
-      { label: "Contacto", href: "#contato" },
+      { number: "01", label: "Proyectos", href: "#projetos" },
+      { number: "02", label: "Sobre mí", href: "#sobre" },
+      { number: "03", label: "Skills", href: "#skills" },
+      { number: "05", label: "FAQ", href: "#faq" },
+      { number: "06", label: "Contacto", href: "#contato" },
     ],
     hero: {
-      eyebrow: "Desarrolladora Full Stack",
-      title: "Front, back y mobile con acabado.",
+      badge: "Ana Carla · Desarrolladora Full Stack",
+      title: "Código con mirada de",
+      titleHighlight: "diseñadora.",
       description:
-        "Trabajo en front-end, backend y mobile. React, React Native, APIs y UI con mirada de producto.",
+        "Desarrollo front-end, mobile y back-end con React, React Native y APIs, con el mismo cuidado en cada pantalla: del layout a la animación.",
       primaryCta: "Ver proyectos",
-      secondaryCta: "Descargar CV",
+      secondaryCta: "CV en PDF",
       resumeHref: "/ana-carla-paiva-resume-en.pdf",
-      resumeDownloadName: "Ana-Carla-Paiva-Resume.pdf",
-      emailAria: "Enviar correo",
-      githubAria: "GitHub",
-      linkedinAria: "LinkedIn",
-      stats: [
-        { value: "Front-end", label: "React y Next.js" },
-        { value: "Backend", label: "APIs e integración" },
-        { value: "Mobile", label: "React Native" },
+      status: "Disponible para nuevos proyectos",
+      code: {
+        fileName: "ana.tsx",
+        objectName: "ana",
+        lines: [
+          { key: "cargo", value: "Full Stack" },
+          { key: "front", value: ["React", "Next.js"] },
+          { key: "mobile", value: "React Native" },
+          { key: "back", value: ["APIs", "Integraciones"] },
+          { key: "diseno", value: ["UI", "UX", "Motion"] },
+          { key: "foco", value: "acabado" },
+        ],
+      },
+      ticker: ["React", "Next.js", "React Native", "APIs", "UI y UX", "Design systems", "Motion", "Responsive"],
+      tickerPause: "Pausar banda animada",
+      tickerPlay: "Reanudar banda animada",
+    },
+    projects: {
+      eyebrow: "Proyectos",
+      title: "Trabajos seleccionados",
+      description: "Sitios, productos web y apps que diseñé y desarrollé.",
+      featured: {
+        fileName: "match-protein.html",
+        badge: "Destacado",
+        title: "Match Protein",
+        description:
+          "Landing page de Match Protein, marca de helado proteico low carb para el público fitness. Tabla nutricional animada y explosiones de sabor en cámara lenta: cada sabor cambia toda la escena.",
+        pickerLabel: "Elige un sabor",
+        hint: "Haz clic para explotar el sabor",
+        hintTouch: "Toca para explotar el sabor",
+        stageAriaLabel: "Reproducir la explosión de sabor",
+        flavors: ["Chocolate", "Maní", "Fresa"],
+        tags: ["Landing page", "Motion", "UI"],
+        cta: "Abrir landing page",
+      },
+      items: [
+        {
+          ...sharedProjects.solus,
+          imageAlt: "Preview del sitio Solus",
+          summary: "Producto web con foco en interfaz, usabilidad y entrega consistente.",
+          tags: ["Front-end", "Web", "UI"],
+        },
+        {
+          ...sharedProjects.centroCardio,
+          imageAlt: "Preview del sitio Centro Cardio Londrina",
+          summary: "Sitio institucional con navegación clara y marca profesional.",
+          tags: ["Website", "Interfaz", "Experiencia"],
+        },
+        {
+          ...sharedProjects.theBestAcai,
+          imageAlt: "Preview del sitio The Best Açaí",
+          summary: "Sitio de marca con presencia digital fuerte y navegación clara.",
+          tags: ["Website", "Marca", "Conversión"],
+        },
+        {
+          ...sharedProjects.clubeTheBest,
+          domain: "app · iOS y Android",
+          imageAlt: "Pantalla de inicio de la app Clube The Best en Google Play",
+          summary:
+            "App de fidelización de los clientes de The Best Açaí, con más de 500 mil descargas. Reúne registro y perfil, cupones promocionales, notificaciones de ofertas y un programa de puntos conectado a la caja de las tiendas.",
+          tags: ["React Native", "styled-components", "Fidelización"],
+          stores: [
+            { prefix: "Descargar en", label: "App Store", href: storeLinks.clubeAppStore },
+            { prefix: "Disponible en", label: "Google Play", href: storeLinks.clubePlay },
+          ],
+        },
+        {
+          ...sharedProjects.theBestPortal,
+          domain: "app · franquiciados",
+          imageAlt: "Pantalla de inicio de la app The Best Portal en Google Play",
+          summary:
+            "App de gestión exclusiva para franquiciados de The Best Açaí. Muestra indicadores de desempeño por tienda, hace y sigue pedidos de productos, y reúne informes financieros y de ventas.",
+          tags: ["React Native", "styled-components", "B2B"],
+          stores: [
+            { prefix: "Disponible en", label: "Google Play", href: storeLinks.portalPlay },
+            {
+              prefix: "iOS · enterprise",
+              label: "Distribución privada",
+              title: "Distribuido internamente vía Apple Developer Enterprise",
+            },
+          ],
+        },
       ],
-      labEyebrow: "Laboratorio creativo",
-      labDescription: "De la UI a la API, con forma y función.",
-      specialtyLabel: "Especialidad",
-      specialtyValue: "React, React Native, APIs y UI de producto",
-      specialtyBadge: "full stack",
-      labStatus: "Disponible para nuevos proyectos",
     },
     about: {
       eyebrow: "Sobre mí",
       title: "Producto de punta a punta",
-      role: "Full Stack Developer",
-      emailAria: "Correo",
-      githubAria: "GitHub",
-      linkedinAria: "LinkedIn",
+      photoAlt: "Foto de Ana Carla",
+      name: "Ana Carla Paiva",
+      role: "Desarrolladora Full Stack",
       paragraphs: [
-        "Desarrolladora full stack con foco en interfaz y producto. Construyo experiencias en front y mobile, y también estructuro el backend detrás.",
-        "Me gusta cerrar el ciclo: de la pantalla a la API, con cuidado en usabilidad, performance y entrega. Trabajo en productos reales, del prototipo a producción.",
+        "Soy desarrolladora full stack con foco en interfaz y producto. Construyo experiencias para web y mobile y también estructuro el backend que sostiene cada pantalla.",
+        "Me gusta cerrar el ciclo: de la pantalla a la API, con cuidado en usabilidad, performance y acabado. Trabajo en productos reales, del prototipo a producción.",
       ],
       focusTitle: "Dónde actúo",
       focusAreas: [
@@ -708,86 +839,31 @@ const portfolioContent: Record<Locale, PortfolioContent> = {
         { title: "Backend", description: "APIs, integración y lógica de negocio." },
         { title: "Mobile", description: "Apps en React Native para uso real." },
       ],
-      credentialsTitle: "Credenciales",
+      credentialsTitle: "Formación",
       credentials: [
-        {
-          title: "Ingeniería de Software",
-          description: "Estructura, escalabilidad y calidad.",
-        },
-        {
-          title: "Posgrado en Mobile",
-          description: "Producto mobile, performance y usabilidad.",
-        },
-        {
-          title: "Full stack",
-          description: "Front-end, backend, mobile y UI.",
-        },
+        { title: "Ingeniería de Software", description: "Estructura, escalabilidad y calidad." },
+        { title: "Posgrado en Mobile", description: "Producto mobile, performance y usabilidad." },
       ],
-      photoAlt: "Foto de perfil de Ana Carla",
-      fallbackRole: "full stack",
     },
     skills: {
       eyebrow: "Skills",
-      title: "Herramientas para convertir ideas en productos",
+      title: "Del layout al deploy",
       items: [
-        { name: "Front-end moderno", description: "React, Next.js y componentes orientados a producto." },
-        { name: "React Native", description: "Apps mobile e interfaces para uso real." },
-        { name: "UI y UX Design", description: "Jerarquía, interacción y refinamiento con intención." },
-        { name: "Design systems", description: "Componentes, tokens y consistencia a escala." },
-        { name: "Animación y UX", description: "Microinteracciones que comunican estado sin exagerar." },
-        { name: "Responsive real", description: "Layouts fluidos pensados para uso, no breakpoints." },
+        { title: "Front-end moderno", description: "React, Next.js y componentes orientados a producto." },
+        { title: "React Native", description: "Apps mobile e interfaces para uso real." },
+        { title: "UI y UX Design", description: "Jerarquía, interacción y refinamiento con intención." },
+        { title: "Design systems", description: "Componentes, tokens y consistencia a escala." },
+        { title: "Animación y UX", description: "Microinteracciones que comunican estado sin exagerar." },
+        { title: "Responsive real", description: "Layouts fluidos pensados para uso, no para breakpoints." },
       ],
     },
     process: {
-      eyebrow: "Cómo trabajo",
+      eyebrow: "Proceso",
       title: "Cómo construyo",
       items: [
         { title: "Entender el problema", description: "Traduzco el objetivo del producto en estructura de interfaz." },
-        { title: "Prototipo con intención", description: "Layout, componentes y estados antes de codear." },
+        { title: "Prototipo con intención", description: "Layout, componentes y estados definidos antes del código." },
         { title: "Entrega con acabado", description: "Accesibilidad, responsividad y pulido visual." },
-      ],
-    },
-    projects: {
-      eyebrow: "Laboratorio",
-      title: "Proyectos para marca y producto",
-      caseLabel: "Caso",
-      viewProjectLabel: "Ver proyecto",
-      items: [
-        {
-          title: "Solus",
-          summary: "Producto web con foco en interfaz, usabilidad y entrega consistente.",
-          stack: ["Front-end", "Web", "UI"],
-          imageAlt: "Preview del sitio Solus",
-          ...sharedProjects.solus,
-        },
-        {
-          title: "Centro Cardio Londrina",
-          summary: "Sitio institucional con navegación clara y marca profesional.",
-          stack: ["Website", "Interfaz", "Experiencia"],
-          imageAlt: "Preview del sitio Centro Cardio Londrina",
-          ...sharedProjects.centroCardio,
-        },
-        {
-          title: "The Best Açaí",
-          summary: "Sitio de marca con presencia digital fuerte y navegación clara.",
-          stack: ["Website", "Marca", "Conversión"],
-          imageAlt: "Preview del sitio The Best Açaí",
-          ...sharedProjects.theBestAcai,
-        },
-        {
-          title: "Clube The Best",
-          summary: "App React Native enfocada en experiencia fluida y recurrencia.",
-          stack: ["React Native", "styled-components", "Mobile"],
-          imageAlt: "Ilustración de app mobile para Clube The Best",
-          ...sharedProjects.clubeTheBest,
-        },
-        {
-          title: "The Best Portal",
-          summary: "App de trabajo en React Native con flujos organizados.",
-          stack: ["React Native", "styled-components", "App"],
-          imageAlt: "Ilustración de app mobile para The Best Portal",
-          ...sharedProjects.theBestPortal,
-        },
       ],
     },
     faq: {
@@ -796,46 +872,66 @@ const portfolioContent: Record<Locale, PortfolioContent> = {
       items: [
         {
           question: "¿Front-end, mobile o diseño?",
-          answer:
-            "Mi foco es front-end, muy conectado a mobile e interfaz: React, Next.js, React Native, UI y UX.",
+          answer: "Los tres, con foco en front-end: React, Next.js, React Native, UI y UX.",
         },
         {
           question: "¿También haces backend?",
-          answer:
-            "Sí. APIs, integración y la lógica detrás de la interfaz, junto con front-end y mobile.",
+          answer: "Sí. APIs, integraciones y la lógica de negocio detrás de la interfaz.",
         },
         {
           question: "¿Desarrollas apps en React Native?",
-          answer:
-            "Sí. Apps mobile en React Native con foco en performance, claridad y mantenimiento.",
+          answer: "Sí. Apps mobile con foco en performance, claridad y mantenimiento.",
         },
         {
           question: "¿Qué tipo de proyectos entregas?",
-          answer:
-            "Landing pages premium, sitios institucionales, productos web y apps mobile.",
+          answer: "Landing pages, sitios institucionales, productos web y apps mobile.",
         },
         {
           question: "¿Trabajas en equipos y productos existentes?",
-          answer:
-            "Sí. Evoluciono interfaz, organizo componentes y elevo la calidad del producto.",
+          answer: "Sí. Evoluciono interfaces, organizo componentes y elevo la calidad del producto.",
         },
       ],
     },
     contact: {
       eyebrow: "Contacto",
-      title: "Construyamos algo bueno juntos",
-      description:
-        "Disponible para freelance, nuevos productos y equipos que quieren elevar su front-end.",
-      cta: "Hablemos",
-      items: [
-        { label: "Email", value: "acfpaiva99@gmail.com", href: "mailto:acfpaiva99@gmail.com" },
-        { label: "LinkedIn", value: "linkedin.com/in/anacarlapaiva", href: "https://www.linkedin.com/in/anacarlapaiva" },
-        { label: "GitHub", value: "github.com/anacarlapaiva", href: "https://github.com/anacarlapaiva" },
-      ],
+      fileName: "contacto.exe",
+      title: "Construyamos algo",
+      titleHighlight: "bueno juntos",
+      description: "Disponible para freelance, nuevos productos y equipos que quieren elevar su front-end.",
+      cta: "Enviar email",
+      form: {
+        nameLabel: "Tu nombre",
+        namePlaceholder: "¿Cómo te llamo?",
+        subjectLabel: "Asunto",
+        subjectPlaceholder: "Freelance, producto, vacante…",
+        optional: "opcional",
+        messageLabel: "Mensaje",
+        messagePlaceholder: "Cuéntame un poco sobre el proyecto, el plazo y lo que necesitas.",
+        submit: "Abrir en mi email",
+        hint: "Abre tu app de email con todo completado. Solo tienes que enviar.",
+        defaultSubject: "Contacto desde el portafolio",
+        greeting: "¡Hola, Ana Carla!",
+        signature: "Enviado desde el portafolio",
+        sent: "Tu mensaje está listo en tu app de email.",
+        fallback: "¿No se abrió nada?",
+        gmail: "Enviar con Gmail",
+        copy: "Copiar email",
+        copied: "Email copiado",
+      },
+    },
+    whatsapp: {
+      buttonLabel: "WhatsApp",
+      openAria: "Hablar con Ana Carla por WhatsApp",
+      fileName: "whatsapp.exe",
+      greeting: "¡Hola! Cuéntame sobre tu proyecto y te respondo por aquí.",
+      message: "¡Hola, Ana Carla! Vi tu portafolio y quiero hablar sobre un proyecto.",
+      cta: "Abrir chat",
+      closeLabel: "Cerrar",
     },
     footer: {
       role: "Desarrolladora full stack, interfaz y producto.",
-      builtWith: "Hecho con Next.js, Tailwind y Motion",
+      builtWith: "Hecho con Next.js y Tailwind",
+      homeLabel: "Inicio",
     },
   },
 };

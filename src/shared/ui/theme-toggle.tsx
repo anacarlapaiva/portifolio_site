@@ -1,69 +1,35 @@
 "use client";
 
-import { MoonStar, SunMedium } from "lucide-react";
-import { useEffect, useState } from "react";
-
-import { Button } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
-
-type Theme = "dark" | "light";
-
 type ThemeToggleProps = {
-  ariaLabel: string;
-  enableLightLabel: string;
-  enableDarkLabel: string;
-  className?: string;
+  label: string;
 };
 
-function getInitialTheme(): Theme {
-  if (typeof window === "undefined") {
-    return "dark";
-  }
-
-  const storedTheme = window.localStorage.getItem("theme") as Theme | null;
-
-  if (storedTheme) {
-    return storedTheme;
-  }
-
-  return window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark";
-}
-
-export function ThemeToggle({
-  ariaLabel,
-  enableLightLabel,
-  enableDarkLabel,
-  className,
-}: ThemeToggleProps) {
-  const [theme, setTheme] = useState<Theme>(getInitialTheme);
-
-  useEffect(() => {
-    document.documentElement.dataset.theme = theme;
-    window.localStorage.setItem("theme", theme);
-  }, [theme]);
-
+export function ThemeToggle({ label }: ThemeToggleProps) {
   const toggleTheme = () => {
-    const nextTheme = theme === "dark" ? "light" : "dark";
-    setTheme(nextTheme);
-    document.documentElement.dataset.theme = nextTheme;
-    window.localStorage.setItem("theme", nextTheme);
+    const root = document.documentElement;
+    const next = root.dataset.theme === "dark" ? "light" : "dark";
+    root.dataset.theme = next;
+
+    try {
+      localStorage.setItem("theme", next);
+    } catch {
+    }
   };
 
   return (
-    <Button
+    <button
       type="button"
-      variant="ghost"
-      size="icon"
       onClick={toggleTheme}
-      aria-label={ariaLabel}
-      aria-pressed={theme === "light"}
-      title={theme === "dark" ? enableLightLabel : enableDarkLabel}
-      className={cn(className)}
+      aria-label={label}
+      title={label}
+      className="grid h-[34px] w-[34px] cursor-pointer place-items-center rounded-[10px] border border-line bg-bar text-[15px] text-ink transition-transform duration-[450ms] ease-[var(--ease)] hover:scale-[1.06] hover:rotate-[35deg]"
     >
-      <span className="sr-only">
-        {theme === "dark" ? enableLightLabel : enableDarkLabel}
+      <span className="theme-icon-light" aria-hidden="true">
+        ☾
       </span>
-      {theme === "dark" ? <SunMedium size={18} /> : <MoonStar size={18} />}
-    </Button>
+      <span className="theme-icon-dark" aria-hidden="true">
+        ☀
+      </span>
+    </button>
   );
 }

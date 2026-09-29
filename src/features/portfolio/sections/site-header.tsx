@@ -1,127 +1,116 @@
 "use client";
 
-import { Menu, X } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
-import { Button } from "@/components/ui/button";
-import { usePortfolioI18n } from "@/features/portfolio/portfolio-i18n";
-import { useActiveSection } from "@/shared/hooks/use-active-section";
+import type { Locale, PortfolioContent } from "@/features/portfolio/content";
 import { LanguageSwitcher } from "@/shared/ui/language-switcher";
 import { ThemeToggle } from "@/shared/ui/theme-toggle";
-import { cn } from "@/lib/utils";
 
-export function SiteHeader() {
+type SiteHeaderProps = {
+  locale: Locale;
+  navItems: PortfolioContent["navItems"];
+  labels: PortfolioContent["siteHeader"];
+  themeLabel: string;
+  languageLabel: string;
+};
+
+export function SiteHeader({ locale, navItems, labels, themeLabel, languageLabel }: SiteHeaderProps) {
   const [isOpen, setIsOpen] = useState(false);
-  const { locale, content } = usePortfolioI18n();
-  const { navItems, siteHeader, themeToggle, languageSwitcher } = content;
-  const activeSection = useActiveSection(["sobre", "skills", "projetos", "faq", "contato"]);
+  const toggleRef = useRef<HTMLButtonElement>(null);
+
+  useEffect(() => {
+    if (!isOpen) {
+      return;
+    }
+
+    const desktop = window.matchMedia("(min-width: 761px)");
+    const close = () => setIsOpen(false);
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        close();
+        toggleRef.current?.focus();
+      }
+    };
+    const onBreakpoint = () => {
+      if (desktop.matches) close();
+    };
+
+    window.addEventListener("keydown", onKeyDown);
+    desktop.addEventListener("change", onBreakpoint);
+
+    return () => {
+      window.removeEventListener("keydown", onKeyDown);
+      desktop.removeEventListener("change", onBreakpoint);
+    };
+  }, [isOpen]);
 
   return (
-    <header
-      className="sticky top-2 z-30 rounded-[1.5rem] border border-white/25 glass-panel px-3 py-3 sm:top-4 sm:rounded-[2rem] sm:px-5 sm:py-4 md:px-8"
-      role="banner"
-    >
-      <div className="flex items-center justify-between gap-2 sm:gap-3">
-        <a
-          href="#inicio"
-          className="min-w-0 shrink font-display text-sm font-semibold tracking-wide text-foreground sm:text-base md:text-lg"
-        >
-          <span className="inline-flex items-center gap-1.5 truncate">
+    <header className="sticky top-0 z-50 px-[clamp(12px,3vw,28px)] pt-3">
+      <div className="relative mx-auto max-w-[1180px]">
+        <div className="flex items-center justify-between gap-4 rounded-2xl border border-line bg-surface/70 py-2 pr-2 pl-4 shadow-[0_10px_30px_-20px_var(--glow)] backdrop-blur-[16px]">
+          <a href="#inicio" className="flex items-center gap-2 font-pixel text-[17px] whitespace-nowrap">
             <span className="text-accent" aria-hidden="true">
               &lt;/&gt;
             </span>
-            <span className="truncate">{siteHeader.brandLabel}</span>
-          </span>
-        </a>
+            ana_carla
+            <span className="animate-blink text-accent" aria-hidden="true">
+              _
+            </span>
+          </a>
 
-        <div className="flex shrink-0 items-center gap-1.5 sm:gap-2 md:hidden">
-          <LanguageSwitcher
-            currentLocale={locale}
-            languageSwitcher={languageSwitcher}
-            className="bg-inner-card/90"
-          />
-          <ThemeToggle
-            ariaLabel={themeToggle.ariaLabel}
-            enableLightLabel={themeToggle.enableLight}
-            enableDarkLabel={themeToggle.enableDark}
-            className="h-10 w-10 bg-inner-card/90"
-          />
-          <Button
-            type="button"
-            variant="ghost"
-            size="icon"
-            aria-expanded={isOpen}
-            aria-controls="mobile-navigation"
-            aria-label={isOpen ? siteHeader.closeMenu : siteHeader.openMenu}
-            onClick={() => setIsOpen((current) => !current)}
-            className="h-10 w-10 bg-inner-card/90"
-          >
-            {isOpen ? <X size={18} /> : <Menu size={18} />}
-          </Button>
-        </div>
-
-        <nav aria-label={siteHeader.navAriaLabel} className="hidden md:block">
-          <div className="flex items-center gap-4 lg:gap-6">
-            <ul className="flex items-center gap-1 text-sm text-foreground lg:gap-3">
-              {navItems.map((item) => {
-                const isActive = activeSection === item.href.replace("#", "");
-
-                return (
-                  <li key={item.href}>
-                    <a
-                      href={item.href}
-                      aria-current={isActive ? "page" : undefined}
-                      className={cn(
-                        "inline-flex min-h-11 items-center gap-2 rounded-full px-3 py-2 transition hover:text-accent lg:px-4",
-                        isActive && "bg-accent-soft text-accent",
-                      )}
-                    >
-                      <span className="h-1.5 w-1.5 rounded-full bg-accent/80" aria-hidden="true" />
-                      {item.label}
-                    </a>
-                  </li>
-                );
-              })}
-            </ul>
-            <LanguageSwitcher currentLocale={locale} languageSwitcher={languageSwitcher} />
-            <ThemeToggle
-              ariaLabel={themeToggle.ariaLabel}
-              enableLightLabel={themeToggle.enableLight}
-              enableDarkLabel={themeToggle.enableDark}
-            />
-          </div>
-        </nav>
-      </div>
-
-      <div
-        id="mobile-navigation"
-        className={cn(
-          "grid overflow-hidden transition-[grid-template-rows,opacity] duration-300 md:hidden",
-          isOpen ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0",
-        )}
-      >
-        <div className="min-h-0 overflow-hidden">
-          <nav aria-label={siteHeader.mobileNavAriaLabel} className="mt-3 border-t border-line pt-3">
-            <ul className="grid gap-1.5 text-sm text-foreground">
+          <nav aria-label={labels.navAriaLabel} className="hidden min-[761px]:block">
+            <ul className="m-0 flex list-none gap-1 p-0 text-sm text-muted">
               {navItems.map((item) => (
                 <li key={item.href}>
                   <a
                     href={item.href}
-                    onClick={() => setIsOpen(false)}
-                    className={cn(
-                      "inline-flex min-h-12 w-full items-center justify-between rounded-2xl border border-line bg-inner-card/90 px-4 py-3 transition active:scale-[0.99] hover:border-accent/30 hover:bg-accent-soft hover:text-accent",
-                      activeSection === item.href.replace("#", "") &&
-                        "border-accent/30 bg-accent-soft text-accent",
-                    )}
+                    className="block rounded-[9px] px-3 py-[7px] transition-colors duration-[250ms] hover:bg-sky hover:text-ink"
                   >
-                    <span>{item.label}</span>
-                    <span className="h-2 w-2 rounded-full bg-accent/80" aria-hidden="true" />
+                    {item.label}
                   </a>
                 </li>
               ))}
             </ul>
           </nav>
+
+          <div className="flex items-center gap-2">
+            <button
+              ref={toggleRef}
+              type="button"
+              onClick={() => setIsOpen((open) => !open)}
+              aria-expanded={isOpen}
+              aria-controls="mobile-navigation"
+              aria-label={isOpen ? labels.closeMenuAria : labels.openMenuAria}
+              className="h-[34px] cursor-pointer rounded-[10px] border border-line bg-bar px-3 font-pixel text-sm text-ink min-[761px]:hidden"
+            >
+              {isOpen ? labels.closeLabel : labels.menuLabel}
+            </button>
+            <LanguageSwitcher currentLocale={locale} label={languageLabel} className="max-[439px]:hidden" />
+            <ThemeToggle label={themeLabel} />
+          </div>
         </div>
+
+        <nav
+          id="mobile-navigation"
+          aria-label={labels.mobileNavAriaLabel}
+          hidden={!isOpen}
+          className="absolute inset-x-0 top-full mt-2 flex-col rounded-2xl border border-line bg-surface p-2 shadow-[0_20px_40px_-20px_var(--glow)] min-[761px]:hidden [&:not([hidden])]:flex"
+        >
+          {navItems.map((item) => (
+            <a
+              key={item.href}
+              href={item.href}
+              onClick={() => setIsOpen(false)}
+              className="flex items-center justify-between rounded-[10px] px-3 py-3.5 font-display text-lg font-medium tracking-[-0.02em]"
+            >
+              <span>{item.label}</span>
+              <span className="font-pixel text-[13px] text-muted">{item.number}</span>
+            </a>
+          ))}
+          <div className="mt-1 flex border-t border-line px-3 pt-3 pb-1 min-[440px]:hidden">
+            <LanguageSwitcher currentLocale={locale} label={languageLabel} />
+          </div>
+        </nav>
       </div>
     </header>
   );
